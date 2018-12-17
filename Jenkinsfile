@@ -23,9 +23,9 @@ pipeline {
         steps {
             sh """/usr/local/neoload/bin/NeoLoadCmd \
 -project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' \
--launch MyScenario \
--testResultName 'Simple Load Test (build ${BUILD_NUMBER})' \
--description 'Based on demo.yaml' \
+-launch MixedScenarioWithMonitoring \
+-testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})' \
+-description 'Based on demo-mixed.yaml' \
 -NTS http://nts:8080/nts \
 -NTSLogin admin:con+DjJ+R3s9j9d1qKQFGA== \
 -leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:5:1 \
