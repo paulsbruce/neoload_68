@@ -22,7 +22,7 @@ pipeline {
     stage('NeoLoad Test') {
         steps {
             sh """/usr/local/neoload/bin/NeoLoadCmd \
--project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo.yaml' \
+-project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' \
 -launch MyScenario \
 -testResultName 'Simple Load Test (build ${BUILD_NUMBER})' \
 -description 'Based on demo.yaml' \
