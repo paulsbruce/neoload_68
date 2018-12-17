@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'docker-neoload'
+      label 'docker-neoload-68'
     }
   }
   environment {
@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Pull latest version of Project from Git') {
       steps {
-          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git')
+          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git', credentialsId: 'paulsbruce-git-creds')
       }
     }
 
@@ -31,7 +31,7 @@ pipeline {
 -leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:5:1 \
 -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/sanity-report.xml \
 -SLAJUnitResults ${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml \
--noGUI
+-noGUI -nlweb
                             """
                             /*
                             neoloadRun project: "$WORKSPACE/neoload_basic.nlp $WORKSPACE/dynamic_scenario.yaml",

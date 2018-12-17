@@ -41,13 +41,7 @@ user_paths:
           headers:
           - accept: application/json
           - Content-Type: application/json
-          body: |
-          {
-            "grant_type":"client_credentials",
-            "client_id":"ushahidiui",
-            "client_secret":"${oauth_client_secret}",
-            "scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"
-          }
+          body: '{"grant_type":"client_credentials","client_id":"ushahidiui","client_secret":"${oauth_client_secret}","scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"}'
           extractors:
           - name: oauth_bearer
             jsonpath: $.access_token
@@ -73,9 +67,23 @@ populations:
     distribution: 50%
 
 scenarios:
-- name: MixedScenario
+- name: MixedScenarioWithMonitoring
   populations:
   - name: API
+    rampup_load:
+      duration: 5m
+      min_users: 1
+      max_users: 5
+      increment_users: 1
+      increment_every: 10s
+  - name: popPost
+    rampup_load:
+      duration: 5m
+      min_users: 1
+      max_users: 10
+      increment_users: 1
+      increment_every: 10s
+  - name: dynatracePop
     constant_load:
+      duration: 5m
       users: 1
-      duration: 1 iteration
