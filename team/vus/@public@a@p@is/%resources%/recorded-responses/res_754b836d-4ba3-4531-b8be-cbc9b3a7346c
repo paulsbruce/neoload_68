@@ -1,0 +1,81 @@
+﻿{
+    "count": 3,
+    "results": [
+        {
+            "id": "features",
+            "url": "http://ushahidi/api/v3/config/features",
+            "views": {
+                "map": true,
+                "list": true,
+                "chart": true,
+                "timeline": true,
+                "activity": true,
+                "plan": false
+            },
+            "data-providers": {
+                "smssync": true,
+                "twitter": true,
+                "frontlinesms": true,
+                "email": true,
+                "twilio": true,
+                "nexmo": true
+            },
+            "limits": {
+                "posts": true,
+                "forms": true,
+                "admin_users": true
+            },
+            "private": {
+                "enabled": true
+            },
+            "roles": {
+                "enabled": true
+            },
+            "data-import": {
+                "enabled": true
+            },
+            "allowed_privileges": [
+                "read",
+                "search"
+            ]
+        },
+        {
+            "id": "site",
+            "url": "http://localhost/api/v3/config/site",
+            "name": "Neotys demonstration application",
+            "description": "Ushahidi deployment for demonstration purpose",
+            "email": "ps@neotys.com",
+            "timezone": "UTC",
+            "language": "en-US",
+            "date_format": "n/j/Y",
+            "client_url": false,
+            "first_login": true,
+            "tier": "free",
+            "private": false,
+            "image_header": "http://d28h099uturm62.cloudfront.net/wp-content/uploads/2017/03/Neotys-Emblem-Primary.png",
+            "allowed_privileges": [
+                "read",
+                "search"
+            ]
+        },
+        {
+            "id": "map",
+            "url": "http://localhost/api/v3/config/map",
+            "clustering": false,
+            "cluster_radius": 50,
+            "default_view": {
+                "lat": -1.3048035,
+                "lon": 36.8473969,
+                "zoom": 2,
+                "baselayer": "streets",
+                "fit_map_boundaries": true,
+                "icon": "map-marker",
+                "color": "blue"
+            },
+            "allowed_privileges": [
+                "read",
+                "search"
+            ]
+        }
+    ]
+}

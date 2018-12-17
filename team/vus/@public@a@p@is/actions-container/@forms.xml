@@ -1,0 +1,7 @@
+<basic-logical-action-container element-number="1" execution-type="0"
+    name="Forms" pacingEnd="0" pacingMode="MODE_NO_PACING"
+    pacingStart="0" pacingValue="0" slaProfileEnabled="false"
+    uid="0caba07c-f2ba-409a-922a-92856579257a" weightsEnabled="false">
+    <weighted-embedded-action uid="86a7564c-5df6-4f28-af6a-39bb38d41d18"/>
+    <weighted-embedded-action uid="4ad6f46c-47ce-4d63-a407-8134ca66f6d9"/>
+</basic-logical-action-container>

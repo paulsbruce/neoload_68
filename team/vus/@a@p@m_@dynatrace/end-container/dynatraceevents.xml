@@ -1,0 +1,15 @@
+<custom-action actionType="DynatraceEventAction" isHit="false"
+    name="dynatraceevents" uid="c3546451-6ea4-4738-82d3-29e9ce80b4fb">
+    <description>Links a load testing event to all services used by an application monitored by Dynatrace.
+
+Possible parameters are:&#xd;
+- dynatraceId (required): Dynatrace ID (section of your Dynatrace saas url). Default value is "Dynatrace ID".&#xd;
+- dynatraceApiKey (required): Dynatrace API key. Default value is "Dynatrace API key".&#xd;
+- tags (optional): Dynatrace tags. Links the NeoLoad computed data to Dynatrace tags (format: "tag1,tag2"). Default value is "tag1,tag2".&#xd;
+- proxyName (optional): The NeoLoad proxy name to access Dynatrace.&#xd;
+- dynatraceManagedHostname (optional): Hostname of your managed Dynatrace environment.</description>
+    <custom-action-parameter name="dynatraceId" type="TEXT" value="${dynatraceId}"/>
+    <custom-action-parameter name="dynatraceApiKey" type="TEXT" value="${dynatraceApiKey}"/>
+    <custom-action-parameter name="tags" type="TEXT" value="neotys-cpt"/>
+    <responsePageFileDescription>recorded-responses/res_1e125ce2-01b1-4c3e-9890-7dee4e303da7</responsePageFileDescription>
+</custom-action>

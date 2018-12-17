@@ -1,0 +1,366 @@
+<connection-mysql custom-url="" database="" interval="5000" login="root"
+    name="mysql" password="xNCx4Woh2Nora3I4GbQNFA=="
+    server-address="mysql-ushahidi" server-port="3306"
+    uid="db7314bd-b522-4ff2-b72e-29b18bb5937a" use-custom-url="false">
+    <monitor-category name="Connections" short-display-name="Connections">
+        <monitor-mysql callTime="ON_BENCH" categoryID="0" computing="0"
+            counterID="0" format="NUMBER"
+            name="Connections/ threads connected" sampling="0"
+            short-display-name="threads connected" unit="">
+            <description>Number of currently open connections</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="0" computing="1"
+            counterID="3" format="NUMBER"
+            name="Connections/ aborted clients" sampling="1"
+            short-display-name="aborted clients"
+            threshold="8c016e24-8358-476b-8727-36442b834f4a" unit="connections/s">
+            <description>Number of connection attempts (successful or not) to the MySQL server</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="0" computing="1"
+            counterID="4" format="NUMBER"
+            name="Connections/ aborted connects" sampling="1"
+            short-display-name="aborted connects"
+            threshold="c5ac3338-ff6d-49b5-9480-d46c0d132503" unit="connections/s">
+            <description>Maximum number of connections that have been in use simultaneously since the server started</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="0" computing="0"
+            counterID="6" format="NUMBER" name="Connections/ max used"
+            sampling="0" short-display-name="max used" unit="">
+            <description>Number of simultaneous client connections allowed. By default, this is 150, beginning with MySQL 5.1.15. (Previously, the default was 100.)</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="IO Requests" short-display-name="IO Requests">
+        <monitor-mysql callTime="ON_BENCH" categoryID="1" computing="1"
+            counterID="0" format="NUMBER"
+            name="IO Requests/ bytes received" sampling="1"
+            short-display-name="bytes received" unit="kbytes/s">
+            <description>Number of bytes received from all clients</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="1" computing="1"
+            counterID="1" format="NUMBER" name="IO Requests/ bytes sent"
+            sampling="1" short-display-name="bytes sent" unit="kbytes/s">
+            <description>Number of bytes sent to all clients</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="1" computing="0"
+            counterID="2" format="NUMBER" name="IO Requests/ open files"
+            sampling="0" short-display-name="open files" unit="">
+            <description>Number of files that are open</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Select Rates" short-display-name="Select Rates">
+        <monitor-mysql callTime="ON_BENCH" categoryID="2" computing="1"
+            counterID="0" format="NUMBER"
+            name="Select Rates/ select full join" sampling="1"
+            short-display-name="select full join"
+            threshold="c31ee10c-8d84-43c8-b11d-d8750edd5a05" unit="blocks/s">
+            <description>Number of joins that perform table scans because they do not use indexes. If this value is not 0, you should carefully check the indexes of your tables.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="2" computing="1"
+            counterID="3" format="NUMBER"
+            name="Select Rates/ select range check" sampling="1"
+            short-display-name="select range check" unit="blocks/s">
+            <description>Number of joins without keys that check for key usage after each row. If this is not 0, you should carefully check the indexes of your tables.</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Read Rates" short-display-name="Read Rates">
+        <monitor-mysql callTime="ON_BENCH" categoryID="3" computing="1"
+            counterID="4" format="NUMBER"
+            name="Read Rates/ handler read random" sampling="1"
+            short-display-name="handler read random" unit="reqs/s">
+            <description>Number of requests to read a row based on a fixed position. This value is high if you are doing a lot of queries that require sorting of the result. You probably have a lot of queries that require MySQL to scan entire tables or you have joins that do not use keys properly.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="3" computing="1"
+            counterID="5" format="NUMBER"
+            name="Read Rates/ handler read random next" sampling="1"
+            short-display-name="handler read random next" unit="reqs/s">
+            <description>Number of requests to read the next row in the data file. This value is high if you are doing a lot of table scans. Generally this suggests that your tables are not properly indexed or that your queries are not written to take advantage of the indexes you have.</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Key Rates" short-display-name="Key Rates">
+        <monitor-mysql callTime="ON_BENCH" categoryID="4" computing="1"
+            counterID="4" format="NUMBER"
+            name="Key Rates/ key reads (disk)" sampling="1"
+            short-display-name="key reads (disk)" unit="blocks/s">
+            <description>Number of physical reads of a key block from disk. If Key_reads is large, then your key_buffer_size value is probably too small.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="4" computing="1"
+            counterID="6" format="NUMBER"
+            name="Key Rates/ key writes (disk)" sampling="1"
+            short-display-name="key writes (disk)" unit="blocks/s">
+            <description>Number of physical writes of a key block to disk</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Commands Rates" short-display-name="Commands Rates">
+        <monitor-mysql callTime="ON_BENCH" categoryID="5" computing="1"
+            counterID="3" format="NUMBER"
+            name="Commands Rates/ handler rollback" sampling="0"
+            short-display-name="handler rollback" unit="">
+            <description>Number of requests for a storage engine to perform a rollback operation</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="5" computing="1"
+            counterID="5" format="NUMBER"
+            name="Commands Rates/ handler savepoint rollback"
+            sampling="0" short-display-name="handler savepoint rollback" unit="">
+            <description>Number of requests for a storage engine to roll back to a savepoint</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Query Cache" short-display-name="Query Cache">
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="0"
+            counterID="0" format="NUMBER"
+            name="Query Cache/ query cache free blocks" sampling="0"
+            short-display-name="query cache free blocks" unit="blocks">
+            <description>Number of free memory blocks in the query cache</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="0"
+            counterID="1" format="NUMBER"
+            name="Query Cache/ query cache free memory" sampling="0"
+            short-display-name="query cache free memory" unit="kbs">
+            <description>Amount of free memory for the query cache</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="1"
+            counterID="2" format="NUMBER"
+            name="Query Cache/ query cache hits" sampling="1"
+            short-display-name="query cache hits" unit="hits/s">
+            <description>Number of query cache hits</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="0"
+            counterID="3" format="NUMBER"
+            name="Query Cache/ query cache inserts" sampling="0"
+            short-display-name="query cache inserts" unit="">
+            <description>Number of queries added to the query cache</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="0"
+            counterID="4" format="NUMBER"
+            name="Query Cache/ query cache low memory prunes"
+            sampling="0"
+            short-display-name="query cache low memory prunes" unit="">
+            <description>Number of queries that were deleted from the query cache because of low memory</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="0"
+            counterID="5" format="NUMBER"
+            name="Query Cache/ not cached queries" sampling="0"
+            short-display-name="not cached queries" unit="">
+            <description>Number of non-cached queries (not cacheable, or not cached due to the query_cache_type setting)</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="0"
+            counterID="6" format="NUMBER"
+            name="Query Cache/ cached queries" sampling="0"
+            short-display-name="cached queries" unit="">
+            <description>Number of queries registered in the query cache</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="6" computing="0"
+            counterID="7" format="NUMBER"
+            name="Query Cache/ total blocks" sampling="0"
+            short-display-name="total blocks" unit="blocks">
+            <description>Total number of blocks in the query cache</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Tables" short-display-name="Tables">
+        <monitor-mysql callTime="ON_BENCH" categoryID="7" computing="0"
+            counterID="0" format="NUMBER" name="Tables/ open tables"
+            sampling="0" short-display-name="open tables" unit="">
+            <description>Number of tables that are open</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="7" computing="0"
+            counterID="1" format="NUMBER" name="Tables/ opened tables"
+            sampling="0" short-display-name="opened tables" unit="">
+            <description>Number of tables that have been opened. If Opened_tables is big, your table_open_cache value is probably too small.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="7" computing="1"
+            counterID="2" format="NUMBER"
+            name="Tables/ table locks immediate" sampling="0"
+            short-display-name="table locks immediate" unit="">
+            <description>Number of times that a table lock was acquired immediately</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="7" computing="1"
+            counterID="3" format="NUMBER"
+            name="Tables/ table locks waited" sampling="0"
+            short-display-name="table locks waited"
+            threshold="550b87c3-0d05-4b16-8e1e-28e337a492c2" unit="">
+            <description>Number of times that a table lock could not be acquired immediately and a wait was needed. If this is high and you have performance problems, you should first optimize your queries, and then either split your table or tables or use replication.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="7" computing="0"
+            counterID="4" format="NUMBER"
+            name="Tables/ table open cache" sampling="0"
+            short-display-name="table open cache" unit="">
+            <description>Number of open tables for all threads. Increasing this value increases the number of file descriptors that mysqld requires.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="7" computing="0"
+            counterID="5" format="NUMBER"
+            name="Tables/ max heap table size" sampling="0"
+            short-display-name="max heap table size" unit="kb">
+            <description>This variable sets the maximum size to which MEMORY tables are allowed to grow. The value of the variable is used to calculate MEMORY table MAX_ROWS values. Setting this variable has no effect on any existing MEMORY table, unless the table is re-created with a statement such as CREATE TABLE or altered with ALTER TABLE or TRUNCATE TABLE.</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Memory" short-display-name="Memory">
+        <monitor-mysql callTime="ON_BENCH" categoryID="8" computing="0"
+            counterID="4" format="NUMBER"
+            name="Memory/ % key buffer size" sampling="0"
+            short-display-name="% key buffer size"
+            threshold="d59ab32b-1149-4bed-887f-79cd35385a3b" unit="%">
+            <description>If a write to the binary log causes the current log file size to exceed the value of this variable, the server rotates the binary logs (closes the current file and opens the next one). You cannot set this variable to more than 1GB or to less than 4096 bytes. The default value is 1GB. A transaction is written in one chunk to the binary log, so it is never split between several binary logs.</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Misc." short-display-name="Misc.">
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="1"
+            counterID="0" format="NUMBER" name="Misc./ slow queries"
+            sampling="0" short-display-name="slow queries"
+            threshold="8d632581-000a-488c-b25a-b5ea81b052f8" unit="">
+            <description>Number of queries that have taken more than long_query_time seconds</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="0"
+            counterID="1" format="NUMBER" name="Misc./ long query time"
+            sampling="0" short-display-name="long query time" unit="s">
+            <description>If a query takes longer than this many seconds, the server increments the Slow_queries status variable. If you are using the --log-slow-queries option, the query is logged to the slow query log file. This value is measured in real time, not CPU time, so a query that is under the threshold on a lightly loaded system may be above the threshold on a heavily loaded one. The minimum value is 1. The default is 10.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="1"
+            counterID="2" format="NUMBER"
+            name="Misc./ slow launch threads" sampling="0"
+            short-display-name="slow launch threads" unit="">
+            <description>Number of threads that have taken more than slow_launch_time seconds to create</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="0"
+            counterID="3" format="NUMBER" name="Misc./ slow launch time"
+            sampling="0" short-display-name="slow launch time" unit="s">
+            <description>If creating a thread takes longer than this many seconds, the server increments the Slow_launch_threads status variable</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="1"
+            counterID="4" format="NUMBER"
+            name="Misc./ sort merge passes" sampling="0"
+            short-display-name="sort merge passes"
+            threshold="3bad6726-b536-423f-9bb8-45eb7bad6c90" unit="">
+            <description>Number of merge passes that the sort algorithm has had to do. If this value is large, you should consider increasing the value of the sort_buffer_size system variable.</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="1"
+            counterID="5" format="NUMBER" name="Misc./ sort range"
+            sampling="0" short-display-name="sort range" unit=""/>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="1"
+            counterID="6" format="NUMBER" name="Misc./ sort rows"
+            sampling="0" short-display-name="sort rows" unit="">
+            <description>Number of sorted rows</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="1"
+            counterID="7" format="NUMBER" name="Misc./ sort scan"
+            sampling="0" short-display-name="sort scan" unit="">
+            <description>Number of sorts that were done by scanning the table</description>
+        </monitor-mysql>
+        <monitor-mysql callTime="ON_BENCH" categoryID="9" computing="1"
+            counterID="8" format="NUMBER"
+            name="Misc./ not flushed delayed rows" sampling="0"
+            short-display-name="not flushed delayed rows" unit="">
+            <description>Number of rows waiting to be written in INSERT DELAY queues</description>
+        </monitor-mysql>
+    </monitor-category>
+    <monitor-category name="Description" short-display-name="Description">
+        <monitor-mysql callTime="ON_START" categoryID="10" computing="1"
+            counterID="0" format="TEXT"
+            name="Description/ Database Version" sampling="0"
+            short-display-name="Database Version" unit="">
+            <description>Version of the MySQL database</description>
+        </monitor-mysql>
+    </monitor-category>
+    <threshold enabled="true" uid="8c016e24-8358-476b-8727-36442b834f4a">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="5.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of aborted connections</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé de connexions interrompues</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="c5ac3338-ff6d-49b5-9480-d46c0d132503">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="5.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of failed connections</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé de connexions échouées</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="c31ee10c-8d84-43c8-b11d-d8750edd5a05">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="5.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of joins without index</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé de jointures sans index</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="10.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of joins without index</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé de jointures sans index</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="550b87c3-0d05-4b16-8e1e-28e337a492c2">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="5.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of table locks waited</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé d'attentes de lock sur une table</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="10.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of table locks waited</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé d'attentes de lock sur une table</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="d59ab32b-1149-4bed-887f-79cd35385a3b">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
+            <threshold-comment language="en">
+                <threshold-content>High usage of the buffer containing indexes blocks</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Pourcentage élevé d'utilisation du buffer contenant les blocs d'indexes</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
+            <threshold-comment language="en">
+                <threshold-content>High usage of the buffer containing indexes blocks</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Pourcentage élevé d'utilisation du buffer contenant les blocs d'indexes</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="8d632581-000a-488c-b25a-b5ea81b052f8">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="5.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of queries that have taken more than long_query_time seconds to be executed</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé de requêtes ayant pris plus de long_query_time secondes pour s'exécuter</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="3bad6726-b536-423f-9bb8-45eb7bad6c90">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="100.0">
+            <threshold-comment language="en">
+                <threshold-content>High number of merge passes executed by sort algorithm</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Nombre élevé de 'merges passes' faites par l'algorithme de tri</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+</connection-mysql>

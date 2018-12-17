@@ -1,0 +1,15 @@
+<basic-logical-action-container element-number="1" execution-type="0"
+    name="Click Add" pacingEnd="0" pacingMode="MODE_NO_PACING"
+    pacingStart="0" pacingValue="0" slaProfileEnabled="false"
+    uid="090fd9b5-1d19-432d-92e9-a512f15a0f31" weightsEnabled="false">
+    <weighted-embedded-action uid="f19874a3-0f5e-4add-b4cf-671d0b5aac4d"/>
+    <weighted-embedded-action uid="e0106078-65fe-480a-afe9-4ba488e54723"/>
+    <weighted-embedded-action uid="75aa4027-3246-4d82-bf50-9d4ae7e48e08"/>
+    <weighted-embedded-action uid="2ab285b3-69f8-4790-8ece-4658d60136c9"/>
+    <weighted-embedded-action uid="cf80e1dc-8931-4bb4-aa20-3b6b71231be5"/>
+    <weighted-embedded-action uid="9ce34ccc-c580-4801-a7b4-f3ed38375f66"/>
+    <weighted-embedded-action uid="f7e61215-d6c3-4fa4-92ec-40d7ae49cb22"/>
+    <weighted-embedded-action uid="fd3f0794-c3cc-4086-b5ca-f42912ac3c10"/>
+    <weighted-embedded-action uid="e1ef8f71-7f20-48c2-b847-19fcd96f2b89"/>
+    <weighted-embedded-action uid="412ec80c-da20-4921-9ce2-bad376ca57cd"/>
+</basic-logical-action-container>

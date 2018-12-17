@@ -1,0 +1,52 @@
+<http-page executeResourcesDynamically="false"
+    name="/templates/main/posts/views/add-post-button.html"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/1b4a031c-d750-4c23-90e9-dbdd7db837e2.zip"
+    slaProfileEnabled="false" thinkTime="0"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="1b4a031c-d750-4c23-90e9-dbdd7db837e2">
+    <embedded-action>f4643e87-df94-4a0e-b0fe-67a96ffc49d6</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_35432d52-82a5-433c-a00e-ff281f11fc11.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1" contentType="text/html"
+    eTag="&quot;44f-5418708f1ad80:dtagent10155181109122756i1Q3&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    lastModified="Thu, 17 Nov 2016 22:51:49 GMT"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/templates/main/posts/views/add-post-button.html"
+    path="/templates/main/posts/views/add-post-button.html" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/1b4a031c-d750-4c23-90e9-dbdd7db837e2.zip"
+    recordedResponseCode="200" responseSize="1103"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="f4643e87-df94-4a0e-b0fe-67a96ffc49d6" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_247b7834-fd13-4c5a-9d76-184342e7a8ad.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_247b7834-fd13-4c5a-9d76-184342e7a8ad.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Cache-Control" value="no-cache"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="DNT" value="1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:44 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:51:49 GMT&#xd;
+ETag: "44f-5418708f1ad80:dtagent10155181025135642g0KY"&#xd;
+Accept-Ranges: bytes&#xd;
+X-OneAgent-JS-Injection: true&#xd;
+X-ruxit-JS-Agent: true&#xd;
+Set-Cookie: dtCookie=4$FECFE97D6A8B9F9140C6D81B4A9A9CFF; Path=/&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Content-Length: 453&#xd;
+Keep-Alive: timeout=5, max=95&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: text/html</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

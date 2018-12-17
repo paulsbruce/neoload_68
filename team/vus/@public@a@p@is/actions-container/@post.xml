@@ -1,0 +1,8 @@
+<basic-logical-action-container element-number="1" execution-type="0"
+    name="Post" pacingEnd="0" pacingMode="MODE_NO_PACING"
+    pacingStart="0" pacingValue="0" slaProfileEnabled="false"
+    uid="0b518c10-5102-4a84-93b2-5ccc8cf153bd" weightsEnabled="false">
+    <weighted-embedded-action uid="b745de3b-ffe2-4eee-92cc-17bd3078f2e7"/>
+    <weighted-embedded-action uid="f9de4639-39b8-4cb9-b694-36a42c7266e8"/>
+    <weighted-embedded-action uid="6f23013b-bb1c-480c-a0c7-cfe0ab0b13d4"/>
+</basic-logical-action-container>

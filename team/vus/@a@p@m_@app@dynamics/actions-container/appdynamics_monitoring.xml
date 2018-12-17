@@ -1,0 +1,33 @@
+<custom-action actionType="AppDynamicsMonitoringAction" isHit="false"
+    name="appdynamics_monitoring" uid="760adfb8-85e9-409e-a011-a9ece98923f2">
+    <description>AppDynamics Monitoring Action will retrieve all the counters specified in AppDynamics.
+Possible parameters are:&#xd;
+- appDynamicsURL (required): AppDynamics URL. Default value is "https://&lt;account_name&gt;.saas.appdynamics.com".&#xd;
+- appDynamicsApplicationName (required): AppDynamics application name.&#xd;
+- appDynamicsAPIKey (optional): AppDynamics API key.&#xd;
+- appDynamicsAccountName (optional): AppDynamics account name.&#xd;
+- appDynamicsUserName (optional): AppDynamics user name.&#xd;
+- appDynamicsPassword (optional): AppDynamics password.&#xd;
+- appDynamicsMetricPaths (required): AppDynamics Metric Paths separated by a line break. Default value is "Application Infrastructure Performance|*|Hardware Resources|CPU|User
+Application Infrastructure Performance|*|Hardware Resources|CPU|System
+Application Infrastructure Performance|*|Hardware Resources|CPU|%Idle
+Application Infrastructure Performance|*|Hardware Resources|Memory|*
+Application Infrastructure Performance|*|Hardware Resources|Network|Incoming Errors
+Application Infrastructure Performance|*|Hardware Resources|Network|Outgoing Errors
+Application Infrastructure Performance|*|Hardware Resources|Disks|Reads/sec
+Application Infrastructure Performance|*|Hardware Resources|Disks|Writes/sec
+Application Infrastructure Performance|*|Agent|Business Transactions|*".&#xd;
+- proxyName (optional): The NeoLoad proxy name to access AppDynamics.&#xd;
+- dataExchangeApiUrl (required): The URL of the DataExchange server (located on the NeoLoad Controller). Default value is "http://localhost:7400/DataExchange/v1/Service.svc/".&#xd;
+- dataExchangeApiKey (optional): Identification key specified in NeoLoad for DataExchange server.</description>
+    <custom-action-parameter name="appDynamicsURL" type="TEXT" value="https://&lt;account_name>.saas.appdynamics.com"/>
+    <custom-action-parameter name="appDynamicsApplicationName"
+        type="TEXT" value=""/>
+    <custom-action-parameter name="appDynamicsAPIKey" type="TEXT" value=""/>
+    <custom-action-parameter name="appDynamicsAccountName" type="TEXT" value=""/>
+    <custom-action-parameter name="appDynamicsUserName" type="TEXT" value=""/>
+    <encrypted-custom-action-parameter name="appDynamicsPassword"
+        type="PASSWORD" value="rAMyA0wmzcI7dEIrFmzuRA=="/>
+    <custom-action-parameter name="appDynamicsMetricPaths" type="TEXT" value="Application Infrastructure Performance|*|Hardware Resources|CPU|User&#xa;Application Infrastructure Performance|*|Hardware Resources|CPU|System&#xa;Application Infrastructure Performance|*|Hardware Resources|CPU|%Idle&#xa;Application Infrastructure Performance|*|Hardware Resources|Memory|*&#xa;Application Infrastructure Performance|*|Hardware Resources|Network|Incoming Errors&#xa;Application Infrastructure Performance|*|Hardware Resources|Network|Outgoing Errors&#xa;Application Infrastructure Performance|*|Hardware Resources|Disks|Reads/sec&#xa;Application Infrastructure Performance|*|Hardware Resources|Disks|Writes/sec&#xa;Application Infrastructure Performance|*|Agent|Business Transactions|*"/>
+    <custom-action-parameter name="dataExchangeApiUrl" type="TEXT" value="http://localhost:7400/DataExchange/v1/Service.svc/"/>
+</custom-action>

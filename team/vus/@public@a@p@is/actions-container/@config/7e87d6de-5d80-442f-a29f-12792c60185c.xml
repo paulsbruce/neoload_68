@@ -1,0 +1,35 @@
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/platform/api/v3/config"
+    path="/platform/api/v3/config" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/69338275-b366-41ea-ac17-14cd4645d588.zip"
+    recordedResponseCode="200" responseSize="2361"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="7e87d6de-5d80-442f-a29f-12792c60185c" useKeepAlive="false">
+    <responsePageFileDescription>team/vus/@public@a@p@is/%resources%/recorded-responses/res_754b836d-4ba3-4531-b8be-cbc9b3a7346c</responsePageFileDescription>
+    <requestContentFileDescription>team/vus/@public@a@p@is/%resources%/recorded-requests/req_754b836d-4ba3-4531-b8be-cbc9b3a7346c.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9; rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034362288|1542032090873; dtPC=2$32562269_51h1vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:42 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+X-Powered-By: PHP/7.0.31&#xd;
+Access-Control-Allow-Origin: *&#xd;
+Access-Control-Allow-Headers: Authorization, Content-type&#xd;
+Allow: GET, PUT, OPTIONS&#xd;
+Access-Control-Allow-Methods: GET, PUT, OPTIONS&#xd;
+Content-Length: 2361&#xd;
+Keep-Alive: timeout=5, max=99&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: application/json</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

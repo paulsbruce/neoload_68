@@ -1,0 +1,286 @@
+<scenario postMonitoringTime="-1" preMonitoringTime="-1"
+    slaProfileEnabled="false" uid="scnMixed" virtualUsersStates="true">
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="popPost">
+        <duration-policy-entry iterations="1" time="120" timeUnit="0" type="2"/>
+        <volume-policy-entry>
+            <rampup-volume-policy delayIncrement="10.0"
+                delayTypeIncrement="1" initialUserNumber="2"
+                iterationNumber="1" maxUserNumber="25" userIncrement="2"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="0" vuStartMode="0"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="popAPIs">
+        <duration-policy-entry iterations="1" time="120" timeUnit="0" type="2"/>
+        <volume-policy-entry>
+            <rampup-volume-policy delayIncrement="10.0"
+                delayTypeIncrement="1" initialUserNumber="2"
+                iterationNumber="1" maxUserNumber="20" userIncrement="2"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="0" vuStartMode="0"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="dynatracePop">
+        <duration-policy-entry iterations="1" time="120" timeUnit="0" type="2"/>
+        <volume-policy-entry>
+            <constant-volume-policy iterationNumber="1" userNumber="1"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="0" vuStartMode="0"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
+    <dashboards defaultDashboardUid="Graph board"/>
+    <!--****** DASHBOARDS  ******-->
+    <charts-model-description name="Graph board">
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true" title="User Load and Error Rate" typeName="CLASSIC">
+            <monitor-curve-description color="20,106,203"
+                connectionName="NeoLoad" dashed="false"
+                monitorName="UserLoad" monitoredHostName="NeoLoad"
+                scale="1.0" selected="false"/>
+            <action-curve-description
+                actionUid="2ee035d5-0178-378f-8d0a-63218f082d2f"
+                color="200,0,0" dashed="false" populationName=""
+                scale="1.0" selected="false"
+                statisticName="result.errors" zoneName=""/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true" title="Overall Throughput" typeName="CLASSIC">
+            <monitor-curve-description color="42,89,26"
+                connectionName="NeoLoad" dashed="false"
+                monitorName="throughput" monitoredHostName="NeoLoad"
+                scale="1.0" selected="false"/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true" title="Load Generators CPU usage" typeName="CLASSIC">
+            <monitor-curve-description color="0,255,0"
+                connectionName="NeoLoad" dashed="false"
+                monitorName="lgcpu.localhost:7100"
+                monitoredHostName="LG localhost:7100" scale="1.0" selected="false"/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="imported_mysql-ushahidi/imported_mysql" typeName="CLASSIC">
+            <monitor-curve-description color="20,106,203"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Connections/ threads connected"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="88,183,55"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Connections/ aborted clients"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="200,0,0"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Connections/ aborted connects"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="191,0,189"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Connections/ max used"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="20,210,210"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="IO Requests/ bytes received"
+                monitoredHostName="imported_mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="223,143,143"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="IO Requests/ bytes sent"
+                monitoredHostName="imported_mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="236,153,22"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="IO Requests/ open files"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="128,128,128"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Select Rates/ select full join"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="244,239,0"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Select Rates/ select range check"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="15,79,152"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Read Rates/ handler read random"
+                monitoredHostName="imported_mysql-ushahidi"
+                scale="0.001" selected="false"/>
+            <monitor-curve-description color="66,137,41"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Read Rates/ handler read random next"
+                monitoredHostName="imported_mysql-ushahidi"
+                scale="0.001" selected="false"/>
+            <monitor-curve-description color="183,179,0"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Key Rates/ key reads (disk)"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="143,0,141"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Key Rates/ key writes (disk)"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="15,157,157"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Commands Rates/ handler rollback"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="177,114,16"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Commands Rates/ handler savepoint rollback"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="183,179,0"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ query cache free blocks"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="64,64,64"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ query cache free memory"
+                monitoredHostName="imported_mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="26,141,255"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ query cache hits"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="117,244,73"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ query cache inserts"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="254,0,252"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ query cache low memory prunes"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="26,255,255"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ not cached queries"
+                monitoredHostName="imported_mysql-ushahidi"
+                scale="1.0E-4" selected="false"/>
+            <monitor-curve-description color="192,192,192"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ cached queries"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="11,59,114"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Query Cache/ total blocks"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="49,102,30"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Tables/ open tables"
+                monitoredHostName="imported_mysql-ushahidi" scale="0.1" selected="false"/>
+            <monitor-curve-description color="137,134,0"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Tables/ opened tables"
+                monitoredHostName="imported_mysql-ushahidi" scale="0.1" selected="false"/>
+            <monitor-curve-description color="107,0,105"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Tables/ table locks immediate"
+                monitoredHostName="imported_mysql-ushahidi"
+                scale="0.001" selected="false"/>
+            <monitor-curve-description color="11,117,117"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Tables/ table locks waited"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="132,85,12"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Tables/ table open cache"
+                monitoredHostName="imported_mysql-ushahidi" scale="0.1" selected="false"/>
+            <monitor-curve-description color="34,188,255"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Tables/ max heap table size"
+                monitoredHostName="imported_mysql-ushahidi"
+                scale="0.001" selected="false"/>
+            <monitor-curve-description color="156,255,97"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Memory/ % key buffer size"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="255,0,255"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ slow queries"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="34,255,255"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ long query time"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="86,31,223"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ slow launch threads"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="41,117,156"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ slow launch time"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="233,253,41"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ sort merge passes"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="135,118,121"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ sort range"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="202,85,125"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ sort rows"
+                monitoredHostName="imported_mysql-ushahidi"
+                scale="0.001" selected="false"/>
+            <monitor-curve-description color="88,246,31"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ sort scan"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="175,18,156"
+                connectionName="imported_mysql" dashed="false"
+                monitorName="Misc./ not flushed delayed rows"
+                monitoredHostName="imported_mysql-ushahidi" scale="1.0" selected="false"/>
+        </chart-description>
+    </charts-model-description>
+    <!--****** END DASHBOARDS  ******-->
+    <!--****** START DATA FILTERS  ******-->
+    <!--****** END DATA FILTERS  ******-->
+    <!--****** START RENDEZ-VOUS POLICIES  ******-->
+    <!--****** END RENDEZ-VOUS POLICIES  ******-->
+    <!--****** START DEBUG POLICY ******-->
+    <debug-policy mode="0"/>
+    <!--****** END DEBUG POLICY ******-->
+    <!--****** START VU STATES ******-->
+    <!--****** END VU STATES ******-->
+    <request-path-exclusion-filter isEnabled="false">
+        <regexps>
+            <regexp>.*\.jpg</regexp>
+            <regexp>.*\.jpeg</regexp>
+            <regexp>.*\.gif</regexp>
+            <regexp>.*\.png</regexp>
+            <regexp>.*\.bmp</regexp>
+            <regexp>.*\.css</regexp>
+            <regexp>.*\.js</regexp>
+            <regexp>.*\.swf</regexp>
+            <regexp>.*\.ico</regexp>
+            <regexp>.*\.jar</regexp>
+            <regexp>.*\.class</regexp>
+            <regexp>.*\.properties</regexp>
+        </regexps>
+    </request-path-exclusion-filter>
+</scenario>

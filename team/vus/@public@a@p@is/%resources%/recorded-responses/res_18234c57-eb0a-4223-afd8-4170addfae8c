@@ -1,0 +1,19 @@
+﻿{
+    "id": "map",
+    "url": "http://localhost/api/v3/config/map",
+    "clustering": false,
+    "cluster_radius": 50,
+    "default_view": {
+        "lat": -1.3048035,
+        "lon": 36.8473969,
+        "zoom": 2,
+        "baselayer": "streets",
+        "fit_map_boundaries": true,
+        "icon": "map-marker",
+        "color": "blue"
+    },
+    "allowed_privileges": [
+        "read",
+        "search"
+    ]
+}

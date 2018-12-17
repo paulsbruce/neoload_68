@@ -1,0 +1,81 @@
+<http-page executeResourcesDynamically="false"
+    name="/fonts/Lato/fonts/LatoLatin-MediumItalic.woff2"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/d16ccdc5-05cf-4744-9329-81a245a0952c.zip"
+    slaProfileEnabled="false" thinkTime="2308"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="d16ccdc5-05cf-4744-9329-81a245a0952c">
+    <embedded-action>72b9d34f-d17c-47cb-812b-fdef0b25148a</embedded-action>
+    <embedded-action>1e240cbf-8fe3-4a63-8f65-35cacf47a408</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_ed62802a-db6d-4d96-aa20-332193433daf.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1"
+    eTag="&quot;afb8-5418708f1ad80:dtagent10155181109122756i1Q3&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    lastModified="Thu, 17 Nov 2016 22:51:49 GMT"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/fonts/Lato/fonts/LatoLatin-MediumItalic.woff2"
+    path="/fonts/Lato/fonts/LatoLatin-MediumItalic.woff2" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/d16ccdc5-05cf-4744-9329-81a245a0952c.zip"
+    recordedResponseCode="200" responseSize="0"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="72b9d34f-d17c-47cb-812b-fdef0b25148a" useKeepAlive="false">
+    <requestContentFileDescription>recorded-requests/req_62cde5b4-7d6e-4fd5-b2a7-5e006a89c43d.txt</requestContentFileDescription>
+    <header name="Accept" value="application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8"/>
+    <header name="Accept-Encoding" value="identity"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9; rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034365842|1542032090873; dtPC=2$32562269_51h1vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/fonts/Lato/css/fonts.css"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:48 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:51:49 GMT&#xd;
+ETag: "afb8-5418708f1ad80:dtagent10155181025135642g0KY"&#xd;
+Accept-Ranges: bytes&#xd;
+Content-Length: 44984&#xd;
+Keep-Alive: timeout=5, max=92&#xd;
+Connection: Keep-Alive</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="text/plain; charset=utf-8"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="POST" name="/rb_bf42640bbz" path="/rb_bf42640bbz"
+    postType="4"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/d16ccdc5-05cf-4744-9329-81a245a0952c.zip"
+    recordedResponseCode="200" responseSize="379"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="1e240cbf-8fe3-4a63-8f65-35cacf47a408" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_c885f064-da61-43a5-8d30-cee8238cacf6</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_c885f064-da61-43a5-8d30-cee8238cacf6.txt</requestContentFileDescription>
+    <header name="Accept" value="*/*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Content-Type" value="text/plain;charset=UTF-8"/>
+    <header name="Cookie" value="rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034368891|1542032090873; dtPC=2$32562269_51h-vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4; dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <header name="x-dtreferer" value="http://ushahidi/"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:48 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Set-Cookie: dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9|RUM+Default+Application|1; Path=/&#xd;
+Cache-Control: no-cache&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Content-Length: 247&#xd;
+Keep-Alive: timeout=5, max=91&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: text/plain; charset=utf-8</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+    <textPostContent><![CDATA[$a=1%7C1%7C_load_%7C_load_%7C-%7C1542032562092%7C1542032567428%7C790%2C2%7C2%7C_onload_%7C_load_%7C-%7C1542032565461%7C1542032565741%7C118$svrid=2$rId=RID_2418$rpId=-1134127050$domR=1542032565452$w=1280$h=664$sw=1440$sh=900$nt=a0b1542032562092e1f1g1h1i1k8l50m51n53o538p546q547r3360s3369t3649u2708v2225w7123$V=5336|c$S=4975$fd=g1.5.8$url=http%3A%2F%2Fushahidi%2Fviews%2Fmap$title=Posts%20-%20Neotys%20demonstration%20application$sUrl=http%3A%2F%2Fushahidi%2F$sTitle=-$latC=4$visitID=GFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP$fId=32562269_51$v=10155181025135642$vID=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5$nV=1$time=1542032568887]]></textPostContent>
+</http-action>

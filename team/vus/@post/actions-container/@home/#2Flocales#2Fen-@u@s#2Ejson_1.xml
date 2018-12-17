@@ -1,0 +1,81 @@
+<http-page executeResourcesDynamically="false"
+    name="/locales/en-US.json_1" playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/7d45c80a-285c-419e-adfc-a4a390694cf6.zip"
+    slaProfileEnabled="false" thinkTime="0"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="7d45c80a-285c-419e-adfc-a4a390694cf6">
+    <embedded-action>03e9013e-5491-41f3-9f52-9e9e287879f5</embedded-action>
+    <embedded-action>9045a55b-f628-41c9-9437-1bdbc9cab854</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_fe588144-3c54-44ef-bb50-525fac26980b.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1" contentType="text/html"
+    eTag="&quot;1a82-54186f405d7c0:dtagent10155181109122756i1Q3&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    lastModified="Thu, 17 Nov 2016 22:45:58 GMT"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/locales/en-US.json" path="/locales/en-US.json"
+    postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/7d45c80a-285c-419e-adfc-a4a390694cf6.zip"
+    recordedResponseCode="200" responseSize="7128"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="03e9013e-5491-41f3-9f52-9e9e287879f5" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_4f33881d-5712-465e-87c4-ff549299360a.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_4f33881d-5712-465e-87c4-ff549299360a.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9; rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034365458|1542032090873; dtPC=2$32562269_51h2vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:45 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:45:58 GMT&#xd;
+ETag: "1a82-54186f405d7c0:dtagent10155181025135642g0KY"&#xd;
+Accept-Ranges: bytes&#xd;
+X-OneAgent-JS-Injection: true&#xd;
+X-ruxit-JS-Agent: true&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Content-Length: 2230&#xd;
+Keep-Alive: timeout=5, max=98&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: text/html</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="image/svg+xml"
+    eTag="&quot;e26a-5418706fa2340&quot;" extractorInjectPathPolicy="2"
+    extractorPathPolicy="1" followRedirects="false"
+    generatedByClient="false" linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/img/iconic-sprite.svg"
+    path="/img/iconic-sprite.svg" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/7d45c80a-285c-419e-adfc-a4a390694cf6.zip"
+    recordedResponseCode="200" responseSize="57962"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="9045a55b-f628-41c9-9437-1bdbc9cab854" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_f9d95cb8-3363-4cb8-8f7d-9c65590f4614.xml</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_f9d95cb8-3363-4cb8-8f7d-9c65590f4614.txt</requestContentFileDescription>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9; rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034365458|1542032090873; dtPC=2$32562269_51h2vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:45 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:51:17 GMT&#xd;
+ETag: "e26a-5418706fa2340"&#xd;
+Accept-Ranges: bytes&#xd;
+Content-Length: 57962&#xd;
+Keep-Alive: timeout=5, max=98&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: image/svg+xml</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

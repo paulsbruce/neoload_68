@@ -1,0 +1,8 @@
+<basic-logical-action-container element-number="1" execution-type="0"
+    name="PageData" pacingEnd="0" pacingMode="MODE_NO_PACING"
+    pacingStart="0" pacingValue="0" slaProfileEnabled="false"
+    uid="f9f096e6-4567-4326-9835-21b242367823" weightsEnabled="false">
+    <weighted-embedded-action uid="ea42f1e3-bed7-4d4c-af1a-37f5e6e16d4b"/>
+    <weighted-embedded-action uid="c9c5418e-6fd7-46bc-af39-4fd3b8f1f127"/>
+    <weighted-embedded-action uid="746f7320-045c-451e-afdc-5d584e0e0793"/>
+</basic-logical-action-container>

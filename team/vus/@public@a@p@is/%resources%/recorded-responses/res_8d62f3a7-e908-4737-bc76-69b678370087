@@ -1,0 +1,33 @@
+﻿{
+    "count": 2,
+    "results": [
+        {
+            "id": 1,
+            "url": "http://ushahidi/api/v3/users/1",
+            "realname": "admin",
+            "allowed_privileges": [
+                "read",
+                "search",
+                "register"
+            ]
+        },
+        {
+            "id": 2,
+            "url": "http://ushahidi/api/v3/users/2",
+            "realname": "member",
+            "allowed_privileges": [
+                "read",
+                "search",
+                "register"
+            ]
+        }
+    ],
+    "limit": null,
+    "offset": 0,
+    "order": "asc",
+    "orderby": "id",
+    "curr": "http://ushahidi/api/v3/users?orderby=id&order=asc&offset=0",
+    "next": "http://ushahidi/api/v3/users?orderby=id&order=asc&offset=0",
+    "prev": "http://ushahidi/api/v3/users?orderby=id&order=asc&offset=0",
+    "total_count": 2
+}

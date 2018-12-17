@@ -1,0 +1,172 @@
+<http-page executeResourcesDynamically="false"
+    name="/templates/common/directives/ush-logo.html"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6dc50f47-8aa8-4294-b28d-95af023309c9.zip"
+    slaProfileEnabled="false" thinkTime="0"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="6dc50f47-8aa8-4294-b28d-95af023309c9">
+    <embedded-action>0f531c10-6050-436b-9a34-7cd062b5e3df</embedded-action>
+    <embedded-action>f9e746d3-7c1c-46a7-89e2-c2d996699c24</embedded-action>
+    <embedded-action>eee4eb43-22bc-4f5d-8189-3ea1ebd5602b</embedded-action>
+    <embedded-action>54cb7918-0168-481a-b26c-8e2e53bc519f</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_a737fd29-bd86-493c-be4a-ca1e53ef984b.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1" contentType="text/html"
+    eTag="&quot;fe-5418707372c40:dtagent10155181109122756i1Q3&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    lastModified="Thu, 17 Nov 2016 22:51:20 GMT"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/templates/common/directives/ush-logo.html"
+    path="/templates/common/directives/ush-logo.html" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6dc50f47-8aa8-4294-b28d-95af023309c9.zip"
+    recordedResponseCode="200" responseSize="254"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="0f531c10-6050-436b-9a34-7cd062b5e3df" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_bb5c9a4c-6a73-493e-a5a6-63436bfa5fa4.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_bb5c9a4c-6a73-493e-a5a6-63436bfa5fa4.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Cache-Control" value="no-cache"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="DNT" value="1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:44 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:51:20 GMT&#xd;
+ETag: "fe-5418707372c40:dtagent10155181025135642g0KY"&#xd;
+Accept-Ranges: bytes&#xd;
+X-OneAgent-JS-Injection: true&#xd;
+X-ruxit-JS-Agent: true&#xd;
+Set-Cookie: dtCookie=1$C0E9C48B2EB276549382B969E030BC89; Path=/&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Content-Length: 196&#xd;
+Keep-Alive: timeout=5, max=99&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: text/html</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/platform/api/v3/tags"
+    path="/platform/api/v3/tags" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6dc50f47-8aa8-4294-b28d-95af023309c9.zip"
+    recordedResponseCode="200" responseSize="355"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="f9e746d3-7c1c-46a7-89e2-c2d996699c24" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_018e4e84-08ec-4d22-9afc-c2ef9602d63c</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_018e4e84-08ec-4d22-9afc-c2ef9602d63c.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Authorization" value="Bearer ${oauth_bearer}"/>
+    <header name="Cache-Control" value="no-cache"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="DNT" value="1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:44 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+X-Powered-By: PHP/7.0.31&#xd;
+Access-Control-Allow-Origin: *&#xd;
+Access-Control-Allow-Headers: Authorization, Content-type&#xd;
+Allow: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Set-Cookie: dtCookie=2$E1ABCEB8DC6E9BE2F5FB045F02D94846; Path=/&#xd;
+Content-Length: 355&#xd;
+Keep-Alive: timeout=5, max=96&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: application/json</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/platform/api/v3/roles"
+    path="/platform/api/v3/roles" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6dc50f47-8aa8-4294-b28d-95af023309c9.zip"
+    recordedResponseCode="200" responseSize="1098"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="eee4eb43-22bc-4f5d-8189-3ea1ebd5602b" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_93a917f7-de1b-48e1-be71-500a0e5c259d</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_93a917f7-de1b-48e1-be71-500a0e5c259d.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Authorization" value="Bearer ${oauth_bearer}"/>
+    <header name="Cache-Control" value="no-cache"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="DNT" value="1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:44 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+X-Powered-By: PHP/7.0.31&#xd;
+Access-Control-Allow-Origin: *&#xd;
+Access-Control-Allow-Headers: Authorization, Content-type&#xd;
+Allow: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Set-Cookie: dtCookie=6$7C903524673DD8F0DF81322D8DA00204; Path=/&#xd;
+Content-Length: 1098&#xd;
+Keep-Alive: timeout=5, max=98&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: application/json</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/platform/api/v3/users"
+    path="/platform/api/v3/users" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6dc50f47-8aa8-4294-b28d-95af023309c9.zip"
+    recordedResponseCode="200" responseSize="873"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="54cb7918-0168-481a-b26c-8e2e53bc519f" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_d7a14627-4a30-40d3-a632-f33467eda39d</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_d7a14627-4a30-40d3-a632-f33467eda39d.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Authorization" value="Bearer ${oauth_bearer}"/>
+    <header name="Cache-Control" value="no-cache"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="DNT" value="1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:44 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+X-Powered-By: PHP/7.0.31&#xd;
+Access-Control-Allow-Origin: *&#xd;
+Access-Control-Allow-Headers: Authorization, Content-type&#xd;
+Allow: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Set-Cookie: dtCookie=4$85C0659F38B748A960C602B052705605; Path=/&#xd;
+Content-Length: 873&#xd;
+Keep-Alive: timeout=5, max=97&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: application/json</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

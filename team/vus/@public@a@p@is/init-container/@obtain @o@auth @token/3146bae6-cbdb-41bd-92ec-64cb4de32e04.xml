@@ -1,0 +1,51 @@
+<http-action actionType="1" contentType="application/javascript"
+    eTag="&quot;16ee8d-5725bc02824c0-gzip&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    lastModified="Wed, 01 Aug 2018 08:47:55 GMT"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/js/bundle.js" path="/js/bundle.js"
+    postCharset="" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/69338275-b366-41ea-ac17-14cd4645d588.zip"
+    recordedResponseCode="200" responseSize="1502861"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="3146bae6-cbdb-41bd-92ec-64cb4de32e04" useKeepAlive="false">
+    <responsePageFileDescription>team/vus/@public@a@p@is/%resources%/recorded-responses/res_050d721f-b12c-41a9-9a0c-a330ca36ffac</responsePageFileDescription>
+    <requestContentFileDescription>team/vus/@public@a@p@is/%resources%/recorded-requests/req_050d721f-b12c-41a9-9a0c-a330ca36ffac.txt</requestContentFileDescription>
+    <variable-extractor assertionOnNoMatch="true"
+        defaultValue="&lt;NOT FOUND>" displayMode="0"
+        endsWithSimple="&quot;" extractFromVarNameAdv=""
+        extractFromVarNameSimple="" extractType="0" extractTypeAdv="0"
+        extractTypeSimple="0" matchNumber="1" matchNumberAdv="1"
+        matchNumberSimple="1" name="oauth_client_secret"
+        refererUid="400c84ff-1d07-4dc9-b675-7054d43b7fdb"
+        regExp="OAUTH_CLIENT_SECRET:&quot;(.*?)&quot;" regExpAdv=""
+        setDefaultValue="true"
+        startsWithSimple="OAUTH_CLIENT_SECRET:&quot;" template="$1$"
+        templateAdv="$1$" uid="1e78082a-df65-48df-8657-71b7fffbe853" xpath="">
+        <variable-extractor-group extract="true" occurs="1" pattern="" type="4"/>
+    </variable-extractor>
+    <header name="Accept" value="*/*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:42 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Wed, 01 Aug 2018 08:47:55 GMT&#xd;
+ETag: "16ee8d-5725bc02824c0-gzip"&#xd;
+Accept-Ranges: bytes&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Keep-Alive: timeout=5, max=100&#xd;
+Connection: Keep-Alive&#xd;
+Transfer-Encoding: chunked&#xd;
+Content-Type: application/javascript</responseHeaders>
+    <record-html-infos extractorContent="" extractorOccurence="3"
+        extractorRegExp="false" htmlType="1"/>
+</http-action>

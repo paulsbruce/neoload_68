@@ -1,0 +1,46 @@
+<http-page executeResourcesDynamically="false" name="/favicon.ico_1"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/ea3486fa-47c2-46e5-b243-036d1d32bf99.zip"
+    slaProfileEnabled="false" thinkTime="205"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="ea3486fa-47c2-46e5-b243-036d1d32bf99">
+    <embedded-action>8c998f0c-8b69-4660-8d1a-c2da5249dbf7</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_aee55fcc-c3b2-487a-abfe-92135bfb1985.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1" contentType="text/html"
+    eTag="&quot;1a82-54186f405d7c0-gzip&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    lastModified="Thu, 17 Nov 2016 22:45:59 GMT"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/favicon.ico" path="/favicon.ico" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/ea3486fa-47c2-46e5-b243-036d1d32bf99.zip"
+    recordedResponseCode="200" responseSize="7129"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="8c998f0c-8b69-4660-8d1a-c2da5249dbf7" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_e889ad15-bffd-4f39-a0a6-541d4ffe0458.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_e889ad15-bffd-4f39-a0a6-541d4ffe0458.txt</requestContentFileDescription>
+    <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9; rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034362288|1542032090873; dtPC=2$32562269_51h1vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:42 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:45:58 GMT&#xd;
+ETag: "1a82-54186f405d7c0:dtagent10155181025135642g0KY"&#xd;
+Accept-Ranges: bytes&#xd;
+X-OneAgent-JS-Injection: true&#xd;
+X-ruxit-JS-Agent: true&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Content-Length: 2229&#xd;
+Keep-Alive: timeout=5, max=98&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: text/html</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

@@ -1,0 +1,5 @@
+<lg-host hostname="loadgenerator2:7100" loadWeight="1"
+    sapSupport="false" standalone="false" supportWANEmulation="false"
+    uid="7e385d3a-b1b5-4db8-a75c-abcadec59b41" version="">
+    <!--****** LG NETWORK INTERFACES ******-->
+</lg-host>

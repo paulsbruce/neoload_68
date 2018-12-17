@@ -1,0 +1,19 @@
+<custom-action actionType="DynatraceMonitoringAction" isHit="false"
+    name="dynatracemonitoring" uid="9c08d75b-4f5f-4cb8-8f5a-0db77837fea0">
+    <description>The DynatraceMonitoring Action will get metrics from Dynatrace and send NeoLoad computed ones.
+The list is available at: https://github.com/Neotys-Labs/Dynatrace
+
+Possible parameters are:&#xd;
+- dynatraceId (required): Dynatrace ID (section of your Dynatrace saas url). Default value is "Dynatrace ID".&#xd;
+- dynatraceApiKey (required): Dynatrace API key Default value is "Dynatrace API key.".&#xd;
+- tags (optional): Dynatrace tags. Links the NeoLoad computed data to Dynatrace tags (format: "tag1,tag2"). Default value is "tag1,tag2".&#xd;
+- dynatraceManagedHostname (optional): Hostname of your managed Dynatrace environment.&#xd;
+- dataExchangeApiUrl (required): Where the DataExchange server is located. Typically the NeoLoad controller. Default value is "http://localhost:7400/DataExchange/v1/Service.svc/".&#xd;
+- dataExchangeApiKey (optional): Identification key specified in NeoLoad.&#xd;
+- proxyName (optional): The NeoLoad proxy name to access Dynatrace.</description>
+    <custom-action-parameter name="dynatraceId" type="TEXT" value="${dynatraceId}"/>
+    <custom-action-parameter name="dynatraceApiKey" type="TEXT" value="${dynatraceApiKey}"/>
+    <custom-action-parameter name="tags" type="TEXT" value="neotys-cpt"/>
+    <custom-action-parameter name="dataExchangeApiUrl" type="TEXT" value="http://127.0.0.1:7400/DataExchange/v1/Service.svc/"/>
+    <responsePageFileDescription>recorded-responses/res_fed22135-9d33-4aa4-8216-ec0d14bde6bb</responsePageFileDescription>
+</custom-action>

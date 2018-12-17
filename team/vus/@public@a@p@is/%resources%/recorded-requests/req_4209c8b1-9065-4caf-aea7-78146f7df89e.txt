@@ -1,0 +1,15 @@
+﻿POST http://ushahidi/platform/oauth/token HTTP/1.1
+Host: ushahidi
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://ushahidi/
+Content-Type: application/json;charset=utf-8
+Content-Length: 255
+DNT: 1
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+{"grant_type":"client_credentials","client_id":"ushahidiui","client_secret":"35e7f0bca957836d05ca0492211b0ac707671261","scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"}

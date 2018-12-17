@@ -1,0 +1,5 @@
+<zone dnsOverrideEnabled="false" proxyType="COMMON"
+    proxyTypeLg="NO_PROXY" uid="Docker">
+    <embedded-action>9f2ae169-793d-4e09-87f7-0f630b33aead</embedded-action>
+    <embedded-action>7e385d3a-b1b5-4db8-a75c-abcadec59b41</embedded-action>
+</zone>

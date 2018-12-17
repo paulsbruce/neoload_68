@@ -1,0 +1,81 @@
+name: NeoLoadAsCode
+
+variables:
+- constant:
+    name: app_server_hostname
+    value: ushahidi
+
+servers:
+- name: app_server
+  host: ${app_server_hostname}
+  scheme: http
+
+user_paths:
+- name: api_config
+  actions:
+    steps:
+    - delay: 1s
+    - request:
+        url: /platform/api/v3/config
+        server: app_server
+        method: GET
+
+- name: api_savedsearch
+  init:
+    steps:
+    - transaction:
+      name: Obtain OAuth Token
+      description: Grab the OAuth client secret from the dynamic JS in our app
+      steps:
+      - request:
+          url: /js/bundle.js
+          server: app_server
+          method: GET
+          extractors:
+          - name: oauth_client_secret
+            regexp: OAUTH_CLIENT_SECRET:"(.*?)"
+      - request:
+          url: /platform/oauth/token
+          server: app_server
+          method: POST
+          headers:
+          - accept: application/json
+          - Content-Type: application/json
+          body: |
+          {
+            "grant_type":"client_credentials",
+            "client_id":"ushahidiui",
+            "client_secret":"${oauth_client_secret}",
+            "scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"
+          }
+          extractors:
+          - name: oauth_bearer
+            jsonpath: $.access_token
+            regexp: (.*)
+            match_number: 1
+            extract_once: true
+  actions:
+    steps:
+    - delay: 1s
+    - request:
+        url: /js/bundle.js
+        server: app_server
+        method: GET
+        headers:
+        - Authorization: Bearer ${oauth_bearer}
+
+populations:
+- name: API
+  user_paths:
+  - name: api_config
+    distribution: 50%
+  - name: api_savedsearch
+    distribution: 50%
+
+scenarios:
+- name: MixedScenario
+  populations:
+  - name: API
+    constant_load:
+      users: 1
+      duration: 1 iteration

@@ -1,0 +1,99 @@
+<http-page executeResourcesDynamically="false"
+    name="/templates/main/posts/views/share/post-share.html_1"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6d346b91-c52c-42b5-89e6-c241d5fb43fb.zip"
+    slaProfileEnabled="false" thinkTime="0"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="6d346b91-c52c-42b5-89e6-c241d5fb43fb">
+    <embedded-action>88a7ab3e-0dce-445e-b71b-40865b46e8fb</embedded-action>
+    <embedded-action>dc1555a2-0926-4b8a-9d34-2e56634b70eb</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_64fb1c37-c3e8-4fa0-94c9-0da610f72ea5.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1" contentType="text/html"
+    eTag="&quot;204-5418708f1ad80:dtagent10155181109122756i1Q3&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET"
+    name="/templates/main/posts/views/share/post-share.html"
+    path="/templates/main/posts/views/share/post-share.html"
+    postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6d346b91-c52c-42b5-89e6-c241d5fb43fb.zip"
+    recordedResponseCode="200" responseSize="516"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="88a7ab3e-0dce-445e-b71b-40865b46e8fb" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_136cc90b-141b-4ec4-ad8a-d61e18d7881f.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_136cc90b-141b-4ec4-ad8a-d61e18d7881f.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9; rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034365842|1542032090873; dtPC=2$32562269_51h1vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:46 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:51:49 GMT&#xd;
+ETag: "204-5418708f1ad80:dtagent10155181025135642g0KY"&#xd;
+Accept-Ranges: bytes&#xd;
+X-OneAgent-JS-Injection: true&#xd;
+X-ruxit-JS-Agent: true&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Content-Length: 285&#xd;
+Keep-Alive: timeout=5, max=95&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: text/html</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/platform/api/v3/posts/geojson"
+    path="/platform/api/v3/posts/geojson" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/6d346b91-c52c-42b5-89e6-c241d5fb43fb.zip"
+    recordedResponseCode="200" responseSize="1070800"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="dc1555a2-0926-4b8a-9d34-2e56634b70eb" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_8c760788-639a-4df2-9f72-afcddeadd25b</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_8c760788-639a-4df2-9f72-afcddeadd25b.txt</requestContentFileDescription>
+    <parameter encodeName="true" encodeValue="true" name="form[]"
+        recordRawValue="2" separator="=" value="2" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="form[]"
+        recordRawValue="4" separator="=" value="4" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="order"
+        recordRawValue="desc" separator="=" value="desc" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="orderby"
+        recordRawValue="post_date" separator="=" value="post_date" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="status[]"
+        recordRawValue="published" separator="=" value="published" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="status[]"
+        recordRawValue="draft" separator="=" value="draft" valueMode="USE_VALUE"/>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Authorization" value="Bearer ${oauth_bearer}"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9; rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034365842|1542032090873; dtPC=2$32562269_51h1vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=4"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/views/map"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:47 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+X-Powered-By: PHP/7.0.31&#xd;
+Access-Control-Allow-Origin: *&#xd;
+Access-Control-Allow-Headers: Authorization, Content-type&#xd;
+Allow: GET, OPTIONS&#xd;
+Access-Control-Allow-Methods: GET, OPTIONS&#xd;
+Keep-Alive: timeout=5, max=100&#xd;
+Connection: Keep-Alive&#xd;
+Transfer-Encoding: chunked&#xd;
+Content-Type: application/json</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

@@ -1,0 +1,6 @@
+﻿{
+    "allowed_privileges": [
+        "read",
+        "search"
+    ]
+}

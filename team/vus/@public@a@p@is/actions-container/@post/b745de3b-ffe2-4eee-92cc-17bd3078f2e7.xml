@@ -1,0 +1,41 @@
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="OPTIONS" name="/platform/api/v3/posts"
+    path="/platform/api/v3/posts" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/1987ea6d-c75e-4ca9-9f8c-97c09595ea48.zip"
+    recordedResponseCode="200" responseSize="70"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="b745de3b-ffe2-4eee-92cc-17bd3078f2e7" useKeepAlive="false">
+    <responsePageFileDescription>team/vus/@public@a@p@is/%resources%/recorded-responses/res_579e295d-fe54-41ee-92b8-d226068cb888</responsePageFileDescription>
+    <requestContentFileDescription>team/vus/@public@a@p@is/%resources%/recorded-requests/req_579e295d-fe54-41ee-92b8-d226068cb888.txt</requestContentFileDescription>
+    <parameter encodeName="true" encodeValue="true" name="order"
+        recordRawValue="desc" separator="=" value="desc" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="orderby"
+        recordRawValue="post_date" separator="=" value="post_date" valueMode="USE_VALUE"/>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Authorization" value="Bearer ${oauth_bearer}"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Cookie" value="rxVisitor=1542032562278AKDH290BMTF09UEC3KHO6C3S75U62VJ5; rxvt=1542034371087|1542032090873; dtPC=2$32562269_51h-vGFKDJCKHLNNPPKAFIAFGJOGMEKILKJNP; dtSa=-; dtLatC=2; dtCookie=2$1F7BDFF87E1D7DF431CD73A5698D1CD9|RUM+Default+Application|1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Referer" value="http://ushahidi/posts/create/4"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:56 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+X-Powered-By: PHP/7.0.31&#xd;
+Access-Control-Allow-Origin: *&#xd;
+Access-Control-Allow-Headers: Authorization, Content-type&#xd;
+Allow: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS&#xd;
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate&#xd;
+Content-Length: 70&#xd;
+Keep-Alive: timeout=5, max=97&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: application/json</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

@@ -1,0 +1,19 @@
+﻿{
+    "id": "site",
+    "url": "http://localhost/api/v3/config/site",
+    "name": "Neotys demonstration application",
+    "description": "Ushahidi deployment for demonstration purpose",
+    "email": "ps@neotys.com",
+    "timezone": "UTC",
+    "language": "en-US",
+    "date_format": "n/j/Y",
+    "client_url": false,
+    "first_login": true,
+    "tier": "free",
+    "private": false,
+    "image_header": "http://d28h099uturm62.cloudfront.net/wp-content/uploads/2017/03/Neotys-Emblem-Primary.png",
+    "allowed_privileges": [
+        "read",
+        "search"
+    ]
+}

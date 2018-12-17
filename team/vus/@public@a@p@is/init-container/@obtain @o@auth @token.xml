@@ -1,0 +1,7 @@
+<basic-logical-action-container element-number="1" execution-type="0"
+    name="Obtain OAuth Token" pacingEnd="0" pacingMode="MODE_NO_PACING"
+    pacingStart="0" pacingValue="0" slaProfileEnabled="false"
+    uid="6a143fd4-7ef7-425f-bb6f-74408ef90574" weightsEnabled="false">
+    <weighted-embedded-action uid="3146bae6-cbdb-41bd-92ec-64cb4de32e04"/>
+    <weighted-embedded-action uid="215f1599-17b7-42b3-9e94-d07d17f81de3"/>
+</basic-logical-action-container>

@@ -1,0 +1,39 @@
+﻿{
+    "count": 2,
+    "results": [
+        {
+            "id": 1,
+            "url": "http://ushahidi/api/v3/roles/1",
+            "name": "admin",
+            "display_name": "Admin",
+            "description": "Administrator",
+            "permissions": [],
+            "protected": true,
+            "allowed_privileges": [
+                "read",
+                "search"
+            ]
+        },
+        {
+            "id": 2,
+            "url": "http://ushahidi/api/v3/roles/2",
+            "name": "user",
+            "display_name": "Member",
+            "description": "Registered member",
+            "permissions": [],
+            "protected": true,
+            "allowed_privileges": [
+                "read",
+                "search"
+            ]
+        }
+    ],
+    "limit": null,
+    "offset": 0,
+    "order": "asc",
+    "orderby": "id",
+    "curr": "http://ushahidi/api/v3/roles?orderby=id&order=asc&offset=0",
+    "next": "http://ushahidi/api/v3/roles?orderby=id&order=asc&offset=0",
+    "prev": "http://ushahidi/api/v3/roles?orderby=id&order=asc&offset=0",
+    "total_count": 2
+}

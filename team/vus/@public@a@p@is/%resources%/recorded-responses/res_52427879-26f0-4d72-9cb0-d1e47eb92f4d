@@ -1,0 +1,22 @@
+﻿{
+    "totals": [
+        {
+            "key": "form",
+            "values": [
+                {
+                    "label": "Weather alert v1.0",
+                    "total": 1537,
+                    "id": 2
+                },
+                {
+                    "label": "Weather alert v1.2",
+                    "total": 5,
+                    "id": 4
+                }
+            ]
+        }
+    ],
+    "group_by": "form",
+    "group_by_attribute_key": null,
+    "timeline_attribute": null
+}

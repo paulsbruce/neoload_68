@@ -1,0 +1,43 @@
+<http-page executeResourcesDynamically="false" name="/search"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/ceaf71de-fe37-456a-a2b9-9d2f28798519.zip"
+    slaProfileEnabled="false" thinkTime="1158"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="ceaf71de-fe37-456a-a2b9-9d2f28798519">
+    <embedded-action>23b987f7-4de3-4fc3-9499-d03b66244c26</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_9a31d73a-5025-400e-9247-21f319cbe71c.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1"
+    contentType="application/json; charset=UTF-8"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/search" path="/search" postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/ceaf71de-fe37-456a-a2b9-9d2f28798519.zip"
+    recordedResponseCode="200" responseSize="4940"
+    serverUid="external_map_hostname" slaProfileEnabled="false"
+    uid="23b987f7-4de3-4fc3-9499-d03b66244c26" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_32086d15-04cf-4af4-880b-044bbb945340</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_32086d15-04cf-4af4-880b-044bbb945340.txt</requestContentFileDescription>
+    <parameter encodeName="true" encodeValue="true" name="format"
+        recordRawValue="json" separator="=" value="json" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="q"
+        recordRawValue="Boston" separator="=" value="Boston" valueMode="USE_VALUE"/>
+    <header name="te" value="trailers"/>
+    <header name="referer" value="http://ushahidi/posts/create/4"/>
+    <header name="accept-language" value="en-US,en;q=0.5"/>
+    <header name="origin" value="http://ushahidi"/>
+    <header name="accept-encoding" value="gzip, deflate, br"/>
+    <header name="accept" value="application/json, text/plain, */*"/>
+    <header name="user-agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/2.0 200&#xd;
+date: Mon, 12 Nov 2018 14:23:24 GMT&#xd;
+server: Apache/2.4.29 (Ubuntu)&#xd;
+access-control-allow-origin: *&#xd;
+access-control-allow-methods: OPTIONS,GET&#xd;
+strict-transport-security: max-age=31536000; includeSubDomains; preload&#xd;
+expect-ct: max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"&#xd;
+content-type: application/json; charset=UTF-8</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

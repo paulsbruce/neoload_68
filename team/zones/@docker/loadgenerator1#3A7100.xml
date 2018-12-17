@@ -1,0 +1,26 @@
+<lg-host hostname="loadgenerator1:7100" loadWeight="1"
+    sapSupport="false" standalone="true" supportWANEmulation="false"
+    uid="9f2ae169-793d-4e09-87f7-0f630b33aead" version="5.4.0;build=20170210-13">
+    <!--****** LG NETWORK INTERFACES ******-->
+    <lg-networkiface description="lo" enabled="false" isLoopBack="true" name="lo">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="localhost">
+            <ip value="127.0.0.1"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="0:0:0:0:0:0:0:1%lo">
+            <ip value="0:0:0:0:0:0:0:1%lo"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+    <lg-networkiface description="eth0" enabled="false"
+        isLoopBack="false" name="eth0">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="loadgenerator1">
+            <ip value="172.17.0.6"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="fe80:0:0:0:42:acff:fe11:6%eth0">
+            <ip value="fe80:0:0:0:42:acff:fe11:6%eth0"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+</lg-host>

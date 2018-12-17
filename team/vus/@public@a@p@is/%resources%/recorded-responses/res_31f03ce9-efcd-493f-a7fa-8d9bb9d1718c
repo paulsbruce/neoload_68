@@ -1,0 +1,12 @@
+﻿{
+    "count": 0,
+    "results": [],
+    "limit": null,
+    "offset": 0,
+    "order": "asc",
+    "orderby": "id",
+    "curr": "http://ushahidi/api/v3/tags?orderby=id&order=asc&offset=0",
+    "next": "http://ushahidi/api/v3/tags?orderby=id&order=asc&offset=0",
+    "prev": "http://ushahidi/api/v3/tags?orderby=id&order=asc&offset=0",
+    "total_count": 0
+}

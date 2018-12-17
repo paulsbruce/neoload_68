@@ -1,0 +1,105 @@
+<http-page executeResourcesDynamically="false"
+    name="/templates/common/directives/modal-container.html"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/b9967a77-8c62-4883-96eb-98e6ff52679e.zip"
+    slaProfileEnabled="false" thinkTime="0"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="b9967a77-8c62-4883-96eb-98e6ff52679e">
+    <embedded-action>cd3ef904-80e8-460d-9e9e-48235c13c7e0</embedded-action>
+    <embedded-action>cf4c278f-9a02-4ca4-9917-e13211e0a134</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_fd03c1a5-1312-4aa1-99a6-9bc208bcf3b0.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1" contentType="text/html"
+    eTag="&quot;43d-5418707372c40:dtagent10155181109122756i1Q3&quot;"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    lastModified="Thu, 17 Nov 2016 22:51:20 GMT"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET"
+    name="/templates/common/directives/modal-container.html"
+    path="/templates/common/directives/modal-container.html"
+    postType="1"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/b9967a77-8c62-4883-96eb-98e6ff52679e.zip"
+    recordedResponseCode="200" responseSize="1085"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="cd3ef904-80e8-460d-9e9e-48235c13c7e0" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_25850a5f-9d5b-4528-84ff-cb70361dd8c4.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_25850a5f-9d5b-4528-84ff-cb70361dd8c4.txt</requestContentFileDescription>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Cache-Control" value="no-cache"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="DNT" value="1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Referer" value="http://ushahidi/"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:43 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+Last-Modified: Thu, 17 Nov 2016 22:51:20 GMT&#xd;
+ETag: "43d-5418707372c40:dtagent10155181025135642g0KY"&#xd;
+Accept-Ranges: bytes&#xd;
+X-OneAgent-JS-Injection: true&#xd;
+X-ruxit-JS-Agent: true&#xd;
+Set-Cookie: dtCookie=3$3E51CF061E8FFCE8B003A9C44F6EC4A1; Path=/&#xd;
+Vary: Accept-Encoding&#xd;
+Content-Encoding: gzip&#xd;
+Content-Length: 448&#xd;
+Keep-Alive: timeout=5, max=100&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: text/html</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="POST" name="/platform/oauth/token"
+    path="/platform/oauth/token" postCharset="" postType="4"
+    recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/b9967a77-8c62-4883-96eb-98e6ff52679e.zip"
+    recordedResponseCode="200" responseSize="120"
+    serverUid="app_server_hostname" slaProfileEnabled="false"
+    uid="cf4c278f-9a02-4ca4-9917-e13211e0a134" useKeepAlive="false">
+    <responsePageFileDescription>recorded-responses/res_a227baf1-e4a2-4392-9384-d83a43c31855.0</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_a227baf1-e4a2-4392-9384-d83a43c31855.txt</requestContentFileDescription>
+    <variable-extractor assertionOnNoMatch="true"
+        defaultValue="&lt;NOT FOUND>" displayMode="0" endsWithSimple=""
+        extractFromVarNameAdv="" extractFromVarNameSimple=""
+        extractType="4" extractTypeAdv="0" extractTypeSimple="4"
+        jsonpath="$.access_token" matchNumber="1" matchNumberAdv="1"
+        matchNumberSimple="1" name="oauth_bearer"
+        refererUid="a227baf1-e4a2-4392-9384-d83a43c31855" regExp="(.*)"
+        regExpAdv="" setDefaultValue="true" startsWithSimple=""
+        template="$1$" templateAdv="$1$"
+        uid="9a84296f-2537-4483-abba-a85dcdb3746e" xpath="">
+        <variable-extractor-group extract="true" occurs="1" pattern="" type="4"/>
+    </variable-extractor>
+    <header name="Accept" value="application/json, text/plain, */*"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Accept-Language" value="en-US,en;q=0.5"/>
+    <header name="Cache-Control" value="no-cache"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="Content-Type" value="application/json;charset=utf-8"/>
+    <header name="DNT" value="1"/>
+    <header name="Host" value="ushahidi"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Referer" value="http://ushahidi/"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 12 Nov 2018 14:22:43 GMT&#xd;
+Server: Apache/2.4.25 (Debian)&#xd;
+X-Powered-By: PHP/7.0.31&#xd;
+Access-Control-Allow-Origin: *&#xd;
+Access-Control-Allow-Headers: Authorization, Content-type&#xd;
+Set-Cookie: dtCookie=1$8D81C3A11D31CA11A56A72D60D7F26E0; Path=/&#xd;
+Content-Length: 120&#xd;
+Keep-Alive: timeout=5, max=100&#xd;
+Connection: Keep-Alive&#xd;
+Content-Type: application/json</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+    <textPostContent><![CDATA[{"grant_type":"client_credentials","client_id":"ushahidiui","client_secret":"${oauth_client_secret}","scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"}]]></textPostContent>
+</http-action>
