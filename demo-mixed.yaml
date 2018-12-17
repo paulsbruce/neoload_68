@@ -24,30 +24,30 @@ user_paths:
   init:
     steps:
     - transaction:
-      name: Obtain OAuth Token
-      description: Grab the OAuth client secret from the dynamic JS in our app
-      steps:
-      - request:
-          url: /js/bundle.js
-          server: app_server
-          method: GET
-          extractors:
-          - name: oauth_client_secret
-            regexp: OAUTH_CLIENT_SECRET:"(.*?)"
-      - request:
-          url: /platform/oauth/token
-          server: app_server
-          method: POST
-          headers:
-          - accept: application/json
-          - Content-Type: application/json
-          body: '{"grant_type":"client_credentials","client_id":"ushahidiui","client_secret":"${oauth_client_secret}","scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"}'
-          extractors:
-          - name: oauth_bearer
-            jsonpath: $.access_token
-            regexp: (.*)
-            match_number: 1
-            extract_once: true
+        name: Obtain OAuth Token
+        description: Grab the OAuth client secret from the dynamic JS in our app
+        steps:
+        - request:
+            url: /js/bundle.js
+            server: app_server
+            method: GET
+            extractors:
+            - name: oauth_client_secret
+              regexp: OAUTH_CLIENT_SECRET:"(.*?)"
+        - request:
+            url: /platform/oauth/token
+            server: app_server
+            method: POST
+            headers:
+            - accept: application/json
+            - Content-Type: application/json
+            body: '{"grant_type":"client_credentials","client_id":"ushahidiui","client_secret":"${oauth_client_secret}","scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"}'
+            extractors:
+            - name: oauth_bearer
+              jsonpath: $.access_token
+              regexp: (.*)
+              match_number: 1
+              extract_once: true
   actions:
     steps:
     - delay: 1s
