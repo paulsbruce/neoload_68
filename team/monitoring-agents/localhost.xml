@@ -1,0 +1,28 @@
+<me-host loadWeight="1" sapSupport="false" standalone="false"
+    supportWANEmulation="false" uid="localhost" version="6.8.0;build=20181213-2286">
+    <!--****** LG NETWORK INTERFACES ******-->
+    <lg-networkiface description="en0" enabled="false"
+        isLoopBack="false" name="en0">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="10.2.0.153">
+            <ip value="10.2.0.153"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="fe80:0:0:0:c62:474d:9c9:4c75%en0">
+            <ip value="fe80:0:0:0:c62:474d:9c9:4c75%en0"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+    <lg-networkiface description="lo0" enabled="false" isLoopBack="true" name="lo0">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="localhost">
+            <ip value="127.0.0.1"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="0:0:0:0:0:0:0:1">
+            <ip value="0:0:0:0:0:0:0:1"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="fe80:0:0:0:0:0:0:1%lo0">
+            <ip value="fe80:0:0:0:0:0:0:1%lo0"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+</me-host>

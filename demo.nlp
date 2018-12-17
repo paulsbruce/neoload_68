@@ -1,0 +1,13 @@
+# Project description file
+
+project.name=demo
+project.version=6.5
+project.original.version=4.2
+product.name=NeoLoad
+product.original.name=
+product.original.version=
+project.id=1cd6b3b8-7f4e-4a92-85af-0105fcc1984d
+project.config.path=config.zip
+project.config.storage=ZIP
+team.server.enabled=true
+team.server.project=/paulsbruce/neoload_68

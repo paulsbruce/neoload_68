@@ -1,0 +1,13 @@
+/config.zip
+/config*.zip
+/config.zip.bak.old
+/*.bak
+/.~lock.*#
+/config/
+/reports/
+/comparative-summary/
+/recorded-requests/
+/recorded-responses/
+/recorded-screenshots/
+/results/
+/SqlTemp/

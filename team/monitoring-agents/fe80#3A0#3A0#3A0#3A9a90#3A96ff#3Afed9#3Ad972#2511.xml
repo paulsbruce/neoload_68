@@ -1,0 +1,25 @@
+<me-host loadWeight="1" sapSupport="false" standalone="false"
+    supportWANEmulation="false" uid="fe80:0:0:0:9a90:96ff:fed9:d972%11" version="6.8.0;build=20181211-31">
+    <!--****** LG NETWORK INTERFACES ******-->
+    <lg-networkiface description="lo" enabled="false" isLoopBack="true" name="lo">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="kaldrogo.intranet.neotys.com">
+            <ip value="127.0.0.1"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="0:0:0:0:0:0:0:1%lo">
+            <ip value="0:0:0:0:0:0:0:1%lo"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+    <lg-networkiface description="eno1" enabled="false"
+        isLoopBack="false" name="eno1">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="kaldrogo.intranet.neotys.com">
+            <ip value="10.0.4.75"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="fe80:0:0:0:9a90:96ff:fed9:d972%eno1">
+            <ip value="fe80:0:0:0:9a90:96ff:fed9:d972%eno1"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+</me-host>

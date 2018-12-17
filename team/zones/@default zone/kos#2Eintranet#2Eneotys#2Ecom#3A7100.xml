@@ -1,0 +1,45 @@
+<lg-host hostname="kos.intranet.neotys.com:7100" loadWeight="1"
+    sapSupport="false" standalone="false" supportWANEmulation="false"
+    uid="7fbf355d-c368-4170-8ceb-6770ccc28a0b" version="6.8.0;build=20181212-2284">
+    <!--****** LG NETWORK INTERFACES ******-->
+    <lg-networkiface description="br-02af10dbfe9c" enabled="false"
+        isLoopBack="false" name="br-02af10dbfe9c">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="172.18.0.1">
+            <ip value="172.18.0.1"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="fe80:0:0:0:42:92ff:fe02:7cb5%br-02af10dbfe9c">
+            <ip value="fe80:0:0:0:42:92ff:fe02:7cb5%br-02af10dbfe9c"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+    <lg-networkiface description="lo" enabled="false" isLoopBack="true" name="lo">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="localhost">
+            <ip value="127.0.0.1"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="0:0:0:0:0:0:0:1%lo">
+            <ip value="0:0:0:0:0:0:0:1%lo"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+    <lg-networkiface description="br-b3a959d3e9e3" enabled="false"
+        isLoopBack="false" name="br-b3a959d3e9e3">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="172.19.0.1">
+            <ip value="172.19.0.1"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+    <lg-networkiface description="enp0s31f6" enabled="false"
+        isLoopBack="false" name="enp0s31f6">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="kos.intranet.neotys.com">
+            <ip value="10.0.4.79"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="fe80:0:0:0:ab6a:9412:2dd6:382f%enp0s31f6">
+            <ip value="fe80:0:0:0:ab6a:9412:2dd6:382f%enp0s31f6"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+</lg-host>
