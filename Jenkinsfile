@@ -28,7 +28,7 @@ pipeline {
 -description 'Based on demo-mixed.yaml' \
 -NTS http://nts:8080/nts \
 -NTSLogin admin:con+DjJ+R3s9j9d1qKQFGA== \
--leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:5:1 \
+-leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:50:1 \
 -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/sanity-report.xml \
 -SLAJUnitResults ${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml \
 -noGUI -nlweb
