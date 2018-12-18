@@ -33,6 +33,11 @@ pipeline {
 -SLAJUnitResults ${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml \
 -noGUI -nlweb
                             """
+            sh """
+              echo *** Dynatrace Dashboard ***
+              echo "https://vwv51099.live.dynatrace.com/#dashboard;id=b832b009-8a4d-45fa-8488-33214bf07443;gtf=l_30_MINUTES"
+              echo ***
+              """
                             /*
                             neoloadRun project: "$WORKSPACE/neoload_basic.nlp $WORKSPACE/dynamic_scenario.yaml",
                                     scenario: 'SmokeScenario',
