@@ -1,5 +1,5 @@
 <me-host loadWeight="1" sapSupport="false" standalone="false"
-    supportWANEmulation="false" uid="localhost" version="6.8.0;build=20181213-2286">
+    supportWANEmulation="false" uid="localhost" version="6.8.0;build=20181217-2307">
     <!--****** LG NETWORK INTERFACES ******-->
     <lg-networkiface description="en0" enabled="false"
         isLoopBack="false" name="en0">

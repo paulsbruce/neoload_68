@@ -1,6 +1,6 @@
 <lg-host hostname="localhost:7100" loadWeight="1" sapSupport="false"
     standalone="false" supportWANEmulation="false"
-    uid="feedd5d1-19e1-40d8-ae59-d22c3ec9cac6" version="6.8.0;build=20181213-2286">
+    uid="feedd5d1-19e1-40d8-ae59-d22c3ec9cac6" version="6.8.0;build=20181217-2307">
     <!--****** LG NETWORK INTERFACES ******-->
     <lg-networkiface description="en0" enabled="false"
         isLoopBack="false" name="en0">
