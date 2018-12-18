@@ -1,0 +1,4 @@
+<variable-list name="SeleniumCaps" offset="1" order="3" policy="5" range="1" uid="1754bec4-8b9f-46c7-b586-a16322d49e2f" whenOutOfValues="CYCLE_VALUES">
+<column name="browserName" number="0"/>
+<values><![CDATA[rO0ABXVyABRbW0xqYXZhLmxhbmcuU3RyaW5nOzJNCa2EMuRXAgAAeHAAAAACdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAXQAB2ZpcmVmb3h1cQB+AAIAAAABdAAGY2hyb21l]]></values>
+</variable-list>
