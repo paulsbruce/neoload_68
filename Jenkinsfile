@@ -34,7 +34,7 @@ pipeline {
 -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/sanity-report.xml \
 -SLAJUnitResults ${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml \
 -noGUI -nlweb \
--variables TargetHostBaseUrl=http://10.0.0.10,SeleniumHubHostAndPort=10.0.0.10:4444 \
+-variables ControllerAPIHostAndPort=10.0.0.10:7400,TargetHostBaseUrl=http://10.0.0.10,SeleniumHubHostAndPort=10.0.0.10:4444 \
                             """
             /*
             neoloadRun project: "$WORKSPACE/neoload_basic.nlp $WORKSPACE/dynamic_scenario.yaml",
