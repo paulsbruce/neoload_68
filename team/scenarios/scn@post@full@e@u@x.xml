@@ -286,8 +286,6 @@
                 path="SeleniumDelegate/Timers/UshahidiBasicTest/Geo-lookup/Timer"
                 scale="1.0" selected="true" unit="ms"/>
         </chart-description>
-        <empty-chart-description/>
-        <empty-chart-description/>
     </charts-model-description>
     <!--****** END DASHBOARDS  ******-->
     <!--****** START DATA FILTERS  ******-->
