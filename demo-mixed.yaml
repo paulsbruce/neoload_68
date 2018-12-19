@@ -71,23 +71,23 @@ scenarios:
   populations:
   - name: API
     rampup_load:
-      duration: 10m
+      duration: 30m
       min_users: 1
       max_users: 5
       increment_users: 1
       increment_every: 10s
   - name: popPost
     rampup_load:
-      duration: 10m
+      duration: 30m
       min_users: 1
       max_users: 5
       increment_users: 1
       increment_every: 15s
   - name: dynatracePop
     constant_load:
-      duration: 10m
+      duration: 30m
       users: 1
   - name: popSelenium
     constant_load:
-      duration: 10m
+      duration: 30m
       users: 1
