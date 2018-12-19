@@ -36,7 +36,7 @@
     <population-policy name="popSelenium">
         <duration-policy-entry iterations="1" time="300" timeUnit="0" type="2"/>
         <volume-policy-entry>
-            <constant-volume-policy iterationNumber="1" userNumber="2"/>
+            <constant-volume-policy iterationNumber="1" userNumber="1"/>
         </volume-policy-entry>
         <start-stop-policy-entry start-delay="0" start-type="0"
             stop-delay="60000" stop-type="0"/>
