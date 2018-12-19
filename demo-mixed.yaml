@@ -87,3 +87,7 @@ scenarios:
     constant_load:
       duration: 10m
       users: 1
+  - name: popSelenium
+    constant_load:
+      duration: 10m
+      users: 2
