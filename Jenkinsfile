@@ -49,6 +49,7 @@ pipeline {
                         vuCount: 50
                     ]
             */
+            }
         }
         stage('While Test Running')
         {
