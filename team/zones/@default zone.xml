@@ -1,11 +1,4 @@
 <zone dnsOverrideEnabled="true" proxyType="COMMON"
     proxyTypeLg="NO_PROXY" uid="Default zone">
     <embedded-action>feedd5d1-19e1-40d8-ae59-d22c3ec9cac6</embedded-action>
-    <embedded-action>fe69b4a1-1798-4e49-a2ee-1e94d7b9fae4</embedded-action>
-    <embedded-action>cc8a845f-989e-4610-919a-1623fa7888a3</embedded-action>
-    <embedded-action>fc79cca0-857c-4bc7-9c8c-6a9bf711df50</embedded-action>
-    <embedded-action>7fbf355d-c368-4170-8ceb-6770ccc28a0b</embedded-action>
-    <embedded-action>02a40023-4e1d-4811-b623-9ad078668cda</embedded-action>
-    <embedded-action>73f7c812-1d2c-47a6-8046-6c517ca323cf</embedded-action>
-    <embedded-action>15d98146-fd8b-4bfb-9c66-a375a4e08984</embedded-action>
 </zone>

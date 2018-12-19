@@ -5,8 +5,8 @@
     <lg-networkiface description="en0" enabled="false"
         isLoopBack="false" name="en0">
         <!--****** LG ADDRESSES ******-->
-        <lg-address enabled="false" hostname="10.2.0.153">
-            <ip value="10.2.0.153"/>
+        <lg-address enabled="false" hostname="172.20.20.20">
+            <ip value="172.20.20.20"/>
         </lg-address>
         <lg-address enabled="false" hostname="fe80:0:0:0:c62:474d:9c9:4c75%en0">
             <ip value="fe80:0:0:0:c62:474d:9c9:4c75%en0"/>

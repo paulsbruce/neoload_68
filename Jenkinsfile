@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Pull latest version of Project from Git') {
       steps {
-          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git', credentialsId: 'paulsbruce-git-creds')
+          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git', credentialsId: 'github-paulsbruce')
       }
     }
 
