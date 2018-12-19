@@ -80,9 +80,9 @@ scenarios:
     rampup_load:
       duration: 10m
       min_users: 1
-      max_users: 10
+      max_users: 5
       increment_users: 1
-      increment_every: 10s
+      increment_every: 15s
   - name: dynatracePop
     constant_load:
       duration: 10m
