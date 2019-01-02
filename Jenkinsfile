@@ -22,7 +22,7 @@ pipeline {
     stage('Main pipeline') {
       parallel {
         stage('NeoLoad Test') {
-            steps { // wget -q -O - http://169.254.169.254/latest/meta-data/local-ipv4 // -> 10.0.0.10
+            steps {
                 sh """/usr/local/neoload/bin/NeoLoadCmd \
 -project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' \
 -launch MixedScenarioWithMonitoring \
@@ -34,7 +34,7 @@ pipeline {
 -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/sanity-report.xml \
 -SLAJUnitResults ${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml \
 -noGUI -nlweb \
--variables ControllerAPIHostAndPort=10.0.0.10:7400,TargetHostBaseUrl=http://10.0.0.10,SeleniumHubHostAndPort=10.0.0.10:4444 \
+-variables ControllerAPIHostAndPort=10.0.0.10:7400,TargetHostBaseUrl=http://10.0.0.10,SeleniumHubHostAndPort=10.0.0.5:4444 \
                             """
             /*
             neoloadRun project: "$WORKSPACE/neoload_basic.nlp $WORKSPACE/dynamic_scenario.yaml",
