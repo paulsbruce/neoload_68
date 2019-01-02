@@ -6,6 +6,7 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
+    TEST_DURATION = '30m'
   }
   stages {
     stage('Set up infrastructure') {
@@ -19,12 +20,45 @@ pipeline {
       }
     }
 
+    stage('Define Dynamic Population') {
+      steps {
+        // create a dynamic sanity scenario
+        writeFile file: "${env.WORKSPACE}/eux-scenario.yaml", text: """
+scenarios:
+- name: MixedScenarioWithEUX
+  populations:
+  - name: API
+    rampup_load:
+      duration: ${env.TEST_DURATION}
+      min_users: 1
+      max_users: 5
+      increment_users: 1
+      increment_every: 10s
+  - name: popPost
+    rampup_load:
+      duration: ${env.TEST_DURATION}
+      min_users: 1
+      max_users: 15
+      increment_users: 1
+      increment_every: 15s
+  - name: dynatracePop
+    constant_load:
+      duration: ${env.TEST_DURATION}
+      users: 1
+  - name: popSelenium
+    constant_load:
+      duration: ${env.TEST_DURATION}
+      users: 4
+      """
+      }
+    }
+
     stage('Main pipeline') {
       parallel {
         stage('NeoLoad Test') {
             steps {
                 sh """/usr/local/neoload/bin/NeoLoadCmd \
--project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' \
+-project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' '${env.WORKSPACE}/eux-scenario.yaml' \
 -launch MixedScenarioWithMonitoring \
 -testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})' \
 -description 'Based on demo-mixed.yaml' \
@@ -34,7 +68,7 @@ pipeline {
 -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/sanity-report.xml \
 -SLAJUnitResults ${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml \
 -noGUI -nlweb \
--variables ControllerAPIHostAndPort=10.0.0.10:7400,TargetHostBaseUrl=http://10.0.0.10,SeleniumHubHostAndPort=10.0.0.5:4444 \
+-variables ControllerAPIHostAndPort=10.0.0.10:7400,TargetHostBaseUrl=http://10.0.0.10,SeleniumHubHostAndPort=10.0.0.15:4444 \
                             """
             /*
             neoloadRun project: "$WORKSPACE/neoload_basic.nlp $WORKSPACE/dynamic_scenario.yaml",
