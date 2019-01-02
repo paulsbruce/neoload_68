@@ -6,7 +6,8 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    TEST_DURATION = '30m'
+    TEST_DURATION = '10m'
+    EUX_THREADS = 2
   }
   stages {
     stage('Set up infrastructure') {
@@ -48,7 +49,7 @@ scenarios:
   - name: popSelenium
     constant_load:
       duration: ${env.TEST_DURATION}
-      users: 4
+      users: ${env.EUX_THREADS}
       """
       }
     }
@@ -59,7 +60,7 @@ scenarios:
             steps {
                 sh """/usr/local/neoload/bin/NeoLoadCmd \
 -project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' '${env.WORKSPACE}/eux-scenario.yaml' \
--launch MixedScenarioWithMonitoring \
+-launch MixedScenarioWithEUX \
 -testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})' \
 -description 'Based on demo-mixed.yaml' \
 -NTS http://nts:8080/nts \
