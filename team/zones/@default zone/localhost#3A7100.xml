@@ -1,12 +1,12 @@
 <lg-host hostname="localhost:7100" loadWeight="1" sapSupport="false"
     standalone="false" supportWANEmulation="false"
-    uid="feedd5d1-19e1-40d8-ae59-d22c3ec9cac6" version="6.8.0;build=20181217-2307">
+    uid="feedd5d1-19e1-40d8-ae59-d22c3ec9cac6" version="6.8.0;build=20190102-13">
     <!--****** LG NETWORK INTERFACES ******-->
     <lg-networkiface description="en0" enabled="false"
         isLoopBack="false" name="en0">
         <!--****** LG ADDRESSES ******-->
-        <lg-address enabled="false" hostname="172.20.20.20">
-            <ip value="172.20.20.20"/>
+        <lg-address enabled="false" hostname="10.2.0.153">
+            <ip value="10.2.0.153"/>
         </lg-address>
         <lg-address enabled="false" hostname="fe80:0:0:0:c62:474d:9c9:4c75%en0">
             <ip value="fe80:0:0:0:c62:474d:9c9:4c75%en0"/>

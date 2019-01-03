@@ -7,7 +7,7 @@ pipeline {
   environment {
     WORKSPACE = pwd()
     TEST_DURATION = '10m'
-    EUX_THREADS = 1
+    EUX_THREADS = 2
   }
   stages {
     stage('Set up infrastructure') {
@@ -47,9 +47,12 @@ scenarios:
       duration: ${env.TEST_DURATION}
       users: 1
   - name: popSelenium
-    constant_load:
+    rampup_load:
       duration: ${env.TEST_DURATION}
-      users: ${env.EUX_THREADS}
+      min_users: 1
+      max_users: ${env.EUX_THREADS}
+      increment_users: 1
+      increment_every: 20s
       """
       }
     }

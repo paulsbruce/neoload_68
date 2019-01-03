@@ -1,1 +1,1 @@
-<variable-constant constantValue="54.208.117.223:4444" name="SeleniumHubHostAndPort" order="1" policy="4" range="2" uid="268a0b6d-f443-49cc-be2a-a7159e758900" whenOutOfValues="CYCLE_VALUES"/>
+<variable-constant constantValue="neoload-cpt:4444" name="SeleniumHubHostAndPort" order="1" policy="4" range="2" uid="268a0b6d-f443-49cc-be2a-a7159e758900" whenOutOfValues="CYCLE_VALUES"/>
