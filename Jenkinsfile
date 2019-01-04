@@ -54,6 +54,32 @@ scenarios:
       increment_users: 1
       increment_every: 20s
       """
+        writeFile file: "${env.WORKSPACE}/eux-no-apm.yaml", text: """
+scenarios:
+- name: MixedScenarioEUXNoAPM
+  populations:
+  - name: API
+    rampup_load:
+      duration: ${env.TEST_DURATION}
+      min_users: 1
+      max_users: 5
+      increment_users: 1
+      increment_every: 10s
+  - name: popPost
+    rampup_load:
+      duration: ${env.TEST_DURATION}
+      min_users: 1
+      max_users: 15
+      increment_users: 1
+      increment_every: 15s
+  - name: popSelenium
+    rampup_load:
+      duration: ${env.TEST_DURATION}
+      min_users: 1
+      max_users: ${env.EUX_THREADS}
+      increment_users: 1
+      increment_every: 20s
+      """
       }
     }
 
@@ -62,7 +88,7 @@ scenarios:
         stage('NeoLoad Test') {
             steps {
                 sh """/usr/local/neoload/bin/NeoLoadCmd \
--project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' '${env.WORKSPACE}/eux-scenario.yaml' \
+-project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' '${env.WORKSPACE}/eux-no-apm.yaml' \
 -launch MixedScenarioWithEUX \
 -testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})' \
 -description 'Based on demo-mixed.yaml' \
