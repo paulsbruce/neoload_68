@@ -89,7 +89,7 @@ scenarios:
             steps {
                 sh """/usr/local/neoload/bin/NeoLoadCmd \
 -project '${env.WORKSPACE}/demo.nlp' '${env.WORKSPACE}/demo-mixed.yaml' '${env.WORKSPACE}/eux-no-apm.yaml' \
--launch MixedScenarioWithEUX \
+-launch MixedScenarioEUXNoAPM \
 -testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})' \
 -description 'Based on demo-mixed.yaml' \
 -NTS http://nts:8080/nts \
