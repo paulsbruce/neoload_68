@@ -13,8 +13,7 @@ pipeline {
   stages {
     stage('Set up infrastructure') {
         steps {
-            //build 'NLInfrastructure/NLDeploy'
-            sh "pwd"
+            build 'NLInfrastructure/NLDeploy'
         }
     }
     stage('Pull latest version of Project from Git') {
@@ -25,8 +24,8 @@ pipeline {
     stage('Define Dynamic Scenario') {
       steps {
         writeFile file: "${env.WORKSPACE}/lgs.txt", text: """
-        docker-lg1-68@Docker\
-        docker-lg2-68@Docker
+        docker-lg1@Docker\
+        docker-lg2@Docker
         """.trim()
         // create a dynamic sanity scenario
         writeFile file: "${env.WORKSPACE}/eux-and-apm.yaml", text: """
@@ -68,6 +67,7 @@ scenarios:
             steps {
                 sh "pwd"
                 script {
+                  dir(env.WORKSPACE) {
                     neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                         scenario: "dynMixedScenarioEUXwAPM",
                         testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
@@ -81,14 +81,16 @@ scenarios:
                             duration: 1,
                             vuCount: env.MAX_VUS_CHECKOUT
                         ],
-                        commandLineOption: "-nlweb -variables "+
+                        commandLineOption: "-nlweb -variables "+ // variables below must be executed all as one line
                                            "ControllerAPIHostAndPort=10.0.0.10:7400,"+
                                            "TargetHostBaseUrl=http://10.0.0.10,"+
                                            "SeleniumHubHostAndPort=10.0.0.15:4444,"+
                                            "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
-                                           " --override-lg popPost=${env.WORKSPACE}/lgs.txt"+
-                                           " -project ${env.WORKSPACE}/demo-mixed.yaml"+
-                                           " -project ${env.WORKSPACE}/eux-and-apm.yaml"
+                                           " -project ${env.WORKSPACE}/demo-mixed.yaml"+ // static file from repo
+                                           " -project ${env.WORKSPACE}/eux-and-apm.yaml"+ // dynamic file from above
+                                           " --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
+                                           " -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
+                  }
                 }
                 sh "pwd"
             }
