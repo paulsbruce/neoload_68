@@ -10,15 +10,15 @@ pipeline {
     EUX_THREADS = 2
   }
   stages {
-    stage('Pull latest version of Project from Git') {
-      steps {
-          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git', credentialsId: 'github-paulsbruce')
-      }
-    }
     stage('Set up infrastructure') {
         steps {
             build 'NLInfrastructure/NLDeploy'
         }
+    }
+    stage('Pull latest version of Project from Git') {
+      steps {
+          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git', credentialsId: 'github-paulsbruce')
+      }
     }
     stage('Define Dynamic Scenario') {
       steps {
