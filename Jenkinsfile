@@ -7,7 +7,7 @@ pipeline {
   environment {
     WORKSPACE = pwd()
     TEST_DURATION = '10m'
-    EUX_THREADS = 2
+    EUX_THREADS = 1
   }
   stages {
     stage('Set up infrastructure') {
