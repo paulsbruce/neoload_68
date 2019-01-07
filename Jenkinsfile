@@ -61,15 +61,15 @@ scenarios:
       parallel {
         stage('NeoLoad Test') {
             steps {
-              sh "pwd"
+                sh "pwd"
                 script {
                     neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                         scenario: "dynMixedScenarioEUXwAPM",
                         testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
                         testDescription: "Based on demo-mixed.yaml",
-                        reportXml: "${env.WORKSPACE}/neoload-report/sanity-report.xml",
-                        reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
-                        reportJunit: "${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml",
+                        reportXml: "neoload-report/sanity-report.xml",
+                        reportHtml: "neoload-report/neoload-report.html",
+                        reportJunit: "neoload-report/sanity-junit-sla-results.xml",
                         trendGraphs: ['AvgResponseTime', 'ErrorRate'],
                         sharedLicense: [
                             server: 'NeoLoad Demo License',
@@ -84,6 +84,7 @@ scenarios:
                                            " -project ${env.WORKSPACE}/demo-mixed.yaml"+
                                            " -project ${env.WORKSPACE}/eux-and-apm.yaml"
                 }
+                sh "pwd"
             }
         }
         stage('While Test Running')
@@ -102,8 +103,8 @@ scenarios:
     stage('Archive Artifacts') {
         steps {
           sh "pwd"
-          //archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
-          //junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit*.xml"
+          archiveArtifacts "neoload-report/**"
+          junit allowEmptyResults: true, testResults: "neoload-report/junit*.xml"
         }
     }
   }
