@@ -72,9 +72,9 @@ scenarios:
                         scenario: "dynMixedScenarioEUXwAPM",
                         testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
                         testDescription: "Based on demo-mixed.yaml",
-                        reportXml: "neoload-report/sanity-report.xml",
-                        reportHtml: "neoload-report/neoload-report.html",
-                        reportJunit: "neoload-report/sanity-junit-sla-results.xml",
+                        reportXml: "${env.WORKSPACE}/neoload-report/sanity-report.xml",
+                        reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
+                        reportJunit: "${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml",
                         trendGraphs: ['AvgResponseTime', 'ErrorRate'],
                         sharedLicense: [
                             server: 'NeoLoad Demo License',
@@ -112,8 +112,8 @@ scenarios:
     stage('Archive Artifacts') {
         steps {
           sh "pwd"
-          archiveArtifacts "neoload-report/**"
-          junit allowEmptyResults: true, testResults: "neoload-report/junit*.xml"
+          archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
+          junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit*.xml"
         }
     }
   }
