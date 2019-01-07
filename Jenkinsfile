@@ -88,8 +88,9 @@ scenarios:
                                            "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
                                            " -project ${env.WORKSPACE}/demo-mixed.yaml"+ // static file from repo
                                            " -project ${env.WORKSPACE}/eux-and-apm.yaml"+ // dynamic file from above
-                                           " --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
-                                           " -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
+                                           "" // remove this and uncomment below when infra is at v6.8
+                                           //" --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
+                                           //" -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
                   }
                 }
                 sh "pwd"
