@@ -6,8 +6,9 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    TEST_DURATION = '2m'
-    EUX_THREADS = 1
+    TEST_DURATION = '10m'
+    EUX_THREADS = 2
+    MAX_VUS_CHECKOUT = 50
   }
   stages {
     stage('Set up infrastructure') {
@@ -72,7 +73,7 @@ scenarios:
                         sharedLicense: [
                             server: 'NeoLoad Demo License',
                             duration: 1,
-                            vuCount: 50
+                            vuCount: env.MAX_VUS_CHECKOUT
                         ],
                         commandLineOption: "-nlweb -variables "+
                                            "ControllerAPIHostAndPort=10.0.0.10:7400,"+
