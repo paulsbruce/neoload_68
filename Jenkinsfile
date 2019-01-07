@@ -27,7 +27,7 @@ pipeline {
 scenarios:
 - name: dynMixedScenarioEUXwAPM
   populations:
-  - name: API
+  - name: API_just_ushahidi
     rampup_load:
       duration: ${env.TEST_DURATION}
       min_users: 1

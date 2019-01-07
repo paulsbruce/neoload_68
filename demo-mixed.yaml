@@ -80,11 +80,15 @@ populations:
     distribution: 50%
   - name: api_savedsearch
     distribution: 50%
+- name: API_just_ushahidi
+  user_paths:
+  - name: api_savedsearch
+    distribution: 100%
 
 scenarios:
 - name: MixedScenarioWithMonitoring
   populations:
-  - name: API
+  - name: API_just_ushahidi
     rampup_load:
       duration: 5m
       min_users: 1
