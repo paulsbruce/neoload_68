@@ -13,7 +13,7 @@ Possible parameters are:
     <custom-action-parameter name="arg4" type="TEXT" value="-DhubHostAndPort=${SeleniumHubHostAndPort}"/>
     <custom-action-parameter name="arg5" type="TEXT" value="-DbaseUrl=${TargetHostBaseUrl}"/>
     <custom-action-parameter name="arg6" type="TEXT" value="-Dimg=${NL-CustomResources}/Sea.jpg"/>
-    <custom-action-parameter name="arg7" type="TEXT" value="-jar"/>
+    <custom-action-parameter name="arg7" type="TEXT" value="-jar "/>
     <custom-action-parameter name="arg8" type="TEXT" value="${NL-CustomResources}/cpvSelenium2.jar"/>
     <custom-action-parameter name="arg9" type="TEXT" value="UshahidiBasicTest"/>
 </custom-action>

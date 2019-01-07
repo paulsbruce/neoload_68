@@ -99,7 +99,7 @@ Content-Type: text/javascript; charset=utf-8</responseHeaders>
     lastModified="Thu, 17 Nov 2016 22:51:18 GMT"
     linkExtractorSeveralMatchOccurrence="1"
     linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
-    method="GET" name="/css/vendor.css" path="/css/vendor.css"
+    method="GET" name="/css/vendor.css" path="/css/vendor.css?id=1"
     postType="1"
     recordedArtifactZipFileName="team/vus/@post/%resources%/recorded-artifacts/b4e0acc0-9d9c-4a85-8302-4bb85471a68d.zip"
     recordedResponseCode="200" responseSize="21929"

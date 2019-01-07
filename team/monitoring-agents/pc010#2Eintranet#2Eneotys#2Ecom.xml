@@ -1,5 +1,5 @@
 <me-host loadWeight="1" sapSupport="false" standalone="false"
-    supportWANEmulation="false" uid="pc010.intranet.neotys.com" version="6.4.0;build=20180322-20">
+    supportWANEmulation="false" uid="pc010.intranet.neotys.com" version="6.8.0;build=20190102-13">
     <!--****** LG NETWORK INTERFACES ******-->
     <lg-networkiface description="Software Loopback Interface 1"
         enabled="false" isLoopBack="true" name="lo">
