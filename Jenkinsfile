@@ -100,8 +100,9 @@ scenarios:
     }
     stage('Archive Artifacts') {
         steps {
-          archiveArtifacts 'neoload-report/**'
-          junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+          sh "pwd"
+          archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
+          junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit*.xml"
         }
     }
   }
