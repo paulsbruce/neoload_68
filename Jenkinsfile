@@ -23,6 +23,10 @@ pipeline {
     }
     stage('Define Dynamic Scenario') {
       steps {
+        writeFile file: "${env.WORKSPACE}/lgs.txt", text: """
+        docker-lg1@Docker\
+        docker-lg1@Docker
+        """.trim()
         // create a dynamic sanity scenario
         writeFile file: "${env.WORKSPACE}/eux-and-apm.yaml", text: """
 scenarios:
@@ -81,6 +85,9 @@ scenarios:
                                            "TargetHostBaseUrl=http://10.0.0.10,"+
                                            "SeleniumHubHostAndPort=10.0.0.15:4444,"+
                                            "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
+                                           " -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt,"+
+                                           "popPost=${env.WORKSPACE}/lgs.txt,"+
+                                           "popSelenium=${env.WORKSPACE}/lgs.txt"+
                                            " -project ${env.WORKSPACE}/demo-mixed.yaml"+
                                            " -project ${env.WORKSPACE}/eux-and-apm.yaml"
                 }
