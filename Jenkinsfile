@@ -69,7 +69,7 @@ scenarios:
                         reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
                         reportJunit: "${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml",
                         trendGraphs: ['AvgResponseTime', 'ErrorRate'],
-                        commandLineOption: """-nlweb -variables
+                        commandLineOption: """-nlweb -variables 
 ControllerAPIHostAndPort=10.0.0.10:7400,
 TargetHostBaseUrl=http://10.0.0.10,
 SeleniumHubHostAndPort=10.0.0.15:4444,
