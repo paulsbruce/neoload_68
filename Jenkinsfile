@@ -13,7 +13,8 @@ pipeline {
   stages {
     stage('Set up infrastructure') {
         steps {
-            build 'NLInfrastructure/NLDeploy'
+            //build 'NLInfrastructure/NLDeploy'
+            sh "pwd"
         }
     }
     stage('Pull latest version of Project from Git') {
@@ -24,8 +25,8 @@ pipeline {
     stage('Define Dynamic Scenario') {
       steps {
         writeFile file: "${env.WORKSPACE}/lgs.txt", text: """
-        docker-lg1@Docker\
-        docker-lg1@Docker
+        docker-lg1-68@Docker\
+        docker-lg2-68@Docker
         """.trim()
         // create a dynamic sanity scenario
         writeFile file: "${env.WORKSPACE}/eux-and-apm.yaml", text: """
