@@ -6,7 +6,7 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    TEST_DURATION = '10m'
+    TEST_DURATION = '2m'
     EUX_THREADS = 2
     MAX_VUS_CHECKOUT = 50
   }
