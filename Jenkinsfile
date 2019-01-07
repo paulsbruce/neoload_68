@@ -61,6 +61,7 @@ scenarios:
       parallel {
         stage('NeoLoad Test') {
             steps {
+              sh "pwd"
                 script {
                     neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                         scenario: "dynMixedScenarioEUXwAPM",
@@ -101,8 +102,8 @@ scenarios:
     stage('Archive Artifacts') {
         steps {
           sh "pwd"
-          archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
-          junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit*.xml"
+          //archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
+          //junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit*.xml"
         }
     }
   }
