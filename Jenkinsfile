@@ -69,6 +69,11 @@ scenarios:
                         reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
                         reportJunit: "${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml",
                         trendGraphs: ['AvgResponseTime', 'ErrorRate'],
+                        sharedLicense: [
+                            server: 'NeoLoad Demo License',
+                            duration: 1,
+                            vuCount: 50
+                        ],
                         commandLineOption: "-nlweb -variables "+
                                            "ControllerAPIHostAndPort=10.0.0.10:7400,"+
                                            "TargetHostBaseUrl=http://10.0.0.10,"+
@@ -76,11 +81,6 @@ scenarios:
                                            "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
                                            " -project ${env.WORKSPACE}/demo-mixed.yaml"+
                                            " -project ${env.WORKSPACE}/eux-and-apm.yaml"
-                        sharedLicense: [
-                            server: 'NeoLoad Demo License',
-                            duration: 1,
-                            vuCount: 50
-                        ]
                 }
             }
         }
