@@ -73,6 +73,7 @@ scenarios:
                         ControllerAPIHostAndPort=10.0.0.10:7400,\
                         TargetHostBaseUrl=http://10.0.0.10,\
                         SeleniumHubHostAndPort=10.0.0.15:4444 \
+                        JRE_JAVA=/usr/local/neoload/jre/bin/java \
                          -project ${env.WORKSPACE}/demo-mixed.yaml \
                          -project ${env.WORKSPACE}/eux-and-apm.yaml
                         """,
