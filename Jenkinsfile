@@ -85,8 +85,7 @@ scenarios:
                                            "TargetHostBaseUrl=http://10.0.0.10,"+
                                            "SeleniumHubHostAndPort=10.0.0.15:4444,"+
                                            "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
-                                           " --override-lg popPost=${env.WORKSPACE}/lgs.txt,"+
-                                           "popSelenium=${env.WORKSPACE}/lgs.txt"+
+                                           " --override-lg popPost=${env.WORKSPACE}/lgs.txt"+
                                            " -project ${env.WORKSPACE}/demo-mixed.yaml"+
                                            " -project ${env.WORKSPACE}/eux-and-apm.yaml"
                 }
