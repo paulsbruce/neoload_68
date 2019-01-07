@@ -23,7 +23,7 @@ servers:
 - name: external_maps
   host: nominatim.openstreetmap.org
   scheme: https
-  port:443
+  port: 443
 
 user_paths:
 - name: geo_search
