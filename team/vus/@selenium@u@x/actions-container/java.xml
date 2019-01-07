@@ -6,14 +6,14 @@ Possible parameters are:
 - JRE: The path to the Java Runtime Environment executable on the Load Generator
 - argX: Java argument number X (eg: arg1, arg2, ...)
 - charset: The charset used by the console. Default platform charset is used if not set.</description>
-    <custom-action-parameter name="JRE" type="TEXT" value="jre/bin/java"/>
+    <custom-action-parameter name="JRE" type="TEXT" value="${JRE_JAVA}"/>
     <custom-action-parameter name="arg1" type="TEXT" value="-Dnl.selenium.proxy.mode=EndUserExperience"/>
     <custom-action-parameter name="arg2" type="TEXT" value="-Dnl.capabilities.browser.name=${SeleniumCaps.browserName}"/>
     <custom-action-parameter name="arg3" type="TEXT" value="-Dnl.data.exchange.url=http://${ControllerAPIHostAndPort}/DataExchange/v1/Service.svc/"/>
     <custom-action-parameter name="arg4" type="TEXT" value="-DhubHostAndPort=${SeleniumHubHostAndPort}"/>
     <custom-action-parameter name="arg5" type="TEXT" value="-DbaseUrl=${TargetHostBaseUrl}"/>
     <custom-action-parameter name="arg6" type="TEXT" value="-Dimg=${NL-CustomResources}/Sea.jpg"/>
-    <custom-action-parameter name="arg7" type="TEXT" value="-jar "/>
+    <custom-action-parameter name="arg7" type="TEXT" value="-jar"/>
     <custom-action-parameter name="arg8" type="TEXT" value="${NL-CustomResources}/cpvSelenium2.jar"/>
     <custom-action-parameter name="arg9" type="TEXT" value="UshahidiBasicTest"/>
 </custom-action>
