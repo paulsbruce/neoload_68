@@ -23,10 +23,12 @@ pipeline {
     }
     stage('Define Dynamic Scenario') {
       steps {
+        // create dynamic infrastructure pointers: docker-lgN is presumed already spun up by NLDeploy job
         writeFile file: "${env.WORKSPACE}/lgs.txt", text: """
         docker-lg1@Docker\
         docker-lg2@Docker
         """.trim()
+
         // create a dynamic sanity scenario
         writeFile file: "${env.WORKSPACE}/eux-and-apm.yaml", text: """
 scenarios:
@@ -108,10 +110,10 @@ scenarios:
                                            "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
                                            " -project ${env.WORKSPACE}/demo-mixed.yaml"+ // static file from repo
                                            " -project ${env.WORKSPACE}/eux-and-apm.yaml"+ // dynamic file from above
-                                           "" // remove this and uncomment below when infra is at v6.8
+                                           "" // TODO: remove this and uncomment below when infra is at v6.8
                                            //" --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
                                            //" -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
-                    
+
                   }
                 }
                 sh "pwd"
@@ -133,14 +135,14 @@ scenarios:
     stage('After Test Exits') {
         steps {
           echo "Test exited without any process errors."
+          archiveArtifacts "neoload-report/**"
+          junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
         }
     }
   }
   post {
       always {
           build 'NLInfrastructure/NLShutdown'
-          archiveArtifacts "neoload-report/**"
-          junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
       }
   }
 }
