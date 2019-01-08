@@ -128,19 +128,17 @@ scenarios:
         }
       }
     }
-    stage('Archive Artifacts') {
+    stage('After Test Exits') {
         steps {
-          sh "pwd"
-          sh "ls ${env.WORKSPACE}"
-          sh "ls ${env.WORKSPACE}/neoload-report"
-          archiveArtifacts "neoload-report/**"
-          junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml"
+          echo "Test exited without any process errors."
         }
     }
   }
   post {
       always {
           build 'NLInfrastructure/NLShutdown'
+          archiveArtifacts "neoload-report/**"
+          junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
       }
   }
 }
