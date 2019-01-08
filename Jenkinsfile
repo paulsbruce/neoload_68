@@ -134,7 +134,7 @@ scenarios:
           sh "ls ${env.WORKSPACE}"
           sh "ls ${env.WORKSPACE}/neoload-report"
           archiveArtifacts "neoload-report/**"
-          junit allowEmptyResults: true, testResults: "neoload-report/junit*.xml"
+          junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml"
         }
     }
   }
