@@ -76,8 +76,8 @@ scenarios:
                       " -NTS http://nts:8080/nts"+
                       " -NTSLogin admin:con+DjJ+R3s9j9d1qKQFGA=="+
                       " -leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:50:1"+
-                      " -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/sanity-report.xml"+
-                      " -SLAJUnitResults ${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml"+
+                      " -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/neoload-report.xml"+
+                      " -SLAJUnitResults ${env.WORKSPACE}/neoload-report/junit-sla-results.xml"+
                       " -noGUI -nlweb -variables "+
                       "ControllerAPIHostAndPort=10.0.0.10:7400,"+
                       "TargetHostBaseUrl=http://10.0.0.10,"+
@@ -90,9 +90,9 @@ scenarios:
                         scenario: "dynMixedScenarioEUXwAPM",
                         testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
                         testDescription: "Based on demo-mixed.yaml",
-                        reportXml: "${env.WORKSPACE}/neoload-report/sanity-report.xml",
+                        reportXml: "${env.WORKSPACE}/neoload-report/neoload-report.xml",
                         reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
-                        reportJunit: "${env.WORKSPACE}/neoload-report/sanity-junit-sla-results.xml",
+                        reportJunit: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml",
                         trendGraphs: ['AvgResponseTime', 'ErrorRate'],
                         sharedLicense: [
                             server: 'NeoLoad Demo License',
