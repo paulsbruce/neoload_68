@@ -135,14 +135,15 @@ scenarios:
     stage('After Test Exits') {
         steps {
           echo "Test exited without any process errors."
-          archiveArtifacts "neoload-report/**"
-          junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
         }
     }
   }
   post {
       always {
+          sh "sleep 30"
           build 'NLInfrastructure/NLShutdown'
+          archiveArtifacts "neoload-report/**"
+          junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
       }
   }
 }
