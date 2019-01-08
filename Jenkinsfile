@@ -68,6 +68,7 @@ scenarios:
                 sh "pwd"
                 script {
                   dir(env.WORKSPACE) {
+                    /*
                     sh "/usr/local/neoload/bin/NeoLoadCmd"+
                       " -project ${env.WORKSPACE}/demo.nlp"+
                       " -launch dynMixedScenarioEUXwAPM"+
@@ -85,7 +86,8 @@ scenarios:
                       "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
                       " -project ${env.WORKSPACE}/demo-mixed.yaml"+
                       " -project ${env.WORKSPACE}/eux-and-apm.yaml"
-                    /*
+                    */
+
                     neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                         scenario: "dynMixedScenarioEUXwAPM",
                         testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
@@ -109,7 +111,7 @@ scenarios:
                                            "" // remove this and uncomment below when infra is at v6.8
                                            //" --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
                                            //" -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
-                    */
+                    
                   }
                 }
                 sh "pwd"
