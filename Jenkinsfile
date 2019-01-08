@@ -71,8 +71,8 @@ scenarios:
                     sh "/usr/local/neoload/bin/NeoLoadCmd"+
                       " -project ${env.WORKSPACE}/demo.nlp"+
                       " -launch dynMixedScenarioEUXwAPM"+
-                      " -testResultName Load Test w/ APM (build ${BUILD_NUMBER})"+
-                      " -description Based on demo-mixed.yaml"+
+                      " -testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})'"+
+                      " -description 'Based on demo-mixed.yaml'"+
                       " -NTS http://nts:8080/nts"+
                       " -NTSLogin admin:con+DjJ+R3s9j9d1qKQFGA=="+
                       " -leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:50:1"+
