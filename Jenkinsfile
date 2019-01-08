@@ -133,8 +133,8 @@ scenarios:
           sh "pwd"
           sh "ls ${env.WORKSPACE}"
           sh "ls ${env.WORKSPACE}/neoload-report"
-          archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
-          junit allowEmptyResults: true, testResults: "${env.WORKSPACE}/neoload-report/junit*.xml"
+          archiveArtifacts "neoload-report/**"
+          junit allowEmptyResults: true, testResults: "neoload-report/junit*.xml"
         }
     }
   }
