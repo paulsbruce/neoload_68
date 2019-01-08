@@ -142,8 +142,8 @@ scenarios:
       always {
           sh "sleep 30"
           build 'NLInfrastructure/NLShutdown'
-          archiveArtifacts "neoload-report/**"
-          junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+          //archiveArtifacts "neoload-report/**"
+          //junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
       }
   }
 }
