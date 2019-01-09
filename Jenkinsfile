@@ -151,10 +151,12 @@ scenarios:
   }
   post {
       always {
+        node('master') {
           step([$class: 'DockerComposeBuilder', dockerComposeFile: 'compose-lgs.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
           /*
           build 'NLInfrastructure/NLShutdown'
           */
+        }
       }
   }
 }
