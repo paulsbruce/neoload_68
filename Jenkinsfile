@@ -12,7 +12,7 @@ pipeline {
   }
   stages {
     stage('Set up infrastructure') {
-      agent master
+      agent { label 'master' }
       steps {
         git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git')
         step([$class: 'DockerComposeBuilder', dockerComposeFile: 'compose-lgs.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
