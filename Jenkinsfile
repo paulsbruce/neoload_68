@@ -94,11 +94,11 @@ scenarios:
                         scenario: "dynMixedScenarioEUXwAPM",
                         testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
                         testDescription: "Based on demo-mixed.yaml",
-                        reportXml: "./neoload-report/neoload-report.xml",
-                        reportHtml: "./neoload-report/neoload-report.html",
-                        reportJunit: "./neoload-report/junit-sla-results.xml",
+                        reportXml: "${env.WORKSPACE}/neoload-report/neoload-report.xml",
+                        reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
+                        reportJunit: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml",
                         trendGraphs: ['AvgResponseTime', 'ErrorRate'],
-                        autoArchive: 'true', // by default, the plugin runs archiveArtifacts "neoload-report/**"; junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+                        autoArchive: 'false', // by default, the plugin runs archiveArtifacts "neoload-report/**"; junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
                         sharedLicense: [
                             server: 'NeoLoad Demo License',
                             duration: 1,
@@ -136,8 +136,8 @@ scenarios:
     stage('After Test Exits') {
         steps {
           echo "Test exited without any process errors."
-          ////archiveArtifacts "neoload-report/**"
-          //junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+          archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
+          junit allowEmptyResults: true, testResults: '${env.WORKSPACE}/neoload-report/junit*.xml'
         }
     }
   }
