@@ -1,13 +1,13 @@
 pipeline {
   agent {
-    node {
+    //node {
       //label 'docker-neoload-68'
       docker {
         // host-uri 'unix:///var/run/docker.sock'
         image 'paulsbruce/cpv-controller:6.8.0'
         args '--network="cpv" --hostname="jenkins" -t -v /var/lib/jenkins:/var/lib/jenkins'
       }
-    }
+    //}
   }
   environment {
     WORKSPACE = pwd()
