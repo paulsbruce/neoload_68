@@ -136,7 +136,7 @@ scenarios:
     stage('After Test Exits') {
         steps {
           echo "Test exited without any process errors."
-          //archiveArtifacts "neoload-report/**"
+          ////archiveArtifacts "neoload-report/**"
           //junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
         }
     }
