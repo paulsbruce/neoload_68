@@ -119,6 +119,8 @@ scenarios:
                 }
                 sh "pwd"
                 sh "sleep 300"
+                archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
+                junit allowEmptyResults: true, testResults: '${env.WORKSPACE}/neoload-report/junit*.xml'
             }
         }
         stage('While Test Running')
@@ -137,8 +139,6 @@ scenarios:
     stage('After Test Exits') {
         steps {
           echo "Test exited without any process errors."
-          archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
-          junit allowEmptyResults: true, testResults: '${env.WORKSPACE}/neoload-report/junit*.xml'
         }
     }
   }
