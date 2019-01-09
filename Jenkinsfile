@@ -118,6 +118,7 @@ scenarios:
                   }
                 }
                 sh "pwd"
+                sh "sleep 300"
             }
         }
         stage('While Test Running')
