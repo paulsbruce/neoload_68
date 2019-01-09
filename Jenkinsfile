@@ -69,58 +69,58 @@ scenarios:
             steps {
                 sh "pwd"
                 script {
-                  dir(env.WORKSPACE) {
-                    /*
-                    sh "/usr/local/neoload/bin/NeoLoadCmd"+
-                      " -project ${env.WORKSPACE}/demo.nlp"+
-                      " -launch dynMixedScenarioEUXwAPM"+
-                      " -testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})'"+
-                      " -description 'Based on demo-mixed.yaml'"+
-                      " -NTS http://nts:8080/nts"+
-                      " -NTSLogin admin:con+DjJ+R3s9j9d1qKQFGA=="+
-                      " -leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:50:1"+
-                      " -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/neoload-report.xml"+
-                      " -SLAJUnitResults ${env.WORKSPACE}/neoload-report/junit-sla-results.xml"+
-                      " -noGUI -nlweb -variables "+
-                      "ControllerAPIHostAndPort=10.0.0.10:7400,"+
-                      "TargetHostBaseUrl=http://10.0.0.10,"+
-                      "SeleniumHubHostAndPort=10.0.0.15:4444,"+
-                      "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
-                      " -project ${env.WORKSPACE}/demo-mixed.yaml"+
-                      " -project ${env.WORKSPACE}/eux-and-apm.yaml"
-                    */
+                    dir(env.WORKSPACE) {
+                      /*
+                      sh "/usr/local/neoload/bin/NeoLoadCmd"+
+                        " -project ${env.WORKSPACE}/demo.nlp"+
+                        " -launch dynMixedScenarioEUXwAPM"+
+                        " -testResultName 'Load Test w/ APM (build ${BUILD_NUMBER})'"+
+                        " -description 'Based on demo-mixed.yaml'"+
+                        " -NTS http://nts:8080/nts"+
+                        " -NTSLogin admin:con+DjJ+R3s9j9d1qKQFGA=="+
+                        " -leaseLicense MCwCFFBs4Jbl0o4HiLd/f7CPnzQ/44TZAhR+6PlJPK7XdmYtka+AHWxn0j2QLg==:50:1"+
+                        " -report ${env.WORKSPACE}/neoload-report/neoload-report.html,${env.WORKSPACE}/neoload-report/neoload-report.xml"+
+                        " -SLAJUnitResults ${env.WORKSPACE}/neoload-report/junit-sla-results.xml"+
+                        " -noGUI -nlweb -variables "+
+                        "ControllerAPIHostAndPort=10.0.0.10:7400,"+
+                        "TargetHostBaseUrl=http://10.0.0.10,"+
+                        "SeleniumHubHostAndPort=10.0.0.15:4444,"+
+                        "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
+                        " -project ${env.WORKSPACE}/demo-mixed.yaml"+
+                        " -project ${env.WORKSPACE}/eux-and-apm.yaml"
+                      */
 
-                    neoloadRun project: "${env.WORKSPACE}/demo.nlp",
-                        scenario: "dynMixedScenarioEUXwAPM",
-                        testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
-                        testDescription: "Based on demo-mixed.yaml",
-                        reportXml: "${env.WORKSPACE}/neoload-report/neoload-report.xml",
-                        reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
-                        reportJunit: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml",
-                        trendGraphs: ['AvgResponseTime', 'ErrorRate'],
-                        autoArchive: 'false', // by default, the plugin runs archiveArtifacts "neoload-report/**"; junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
-                        sharedLicense: [
-                            server: 'NeoLoad Demo License',
-                            duration: 1,
-                            vuCount: env.MAX_VUS_CHECKOUT
-                        ],
-                        commandLineOption: "-nlweb -variables "+ // variables below must be executed all as one line
-                                           "ControllerAPIHostAndPort=10.0.0.10:7400,"+
-                                           "TargetHostBaseUrl=http://10.0.0.10,"+
-                                           "SeleniumHubHostAndPort=10.0.0.15:4444,"+
-                                           "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
-                                           " -project ${env.WORKSPACE}/demo-mixed.yaml"+ // static file from repo
-                                           " -project ${env.WORKSPACE}/eux-and-apm.yaml"+ // dynamic file from above
-                                           "" // TODO: remove this and uncomment below when infra is at v6.8
-                                           //" --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
-                                           //" -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
+                      neoloadRun project: "${env.WORKSPACE}/demo.nlp",
+                          scenario: "dynMixedScenarioEUXwAPM",
+                          testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
+                          testDescription: "Based on demo-mixed.yaml",
+                          reportXml: "${env.WORKSPACE}/neoload-report/neoload-report.xml",
+                          reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
+                          reportJunit: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml",
+                          trendGraphs: ['AvgResponseTime', 'ErrorRate'],
+                          autoArchive: 'false', // by default, the plugin runs archiveArtifacts "neoload-report/**"; junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+                          sharedLicense: [
+                              server: 'NeoLoad Demo License',
+                              duration: 1,
+                              vuCount: env.MAX_VUS_CHECKOUT
+                          ],
+                          commandLineOption: "-nlweb -variables "+ // variables below must be executed all as one line
+                                             "ControllerAPIHostAndPort=10.0.0.10:7400,"+
+                                             "TargetHostBaseUrl=http://10.0.0.10,"+
+                                             "SeleniumHubHostAndPort=10.0.0.15:4444,"+
+                                             "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
+                                             " -project ${env.WORKSPACE}/demo-mixed.yaml"+ // static file from repo
+                                             " -project ${env.WORKSPACE}/eux-and-apm.yaml"+ // dynamic file from above
+                                             "" // TODO: remove this and uncomment below when infra is at v6.8
+                                             //" --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
+                                             //" -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
 
-                  }
+                      sh "pwd"
+                      sh "sleep 300"
+                      archiveArtifacts "neoload-report/**"
+                      junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+                    }
                 }
-                sh "pwd"
-                sh "sleep 300"
-                archiveArtifacts "${env.WORKSPACE}/neoload-report/**"
-                junit allowEmptyResults: true, testResults: '${env.WORKSPACE}/neoload-report/junit*.xml'
             }
         }
         stage('While Test Running')
