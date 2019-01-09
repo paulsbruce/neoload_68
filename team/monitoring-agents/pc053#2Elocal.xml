@@ -1,13 +1,10 @@
 <me-host loadWeight="1" sapSupport="false" standalone="false"
-    supportWANEmulation="false" uid="fe80:0:0:0:68a4:64a3:e916:fce8%8" version="6.6.0;build=20180904-56">
+    supportWANEmulation="false" uid="pc053.local" version="6.7.0;build=20181030-15">
     <!--****** LG NETWORK INTERFACES ******-->
     <lg-networkiface
         description="Qualcomm QCA61x4A 802.11ac Wireless Adapter"
         enabled="false" isLoopBack="false" name="wlan0">
         <!--****** LG ADDRESSES ******-->
-        <lg-address enabled="false" hostname="pc053.intranet.neotys.com">
-            <ip value="10.2.0.144"/>
-        </lg-address>
         <lg-address enabled="false" hostname="fe80:0:0:0:68a4:64a3:e916:fce8%wlan0">
             <ip value="fe80:0:0:0:68a4:64a3:e916:fce8%wlan0"/>
         </lg-address>
@@ -37,6 +34,17 @@
         <!--****** LG ADDRESSES ******-->
         <lg-address enabled="false" hostname="fe80:0:0:0:b48b:ac37:13af:5b51%eth4">
             <ip value="fe80:0:0:0:b48b:ac37:13af:5b51%eth4"/>
+        </lg-address>
+        <!--****** END LG ADDRESSES ******-->
+    </lg-networkiface>
+    <lg-networkiface description="Realtek USB GbE Family Controller"
+        enabled="false" isLoopBack="false" name="eth3">
+        <!--****** LG ADDRESSES ******-->
+        <lg-address enabled="false" hostname="pc053.intranet.neotys.com">
+            <ip value="10.2.0.151"/>
+        </lg-address>
+        <lg-address enabled="false" hostname="fe80:0:0:0:dab:66a9:306b:b68d%eth3">
+            <ip value="fe80:0:0:0:dab:66a9:306b:b68d%eth3"/>
         </lg-address>
         <!--****** END LG ADDRESSES ******-->
     </lg-networkiface>
