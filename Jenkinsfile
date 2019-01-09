@@ -12,13 +12,20 @@ pipeline {
   }
   stages {
     stage('Set up infrastructure') {
+      agent master
+      steps {
+        git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git')
+        step([$class: 'DockerComposeBuilder', dockerComposeFile: 'compose-lgs.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
+      }
+      /*
         steps {
             build 'NLInfrastructure/NLDeploy'
         }
+      */
     }
     stage('Pull latest version of Project from Git') {
       steps {
-          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git', credentialsId: 'github-paulsbruce')
+          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git')//, credentialsId: 'github-paulsbruce')
       }
     }
     stage('Define Dynamic Scenario') {
@@ -112,11 +119,11 @@ scenarios:
                                              " -project ${env.WORKSPACE}/demo-mixed.yaml"+ // static file from repo
                                              " -project ${env.WORKSPACE}/eux-and-apm.yaml"+ // dynamic file from above
                                              "" // TODO: remove this and uncomment below when infra is at v6.8
-                                             //" --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
-                                             //" -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
+                                             " --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
+                                             " -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
 
                       sh "pwd"
-                      sh "sleep 10"
+                      sh "sleep 30"
                       archiveArtifacts "neoload-report/**"
                       junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
                     }
@@ -144,7 +151,10 @@ scenarios:
   }
   post {
       always {
+          step([$class: 'DockerComposeBuilder', dockerComposeFile: 'compose-lgs.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
+          /*
           build 'NLInfrastructure/NLShutdown'
+          */
       }
   }
 }
