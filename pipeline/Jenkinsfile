@@ -145,7 +145,7 @@ scenarios:
                                              " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
 
                     } catch(Exception e) {
-                      sh "sleep 60" // wait for reports to sync from node to master (Jenkins workaround)
+                      sh "sleep 1m" // wait for reports to sync from node to master (Jenkins workaround)
                       // archive the dynamic stuff we did
                       archiveArtifacts "${env.WORKSPACE}/pipeline/lgs.txt"
                       archiveArtifacts "${env.WORKSPACE}/yaml/eux-and-apm.yaml"
