@@ -6,8 +6,8 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    TEST_DURATION = '2m'
-    EUX_THREADS = 10
+    TEST_DURATION = '10m'
+    EUX_THREADS = 1
     MAX_VUS_CHECKOUT = 50
   }
   stages {
