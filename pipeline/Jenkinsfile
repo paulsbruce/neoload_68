@@ -1,13 +1,13 @@
 pipeline {
   agent {
     node {
-      label 'docker-neoload-68'
+      label 'docker-neoload'
     }
   }
   environment {
     WORKSPACE = pwd()
-    API_TEST_DURATION = '3m'
-    E2E_TEST_DURATION = '5m'
+    API_TEST_DURATION = '2m'
+    E2E_TEST_DURATION = '10m'
     EUX_THREADS = 2
     MAX_VUS_CHECKOUT = 50
   }
@@ -117,6 +117,8 @@ scenarios:
         stage('Full E2E Load Test') {
             steps {
                 script { // plugin for scripted pipeline, fit to declarative syntax
+                  try { // catch timeout and other
+                    timeout(time: 1, unit:'MINUTES') {
                     try { // archive results regardless of overall success/fail (could be due to SLAs)
 
                       neoloadRun project: "${env.WORKSPACE}/demo.nlp",
@@ -155,6 +157,11 @@ scenarios:
                       // pass along the goodness
                       throw e
                     }
+                    } // timeout
+                  } catch(Exception e) {
+                    echo e.toString()
+                    throw e
+                  }
                 }
             }
         }
