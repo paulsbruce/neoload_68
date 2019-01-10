@@ -172,11 +172,13 @@ scenarios:
             script { // example of using controller API to check/stop test
               try { // catch timeout (i.e. if we explicitly want to ensure pipeline duration max)
                 def beyond_timeout = env.E2E_TEST_DURATION - 5; // fake this to proof handling
-                timeout(time: beyond_timeout, unit:'MINUTES') {
+                echo "beyond_timeout: "+beyond_timeout
+                timeout(time: 5, unit:'MINUTES') {
                   sh "sleep 1m"
                   sh "while [[ \$(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus) =~ \"TEST_RUNNING\" ]]; do echo -n '.'; sleep 10; done"
                 } // timeout
               } catch(Exception e) {
+                echo e.toString()
                 echo 'Timeout!!!'
                 sh "curl -d '{\"d\":{\"ForceStop\":\"true\"}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/StopTest"
                 throw e
