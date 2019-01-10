@@ -6,11 +6,11 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    E2E_TEST_DURATION = '10m'
+    E2E_TEST_DURATION_MINS = 10
     EUX_THREADS = 2
     MAX_VUS_CHECKOUT = 50
     ENABLE_API_SANITY = false
-    API_TEST_DURATION = '2m'
+    API_TEST_DURATION_MINS = 2
   }
   stages {
     stage('Set up infrastructure') {
@@ -41,7 +41,7 @@ scenarios:
   populations:
   - name: API_just_ushahidi
     rampup_load:
-      duration: ${env.API_TEST_DURATION}
+      duration: ${env.API_TEST_DURATION_MINS}m
       min_users: 1
       max_users: 5
       increment_users: 1
@@ -58,25 +58,25 @@ scenarios:
   populations:
   - name: API_just_ushahidi
     rampup_load:
-      duration: ${env.E2E_TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION_MINS}m
       min_users: 1
       max_users: 5
       increment_users: 1
       increment_every: 10s
   - name: popPost
     rampup_load:
-      duration: ${env.E2E_TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION_MINS}m
       min_users: 1
       max_users: 15
       increment_users: 1
       increment_every: 15s
   - name: dynatracePop
     constant_load:
-      duration: ${env.E2E_TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION_MINS}m
       users: 1
   - name: popSelenium
     rampup_load:
-      duration: ${env.E2E_TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION_MINS}m
       min_users: 1
       max_users: ${env.EUX_THREADS}
       increment_users: 1
@@ -171,11 +171,11 @@ scenarios:
 
             script { // example of using controller API to check/stop test
               try { // catch timeout (i.e. if we explicitly want to ensure pipeline duration max)
-                def beyond_timeout = env.E2E_TEST_DURATION - 5; // fake this to proof handling
+                def beyond_timeout = env.E2E_TEST_DURATION_MINS.toInteger() - 5; // fake this to proof handling
                 echo "beyond_timeout: "+beyond_timeout
-                timeout(time: 5, unit:'MINUTES') {
-                  sh "sleep 1m"
-                  sh "while [[ \$(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus) =~ \"TEST_RUNNING\" ]]; do echo -n '.'; sleep 10; done"
+                timeout(time: beyond_timeout, unit:'MINUTES') {
+                  sh "sleep 20s"
+                  sh "RESPONSE=\"...TEST_RUNNING...\"; while [[ \$RESPONSE =~ \"TEST_RUNNING\" ]]; do echo -n '.'; sleep 10s; RESPONSE=\$(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus); done"
                 } // timeout
               } catch(Exception e) {
                 echo e.toString()
