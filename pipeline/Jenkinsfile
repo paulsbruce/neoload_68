@@ -17,13 +17,13 @@ pipeline {
     stage('Set up infrastructure') {
       agent { label 'master' }
       steps {
-        git(branch: env.GIT_BRANCH, url: env.REPO_URL)
+        git(branch: "${env.GIT_BRANCH}", url: "${env.REPO_URL}")
         step([$class: 'DockerComposeBuilder', dockerComposeFile: 'pipeline/compose-lgs.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
       }
     }
     stage('Pull latest version of Project from Git') {
       steps {
-          git(branch: env.GIT_BRANCH, url: env.REPO_URL)//, credentialsId: 'github-paulsbruce')
+          git(branch: "${env.GIT_BRANCH}", url: "${env.REPO_URL}")
       }
     }
     stage('Define Dynamic Scenario') {
