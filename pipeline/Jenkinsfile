@@ -175,7 +175,7 @@ scenarios:
                 echo "beyond_timeout: "+beyond_timeout
                 timeout(time: beyond_timeout, unit:'MINUTES') {
                   sh "sleep 20s"
-                  sh "RESPONSE=\"...TEST_RUNNING...\"; while [[ \$RESPONSE =~ \"TEST_RUNNING\" ]]; do echo -n '.'; sleep 10s; RESPONSE=\$(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus); done"
+                  sh "RESPONSE=\"...TEST_RUNNING...\"; while [ \$RESPONSE =~ \"TEST_RUNNING\" ]; do echo -n '.'; sleep 10s; RESPONSE=\$(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus); done"
                 } // timeout
               } catch(Exception e) {
                 echo 'Timeout!!!'
@@ -184,7 +184,7 @@ scenarios:
                   sh "curl -d '{\"d\":{\"ForceStop\":true}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/StopTest"
                 } catch(Exception e1) {
                   echo 'Timeout critical fail!!!'
-                  echo e1.toString()                  
+                  echo e1.toString()
                 }
                 throw e
               }
