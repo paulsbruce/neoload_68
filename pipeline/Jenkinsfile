@@ -7,7 +7,7 @@ pipeline {
   environment {
     WORKSPACE = pwd()
     TEST_DURATION = '2m'
-    EUX_THREADS = 2
+    EUX_THREADS = 10
     MAX_VUS_CHECKOUT = 50
   }
   stages {
@@ -17,11 +17,6 @@ pipeline {
         git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git')
         step([$class: 'DockerComposeBuilder', dockerComposeFile: 'pipeline/compose-lgs.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
       }
-      /*
-        steps {
-            build 'NLInfrastructure/NLDeploy'
-        }
-      */
     }
     stage('Pull latest version of Project from Git') {
       steps {
@@ -33,7 +28,7 @@ pipeline {
         // create dynamic infrastructure pointers: docker-lgN is presumed already spun up by NLDeploy job
         writeFile file: "${env.WORKSPACE}/pipeline/lgs.txt", text: """
         docker-lg1@Docker\
-        docker-lg2@Docker
+        docker-lg2@Docker\
         """.trim()
 
         // create a dynamic sanity scenario
@@ -86,46 +81,42 @@ scenarios:
         stage('NeoLoad Test') {
             steps {
                 script { // plugin for scripted pipeline, fit to declarative syntax
-                    //dir(env.WORKSPACE) {
-                      try { // archive results regardless of overall success/fail (could be due to SLAs)
-                        neoloadRun project: "${env.WORKSPACE}/demo.nlp",
-                            scenario: "dynMixedScenarioEUXwAPM",
-                            testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
-                            testDescription: "Based on demo-mixed.yaml",
-                            reportXml: "${env.WORKSPACE}/neoload-report/neoload-report.xml",
-                            reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
-                            reportJunit: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml",
-                            trendGraphs: ['AvgResponseTime', 'ErrorRate'],
-                            autoArchive: 'false', // by default, the plugin runs archiveArtifacts "neoload-report/**"; junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
-                            sharedLicense: [
-                                server: 'NeoLoad Demo License',
-                                duration: 1,
-                                vuCount: env.MAX_VUS_CHECKOUT
-                            ],
-                            commandLineOption: "-nlweb -variables "+ // variables below must be executed all as one line
-                                               "ControllerAPIHostAndPort=10.0.0.10:7400,"+
-                                               "TargetHostBaseUrl=http://10.0.0.10,"+
-                                               "SeleniumHubHostAndPort=10.0.0.15:4444,"+
-                                               "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
-                                               " -project ${env.WORKSPACE}/yaml/demo-mixed.yaml"+ // static file from repo
-                                               " -project ${env.WORKSPACE}/yaml/eux-and-apm.yaml"+ // dynamic file from above
-                                               //"" // TODO: remove this and uncomment below when infra is at v6.8
-                                               " --override-lg popPost=${env.WORKSPACE}/pipeline/lgs.txt"+ // dynamic from above
-                                               " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
-                      } catch(Exception e) {
-                        sh "sleep 60"
-                        // archive the dynamic stuff we did
-                        sh "pwd"
-                        sh "readlink -f lgs.txt"
-                        archiveArtifacts "${env.WORKSPACE}/pipeline/lgs.txt"
-                        archiveArtifacts "${env.WORKSPACE}/yaml/eux-and-apm.yaml"
-                        // archive the usual suspects
-                        archiveArtifacts "neoload-report/**"
-                        junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
-                        // pass along the goodness
-                        throw e
-                      }
-                    //}
+                    try { // archive results regardless of overall success/fail (could be due to SLAs)
+                      neoloadRun project: "${env.WORKSPACE}/demo.nlp",
+                          scenario: "dynMixedScenarioEUXwAPM",
+                          testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
+                          testDescription: "Based on demo-mixed.yaml",
+                          reportXml: "${env.WORKSPACE}/neoload-report/neoload-report.xml",
+                          reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
+                          reportJunit: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml",
+                          trendGraphs: ['AvgResponseTime', 'ErrorRate'],
+                          autoArchive: 'false', // by default, the plugin runs archiveArtifacts "neoload-report/**"; junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+                          sharedLicense: [
+                              server: 'NeoLoad Demo License',
+                              duration: 1,
+                              vuCount: env.MAX_VUS_CHECKOUT
+                          ],
+                          commandLineOption: "-nlweb -variables "+ // variables below must be executed all as one line
+                                             "ControllerAPIHostAndPort=10.0.0.10:7400,"+
+                                             "TargetHostBaseUrl=http://10.0.0.10,"+
+                                             "SeleniumHubHostAndPort=10.0.0.15:4444,"+
+                                             "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
+                                             " -project ${env.WORKSPACE}/yaml/demo-mixed.yaml"+ // static file from repo
+                                             " -project ${env.WORKSPACE}/yaml/eux-and-apm.yaml"+ // dynamic file from above
+                                             //"" // TODO: remove this and uncomment below when infra is at v6.8
+                                             " --override-lg popPost=${env.WORKSPACE}/pipeline/lgs.txt"+ // dynamic from above
+                                             " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
+                    } catch(Exception e) {
+                      sh "sleep 60"
+                      // archive the dynamic stuff we did
+                      archiveArtifacts "${env.WORKSPACE}/pipeline/lgs.txt"
+                      archiveArtifacts "${env.WORKSPACE}/yaml/eux-and-apm.yaml"
+                      // archive the usual suspects
+                      archiveArtifacts "neoload-report/**"
+                      junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+                      // pass along the goodness
+                      throw e
+                    }
                 }
             }
         }
@@ -141,9 +132,6 @@ scenarios:
       always {
         node('master') {
           step([$class: 'DockerComposeBuilder', dockerComposeFile: 'pipeline/compose-lgs.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
-          /*
-          build 'NLInfrastructure/NLShutdown'
-          */
         }
       }
   }
