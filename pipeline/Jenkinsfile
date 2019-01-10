@@ -6,7 +6,7 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    TEST_DURATION = '10m'
+    TEST_DURATION = '2m'
     EUX_THREADS = 10
     MAX_VUS_CHECKOUT = 50
   }
@@ -50,10 +50,10 @@ scenarios:
       max_users: 15
       increment_users: 1
       increment_every: 15s
-#  - name: dynatracePop
-#    constant_load:
-#      duration: ${env.TEST_DURATION}
-#      users: 1
+  - name: dynatracePop
+    constant_load:
+      duration: ${env.TEST_DURATION}
+      users: 1
   - name: popSelenium
     rampup_load:
       duration: ${env.TEST_DURATION}
