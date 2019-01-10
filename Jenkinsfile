@@ -97,6 +97,7 @@ scenarios:
                         " -project ${env.WORKSPACE}/eux-and-apm.yaml"
                       */
 
+                      try {
                       neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                           scenario: "dynMixedScenarioEUXwAPM",
                           testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
@@ -121,11 +122,13 @@ scenarios:
                                              "" // TODO: remove this and uncomment below when infra is at v6.8
                                              " --override-lg popPost=${env.WORKSPACE}/lgs.txt"+ // dynamic from above
                                              " -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
-
+                      } catch(Exception e) {
                       sh "pwd"
                       sh "sleep 60"
                       archiveArtifacts "neoload-report/**"
                       junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
+                      throw e
+                      }
                     }
                 }
             }
