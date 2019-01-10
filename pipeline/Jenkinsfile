@@ -44,7 +44,7 @@ scenarios:
       increment_users: 1
       increment_every: 10s
           """
-        }
+
 
         // create a dynamic full scenario
         writeFile file: "${env.WORKSPACE}/yaml/eux-and-apm.yaml", text: """
@@ -77,7 +77,7 @@ scenarios:
       increment_users: 1
       increment_every: 20s
           """
-        }
+      }
     }
 
     stage('API Sanity Check') {
