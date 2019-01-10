@@ -6,8 +6,9 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    TEST_DURATION = '10m'
-    EUX_THREADS = 1
+    API_TEST_DURATION = '3m'
+    E2E_TEST_DURATION = '5m'
+    EUX_THREADS = 2
     MAX_VUS_CHECKOUT = 50
   }
   stages {
@@ -31,38 +32,73 @@ pipeline {
         docker-lg2@Docker\
         """.trim()
 
-        // create a dynamic sanity scenario
+        writeFile file: "${env.WORKSPACE}/yaml/api-only.yaml", text: """
+scenarios:
+- name: dynAPISanityCheck
+  populations:
+  - name: API_just_ushahidi
+    rampup_load:
+      duration: ${env.API_TEST_DURATION}
+      min_users: 1
+      max_users: 5
+      increment_users: 1
+      increment_every: 10s
+          """
+        }
+
+        // create a dynamic full scenario
         writeFile file: "${env.WORKSPACE}/yaml/eux-and-apm.yaml", text: """
 scenarios:
 - name: dynMixedScenarioEUXwAPM
   populations:
   - name: API_just_ushahidi
     rampup_load:
-      duration: ${env.TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION}
       min_users: 1
       max_users: 5
       increment_users: 1
       increment_every: 10s
   - name: popPost
     rampup_load:
-      duration: ${env.TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION}
       min_users: 1
       max_users: 15
       increment_users: 1
       increment_every: 15s
   - name: dynatracePop
     constant_load:
-      duration: ${env.TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION}
       users: 1
   - name: popSelenium
     rampup_load:
-      duration: ${env.TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION}
       min_users: 1
       max_users: ${env.EUX_THREADS}
       increment_users: 1
       increment_every: 20s
-      """
-      }
+          """
+        }
+    }
+
+    stage('API Sanity Check') {
+        steps {
+            script {
+                neoloadRun project: "${env.WORKSPACE}/demo.nlp",
+                    scenario: "dynAPISanityCheck",
+                    testName: "API Sanity Check (build ${BUILD_NUMBER})",
+                    testDescription: "A short, small API load test",
+                    autoArchive: 'false', // will be streaming to NeoLoad Web, no need for classic report outputs
+                    sharedLicense: [
+                        server: 'NeoLoad Demo License',
+                        duration: 1,
+                        vuCount: env.MAX_VUS_CHECKOUT
+                    ],
+                    commandLineOption: "-nlweb"+
+                                       " -project ${env.WORKSPACE}/yaml/demo-mixed.yaml"+ // static file from repo
+                                       " -project ${env.WORKSPACE}/yaml/api-only.yaml"+ // dynamic file from above
+                                       " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
+            }
+        }
     }
 
     stage('Main pipeline') {
@@ -78,10 +114,11 @@ scenarios:
               """
           }
         }
-        stage('NeoLoad Test') {
+        stage('Full E2E Load Test') {
             steps {
                 script { // plugin for scripted pipeline, fit to declarative syntax
                     try { // archive results regardless of overall success/fail (could be due to SLAs)
+
                       neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                           scenario: "dynMixedScenarioEUXwAPM",
                           testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
@@ -106,8 +143,9 @@ scenarios:
                                              //"" // TODO: remove this and uncomment below when infra is at v6.8
                                              " --override-lg popPost=${env.WORKSPACE}/pipeline/lgs.txt"+ // dynamic from above
                                              " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
+
                     } catch(Exception e) {
-                      sh "sleep 60"
+                      sh "sleep 60" // wait for reports to sync from node to master (Jenkins workaround)
                       // archive the dynamic stuff we did
                       archiveArtifacts "${env.WORKSPACE}/pipeline/lgs.txt"
                       archiveArtifacts "${env.WORKSPACE}/yaml/eux-and-apm.yaml"
