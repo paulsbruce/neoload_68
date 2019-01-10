@@ -180,7 +180,7 @@ scenarios:
               } catch(Exception e) {
                 echo e.toString()
                 echo 'Timeout!!!'
-                sh "curl -d '{\"d\":{\"ForceStop\":\"true\"}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/StopTest"
+                sh "curl -d '{\"d\":{\"ForceStop\":true}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/StopTest"
                 throw e
               }
             }
