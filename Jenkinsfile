@@ -117,7 +117,7 @@ scenarios:
                         sh "sleep 60"
                         // archive the dynamic stuff we did
                         sh "pwd"
-                        sh "cat lgs.txt"
+                        sh "readlink -f lgs.txt"
                         archiveArtifacts "${env.WORKSPACE}/lgs.txt"
                         archiveArtifacts "${env.WORKSPACE}/eux-and-apm.yaml"
                         // archive the usual suspects
