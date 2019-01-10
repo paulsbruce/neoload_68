@@ -34,7 +34,7 @@ pipeline {
         """.trim()
 
         script {
-          if(env.ENABLE_API_SANITY) {
+          if(env.ENABLE_API_SANITY.toBoolean()) {
             writeFile file: "${env.WORKSPACE}/yaml/api-only.yaml", text: """
 scenarios:
 - name: dynAPISanityCheck
@@ -88,7 +88,8 @@ scenarios:
     stage('API Sanity Check') {
         steps {
             script {
-              if(env.ENABLE_API_SANITY) {
+              if(env.ENABLE_API_SANITY.toBoolean()) {
+
                 neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                     scenario: "dynAPISanityCheck",
                     testName: "API Sanity Check (build ${BUILD_NUMBER})",
@@ -103,6 +104,7 @@ scenarios:
                                        " -project ${env.WORKSPACE}/yaml/demo-mixed.yaml"+ // static file from repo
                                        " -project ${env.WORKSPACE}/yaml/api-only.yaml"+ // dynamic file from above
                                        " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
+
               } else {
                 echo 'API sanity check skipped by configuration'
               }
@@ -166,15 +168,19 @@ scenarios:
               echo "https://vwv51099.live.dynatrace.com/#dashboard;id=b832b009-8a4d-45fa-8488-33214bf07443;gtf=l_30_MINUTES"
               echo ---
               """
-              /*
-              try { // catch timeout and other
-                  timeout(time: 1, unit:'MINUTES') {
-                  } // timeout
+
+            script { // example of using controller API to check/stop test
+              try { // catch timeout (i.e. if we explicitly want to ensure pipeline duration max)
+                def beyond_timeout = env.E2E_TEST_DURATION - 5; // fake this to proof handling
+                timeout(time: safe_timeout, unit:'MINUTES') {
+                  sh "while [[ $(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus) =~ \"TEST_RUNNING\" ]]; do echo -n '.'; sleep 10; done"
+                } // timeout
               } catch(Exception e) {
-                echo e.toString()
+                echo 'Timeout!!!'
+                sh "curl -d '{\"d\":{\"ForceStop\":\"true\"}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/StopTest"
                 throw e
               }
-              */
+            }
           }
         }
       }
