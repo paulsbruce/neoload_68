@@ -123,7 +123,7 @@ scenarios:
                                              " -L API_just_ushahidi=${env.WORKSPACE}/lgs.txt" // dynamic from above
 
                       sh "pwd"
-                      sh "sleep 30"
+                      sh "sleep 60"
                       archiveArtifacts "neoload-report/**"
                       junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
                     }
