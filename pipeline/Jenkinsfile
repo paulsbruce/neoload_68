@@ -6,10 +6,11 @@ pipeline {
   }
   environment {
     WORKSPACE = pwd()
-    API_TEST_DURATION = '2m'
     E2E_TEST_DURATION = '10m'
     EUX_THREADS = 2
     MAX_VUS_CHECKOUT = 50
+    ENABLE_API_SANITY = false
+    API_TEST_DURATION = '2m'
   }
   stages {
     stage('Set up infrastructure') {
@@ -32,7 +33,9 @@ pipeline {
         docker-lg2@Docker\
         """.trim()
 
-        writeFile file: "${env.WORKSPACE}/yaml/api-only.yaml", text: """
+        script {
+          if(env.ENABLE_API_SANITY) {
+            writeFile file: "${env.WORKSPACE}/yaml/api-only.yaml", text: """
 scenarios:
 - name: dynAPISanityCheck
   populations:
@@ -44,6 +47,8 @@ scenarios:
       increment_users: 1
       increment_every: 10s
           """
+          }
+        }
 
 
         // create a dynamic full scenario
@@ -83,6 +88,7 @@ scenarios:
     stage('API Sanity Check') {
         steps {
             script {
+              if(env.ENABLE_API_SANITY) {
                 neoloadRun project: "${env.WORKSPACE}/demo.nlp",
                     scenario: "dynAPISanityCheck",
                     testName: "API Sanity Check (build ${BUILD_NUMBER})",
@@ -97,28 +103,18 @@ scenarios:
                                        " -project ${env.WORKSPACE}/yaml/demo-mixed.yaml"+ // static file from repo
                                        " -project ${env.WORKSPACE}/yaml/api-only.yaml"+ // dynamic file from above
                                        " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
+              } else {
+                echo 'API sanity check skipped by configuration'
+              }
             }
         }
     }
 
     stage('Main pipeline') {
       parallel {
-        stage('While Test Running')
-        {
-          steps { // make it easy to get to APM view of things (delay ~3min)
-            sh """
-              echo
-              echo --- Dynatrace Dashboard ---
-              echo "https://vwv51099.live.dynatrace.com/#dashboard;id=b832b009-8a4d-45fa-8488-33214bf07443;gtf=l_30_MINUTES"
-              echo ---
-              """
-          }
-        }
         stage('Full E2E Load Test') {
             steps {
                 script { // plugin for scripted pipeline, fit to declarative syntax
-                  try { // catch timeout and other
-                    timeout(time: 1, unit:'MINUTES') {
                     try { // archive results regardless of overall success/fail (could be due to SLAs)
 
                       neoloadRun project: "${env.WORKSPACE}/demo.nlp",
@@ -157,13 +153,29 @@ scenarios:
                       // pass along the goodness
                       throw e
                     }
-                    } // timeout
-                  } catch(Exception e) {
-                    echo e.toString()
-                    throw e
-                  }
                 }
             }
+        }
+        stage('While Test Running')
+        {
+          steps {
+              // make it easy to get to APM view of things (delay ~3min)
+              sh """
+              echo
+              echo --- Dynatrace Dashboard ---
+              echo "https://vwv51099.live.dynatrace.com/#dashboard;id=b832b009-8a4d-45fa-8488-33214bf07443;gtf=l_30_MINUTES"
+              echo ---
+              """
+              /*
+              try { // catch timeout and other
+                  timeout(time: 1, unit:'MINUTES') {
+                  } // timeout
+              } catch(Exception e) {
+                echo e.toString()
+                throw e
+              }
+              */
+          }
         }
       }
     }
