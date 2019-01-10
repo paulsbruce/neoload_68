@@ -173,7 +173,7 @@ scenarios:
               try { // catch timeout (i.e. if we explicitly want to ensure pipeline duration max)
                 def beyond_timeout = env.E2E_TEST_DURATION - 5; // fake this to proof handling
                 timeout(time: safe_timeout, unit:'MINUTES') {
-                  sh "while [[ $(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus) =~ \"TEST_RUNNING\" ]]; do echo -n '.'; sleep 10; done"
+                  sh "while [[ \$(curl -d '{\"d\":{}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus) =~ \"TEST_RUNNING\" ]]; do echo -n '.'; sleep 10; done"
                 } // timeout
               } catch(Exception e) {
                 echo 'Timeout!!!'
