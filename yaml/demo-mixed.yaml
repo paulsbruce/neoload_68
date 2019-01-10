@@ -1,0 +1,108 @@
+name: NeoLoadAsCode
+
+variables:
+- constant:
+    name: app_server_hostname
+    value: ushahidi
+- file:
+    name: cities
+    column_names: ["City"]
+    is_first_line_column_names: false
+    start_from_line: 1
+    delimiter: ","
+    path: custom-resources/cities.csv
+    change_policy: each_iteration
+    scope: global
+    order: any
+    out_of_value: cycle
+
+servers:
+- name: app_server
+  host: ${app_server_hostname}
+  scheme: http
+- name: external_maps
+  host: nominatim.openstreetmap.org
+  scheme: https
+  port: 443
+
+user_paths:
+- name: geo_search
+  actions:
+    steps:
+    - delay: 1s
+    - request:
+        url: /search?format=json&q=${cities.City}
+        server: external_maps
+        method: GET
+
+- name: api_savedsearch
+  init:
+    steps:
+    - transaction:
+        name: Obtain OAuth Token
+        description: Grab the OAuth client secret from the dynamic JS in our app
+        steps:
+        - request:
+            url: /js/bundle.js
+            server: app_server
+            method: GET
+            extractors:
+            - name: oauth_client_secret
+              regexp: OAUTH_CLIENT_SECRET:"(.*?)"
+        - request:
+            url: /platform/oauth/token
+            server: app_server
+            method: POST
+            headers:
+            - accept: application/json
+            - Content-Type: application/json
+            body: '{"grant_type":"client_credentials","client_id":"ushahidiui","client_secret":"${oauth_client_secret}","scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"}'
+            extractors:
+            - name: oauth_bearer
+              jsonpath: $.access_token
+              regexp: (.*)
+              match_number: 1
+              extract_once: true
+  actions:
+    steps:
+    - delay: 1s
+    - request:
+        url: /js/bundle.js
+        server: app_server
+        method: GET
+        headers:
+        - Authorization: Bearer ${oauth_bearer}
+
+populations:
+- name: API
+  user_paths:
+  - name: geo_search
+    distribution: 50%
+  - name: api_savedsearch
+    distribution: 50%
+- name: API_just_ushahidi
+  user_paths:
+  - name: api_savedsearch
+    distribution: 100%
+
+scenarios:
+- name: MixedScenarioWithMonitoring
+  populations:
+  - name: API_just_ushahidi
+    rampup_load:
+      duration: 5m
+      min_users: 1
+      max_users: 5
+      increment_users: 1
+      increment_every: 10s
+  - name: popPost
+    rampup_load:
+      duration: 5m
+      min_users: 1
+      max_users: 15
+      increment_users: 1
+      increment_every: 15s
+  - name: dynatracePop
+    constant_load:
+      duration: 5m
+      users: 1
