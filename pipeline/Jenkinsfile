@@ -37,7 +37,7 @@ pipeline {
         """.trim()
 
         // create a dynamic sanity scenario
-        writeFile file: "${env.WORKSPACE}/pipeline/eux-and-apm.yaml", text: """
+        writeFile file: "${env.WORKSPACE}/yaml/eux-and-apm.yaml", text: """
 scenarios:
 - name: dynMixedScenarioEUXwAPM
   populations:
@@ -107,8 +107,8 @@ scenarios:
                                                "TargetHostBaseUrl=http://10.0.0.10,"+
                                                "SeleniumHubHostAndPort=10.0.0.15:4444,"+
                                                "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
-                                               " -project ${env.WORKSPACE}/pipeline/demo-mixed.yaml"+ // static file from repo
-                                               " -project ${env.WORKSPACE}/pipeline/eux-and-apm.yaml"+ // dynamic file from above
+                                               " -project ${env.WORKSPACE}/yaml/demo-mixed.yaml"+ // static file from repo
+                                               " -project ${env.WORKSPACE}/yaml/eux-and-apm.yaml"+ // dynamic file from above
                                                //"" // TODO: remove this and uncomment below when infra is at v6.8
                                                " --override-lg popPost=${env.WORKSPACE}/pipeline/lgs.txt"+ // dynamic from above
                                                " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
@@ -117,8 +117,8 @@ scenarios:
                         // archive the dynamic stuff we did
                         sh "pwd"
                         sh "readlink -f lgs.txt"
-                        archiveArtifacts "${env.WORKSPACE}/lgs.txt"
-                        archiveArtifacts "${env.WORKSPACE}/eux-and-apm.yaml"
+                        archiveArtifacts "${env.WORKSPACE}/pipeline/lgs.txt"
+                        archiveArtifacts "${env.WORKSPACE}/yaml/eux-and-apm.yaml"
                         // archive the usual suspects
                         archiveArtifacts "neoload-report/**"
                         junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
