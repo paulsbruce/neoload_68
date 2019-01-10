@@ -35,7 +35,6 @@ pipeline {
         docker-lg1@Docker\
         docker-lg2@Docker
         """.trim()
-        sh "cat ${env.WORKSPACE}/lgs.txt"
 
         // create a dynamic sanity scenario
         writeFile file: "${env.WORKSPACE}/pipeline/eux-and-apm.yaml", text: """
