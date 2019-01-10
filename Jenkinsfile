@@ -35,6 +35,7 @@ pipeline {
         docker-lg1@Docker\
         docker-lg2@Docker
         """.trim()
+        sh "cat ${env.WORKSPACE}/lgs.txt"
 
         // create a dynamic sanity scenario
         writeFile file: "${env.WORKSPACE}/eux-and-apm.yaml", text: """
@@ -115,6 +116,8 @@ scenarios:
                       } catch(Exception e) {
                         sh "sleep 60"
                         // archive the dynamic stuff we did
+                        sh "pwd"
+                        sh "cat lgs.txt"
                         archiveArtifacts "${env.WORKSPACE}/lgs.txt"
                         archiveArtifacts "${env.WORKSPACE}/eux-and-apm.yaml"
                         // archive the usual suspects
