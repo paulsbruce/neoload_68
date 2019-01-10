@@ -18,12 +18,7 @@ pipeline {
       agent { label 'master' }
       steps {
         git(branch: env.GIT_BRANCH, url: env.REPO_URL)
-        step([
-          $class: 'DockerComposeBuilder',
-          dockerComposeFile: 'pipeline/compose-lgs.yml',
-          option: [$class: 'StartAllServices'],
-          useCustomDockerComposeFile: true
-        ])
+        step([$class: 'DockerComposeBuilder', dockerComposeFile: 'pipeline/compose-lgs.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
       }
     }
     stage('Pull latest version of Project from Git') {
@@ -142,12 +137,7 @@ scenarios:
   post {
       always {
         node('master') {
-          step([
-            $class: 'DockerComposeBuilder',
-            dockerComposeFile: 'pipeline/compose-lgs.yml',
-            option: [$class: 'StopAllServices'],
-            useCustomDockerComposeFile: true
-          ])
+          step([$class: 'DockerComposeBuilder', dockerComposeFile: 'pipeline/compose-lgs.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
         }
       }
   }
