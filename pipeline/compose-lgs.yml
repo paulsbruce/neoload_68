@@ -6,11 +6,6 @@ services:
     image: neotys/neoload-loadgenerator:6.8.0
     networks:
       - cpv
-  docker-lg2:
-    container_name: docker-lg2
-    image: neotys/neoload-loadgenerator:6.8.0
-    networks:
-       - cpv
 
 networks:
   cpv:
