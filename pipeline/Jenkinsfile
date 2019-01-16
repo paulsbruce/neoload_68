@@ -2,7 +2,7 @@ pipeline {
   agent none
   environment {
     ENABLE_API_SANITY = false
-    API_TEST_DURATION_MINS = 2
+    SANITY_TEST_DURATION_MINS = 1
     MAX_VUS_CHECKOUT = 50
     EUX_THREADS = 2
     ENABLE_FULL_WEB = true
@@ -34,9 +34,9 @@ pipeline {
 scenarios:
 - name: dynAPISanityCheck
   populations:
-  - name: popAPIs
+  - name: API_just_ushahidi
     rampup_load:
-      duration: ${env.API_TEST_DURATION_MINS}m
+      duration: ${env.SANITY_TEST_DURATION_MINS}m
       min_users: 1
       max_users: 5
       increment_users: 1
@@ -50,13 +50,6 @@ scenarios:
 scenarios:
 - name: dynMixedScenarioEUXwAPM
   populations:
-  - name: API_just_ushahidi
-    rampup_load:
-      duration: ${env.E2E_TEST_DURATION_MINS}m
-      min_users: 1
-      max_users: 5
-      increment_users: 1
-      increment_every: 10s
   - name: popPost
     rampup_load:
       duration: ${env.E2E_TEST_DURATION_MINS}m
