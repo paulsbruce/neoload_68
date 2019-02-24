@@ -1,0 +1,4 @@
+<variable-list name="cAdvisorStats" offset="1" order="3" policy="1" range="1" uid="7d2e931c-7103-421a-a86c-a1845fc5ae80" whenOutOfValues="CYCLE_VALUES">
+<column name="pathFromStatsNode" number="0"/>
+<values><![CDATA[rO0ABXVyABRbW0xqYXZhLmxhbmcuU3RyaW5nOzJNCa2EMuRXAgAAeHAAAAAKdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAXQADmNwdS51c2FnZS51c2VydXEAfgACAAAAAXQAEGNwdS51c2FnZS5zeXN0ZW11cQB+AAIAAAABdAAQY3B1LmxvYWRfYXZlcmFnZXVxAH4AAgAAAAF0AAxtZW1vcnkudXNhZ2V1cQB+AAIAAAABdAAMbWVtb3J5LmNhY2hldXEAfgACAAAAAXQAEm1lbW9yeS53b3JraW5nX3NldHVxAH4AAgAAAAF0ABBuZXR3b3JrLnJ4X2J5dGVzdXEAfgACAAAAAXQAEG5ldHdvcmsudHhfYnl0ZXN1cQB+AAIAAAABdAARbmV0d29yay5yeF9lcnJvcnN1cQB+AAIAAAABdAARbmV0d29yay50eF9lcnJvcnM=]]></values>
+</variable-list>

@@ -1,0 +1,4 @@
+<loop-action loop="10" name="loopCounters" uid="c97ed991-2fc8-4945-8d36-567e59599f11">
+    <embedded-action>5829c81a-6920-461b-8abf-6b750ea1d944</embedded-action>
+    <embedded-action>2bbc7977-87e5-4a00-81a0-b1d91a801db1</embedded-action>
+</loop-action>

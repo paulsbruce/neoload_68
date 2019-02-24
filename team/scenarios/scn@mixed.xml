@@ -49,6 +49,21 @@
             <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
         </lg-hosts>
     </population-policy>
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="popCAdvisor">
+        <duration-policy-entry iterations="1" time="120" timeUnit="0" type="2"/>
+        <volume-policy-entry>
+            <constant-volume-policy iterationNumber="1" userNumber="1"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="0" vuStartMode="0"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
     <dashboards defaultDashboardUid="Graph board"/>
     <!--****** DASHBOARDS  ******-->
     <charts-model-description name="Graph board">

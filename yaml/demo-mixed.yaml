@@ -72,6 +72,24 @@ user_paths:
         method: GET
         headers:
         - Authorization: Bearer ${oauth_bearer}
+    - transaction:
+        name: Call Searches service
+        steps:
+        - request:
+            url: /platform/api/v3/savedsearches
+            server: app_server
+            method: GET
+            headers:
+            - Authorization: Bearer ${oauth_bearer}
+    - transaction:
+        name: Call GeoJSON service
+        steps:
+        - request:
+            url: /platform/api/v3/posts/geojson?form%5B%5D=2&form%5B%5D=4&order=desc&orderby=post_date&status%5B%5D=published&status%5B%5D=draft
+            server: app_server
+            method: GET
+            headers:
+            - Authorization: Bearer ${oauth_bearer}
 
 populations:
 - name: API

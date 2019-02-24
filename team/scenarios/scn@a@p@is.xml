@@ -17,7 +17,270 @@
             <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
         </lg-hosts>
     </population-policy>
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="popCAdvisor">
+        <duration-policy-entry iterations="1" time="120" timeUnit="0" type="2"/>
+        <volume-policy-entry>
+            <constant-volume-policy iterationNumber="1" userNumber="1"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="0" vuStartMode="0"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
+    <dashboards defaultDashboardUid="Graph board"/>
     <!--****** DASHBOARDS  ******-->
+    <charts-model-description name="Graph board">
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true" title="User Load and Error Rate" typeName="CLASSIC">
+            <monitor-curve-description color="20,106,203"
+                connectionName="NeoLoad" dashed="false"
+                monitorName="UserLoad" monitoredHostName="NeoLoad"
+                scale="1.0" selected="false"/>
+            <action-curve-description
+                actionUid="2ee035d5-0178-378f-8d0a-63218f082d2f"
+                color="200,0,0" dashed="false" populationName=""
+                scale="1.0" selected="false"
+                statisticName="result.errors" zoneName=""/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true" title="Overall Throughput" typeName="CLASSIC">
+            <monitor-curve-description color="42,89,26"
+                connectionName="NeoLoad" dashed="false"
+                monitorName="throughput" monitoredHostName="NeoLoad"
+                scale="1.0" selected="false"/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true" title="Load Generators CPU usage" typeName="CLASSIC">
+            <monitor-curve-description color="0,255,0"
+                connectionName="NeoLoad" dashed="false"
+                monitorName="lgcpu.localhost:7100"
+                monitoredHostName="LG localhost:7100" scale="1.0" selected="false"/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true" title="mysql-ushahidi/mysql" typeName="CLASSIC">
+            <monitor-curve-description color="20,106,203"
+                connectionName="mysql" dashed="false"
+                monitorName="Connections/ threads connected"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="88,183,55"
+                connectionName="mysql" dashed="false"
+                monitorName="Connections/ aborted clients"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="200,0,0"
+                connectionName="mysql" dashed="false"
+                monitorName="Connections/ aborted connects"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="191,0,189"
+                connectionName="mysql" dashed="false"
+                monitorName="Connections/ max used"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="20,210,210"
+                connectionName="mysql" dashed="false"
+                monitorName="IO Requests/ bytes received"
+                monitoredHostName="mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="223,143,143"
+                connectionName="mysql" dashed="false"
+                monitorName="IO Requests/ bytes sent"
+                monitoredHostName="mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="236,153,22"
+                connectionName="mysql" dashed="false"
+                monitorName="IO Requests/ open files"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="128,128,128"
+                connectionName="mysql" dashed="false"
+                monitorName="Select Rates/ select full join"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="244,239,0"
+                connectionName="mysql" dashed="false"
+                monitorName="Select Rates/ select range check"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="15,79,152"
+                connectionName="mysql" dashed="false"
+                monitorName="Read Rates/ handler read random"
+                monitoredHostName="mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="66,137,41"
+                connectionName="mysql" dashed="false"
+                monitorName="Read Rates/ handler read random next"
+                monitoredHostName="mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="183,179,0"
+                connectionName="mysql" dashed="false"
+                monitorName="Key Rates/ key reads (disk)"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="143,0,141"
+                connectionName="mysql" dashed="false"
+                monitorName="Key Rates/ key writes (disk)"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="15,157,157"
+                connectionName="mysql" dashed="false"
+                monitorName="Commands Rates/ handler rollback"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="177,114,16"
+                connectionName="mysql" dashed="false"
+                monitorName="Commands Rates/ handler savepoint rollback"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="183,179,0"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ query cache free blocks"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="64,64,64"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ query cache free memory"
+                monitoredHostName="mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="26,141,255"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ query cache hits"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="117,244,73"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ query cache inserts"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="254,0,252"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ query cache low memory prunes"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="26,255,255"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ not cached queries"
+                monitoredHostName="mysql-ushahidi" scale="1.0E-4" selected="false"/>
+            <monitor-curve-description color="192,192,192"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ cached queries"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="11,59,114"
+                connectionName="mysql" dashed="false"
+                monitorName="Query Cache/ total blocks"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="49,102,30"
+                connectionName="mysql" dashed="false"
+                monitorName="Tables/ open tables"
+                monitoredHostName="mysql-ushahidi" scale="0.1" selected="false"/>
+            <monitor-curve-description color="137,134,0"
+                connectionName="mysql" dashed="false"
+                monitorName="Tables/ opened tables"
+                monitoredHostName="mysql-ushahidi" scale="0.1" selected="false"/>
+            <monitor-curve-description color="107,0,105"
+                connectionName="mysql" dashed="false"
+                monitorName="Tables/ table locks immediate"
+                monitoredHostName="mysql-ushahidi" scale="0.001" selected="false"/>
+            <monitor-curve-description color="11,117,117"
+                connectionName="mysql" dashed="false"
+                monitorName="Tables/ table locks waited"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="132,85,12"
+                connectionName="mysql" dashed="false"
+                monitorName="Tables/ table open cache"
+                monitoredHostName="mysql-ushahidi" scale="0.1" selected="false"/>
+            <monitor-curve-description color="34,188,255"
+                connectionName="mysql" dashed="false"
+                monitorName="Tables/ max heap table size"
+                monitoredHostName="mysql-ushahidi" scale="0.001" selected="false"/>
+            <monitor-curve-description color="156,255,97"
+                connectionName="mysql" dashed="false"
+                monitorName="Memory/ % key buffer size"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="255,0,255"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ slow queries"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="34,255,255"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ long query time"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="56,138,127"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ slow launch threads"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="27,59,188"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ slow launch time"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="136,195,235"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ sort merge passes"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="103,194,217"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ sort range"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="237,62,133"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ sort rows"
+                monitoredHostName="mysql-ushahidi" scale="0.01" selected="false"/>
+            <monitor-curve-description color="67,137,206"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ sort scan"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+            <monitor-curve-description color="247,223,17"
+                connectionName="mysql" dashed="false"
+                monitorName="Misc./ not flushed delayed rows"
+                monitoredHostName="mysql-ushahidi" scale="1.0" selected="false"/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="docker/ushaihidi/cpu/usage/user" typeName="CLASSIC">
+            <third-party-data-curve-description color="178,140,0"
+                dashed="false" path="docker/ushaihidi/cpu/usage/user"
+                scale="1.0E-10" selected="false" unit=""/>
+            <third-party-data-curve-description color="20,106,203"
+                dashed="false" path="docker/ushaihidi/cpu/usage/system"
+                scale="1.0E-10" selected="false" unit=""/>
+            <third-party-data-curve-description color="88,183,55"
+                dashed="false"
+                path="docker/ushaihidi-mysql/cpu/usage/user"
+                scale="1.0E-10" selected="true" unit=""/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="docker/ushaihidi/cpu/usage/system" typeName="CLASSIC">
+            <third-party-data-curve-description color="178,140,0"
+                dashed="false" path="docker/ushaihidi/cpu/usage/system"
+                scale="1.0" selected="true" unit=""/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="docker/ushaihidi/memory/usage" typeName="CLASSIC">
+            <third-party-data-curve-description color="178,140,0"
+                dashed="false" path="docker/ushaihidi/memory/usage"
+                scale="1.0" selected="true" unit=""/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="XMIN" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="docker/ushaihidi/network/rx_bytes" typeName="CLASSIC">
+            <third-party-data-curve-description color="178,140,0"
+                dashed="false" path="docker/ushaihidi/network/rx_bytes"
+                scale="1.0" selected="true" unit=""/>
+        </chart-description>
+        <empty-chart-description/>
+    </charts-model-description>
     <!--****** END DASHBOARDS  ******-->
     <!--****** START DATA FILTERS  ******-->
     <!--****** END DATA FILTERS  ******-->

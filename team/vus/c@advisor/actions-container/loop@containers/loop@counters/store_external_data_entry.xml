@@ -1,0 +1,19 @@
+<custom-action actionType="Store External Data Entry" isHit="false"
+    name="store_external_data_entry" uid="2bbc7977-87e5-4a00-81a0-b1d91a801db1">
+    <description>This action stores a value in the External Data part of the results through the DataExchange API.
+
+Possible parameters are:
+- value: (required) the numerical value to store in the entry. Example: ${myVariable}.
+- path: (required) the string representing the list of nodes that contains the entry. Path separator is '|'.
+- unit: (optional) the unit of the entry.
+- url: (optional) the url of the entry.
+- code: (optional) the string code of the status associated to the entry.
+- message: (optional) the message of the status associated to the entry.
+- state: (optional) the state of the status associated to the entry. Possible values are PASS and FAIL.
+- DataExchangeAPIURL: (optional) Where the DataExchange server is located. Optional, by default it is: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/.
+- DataExchangeAPIKey: (optional) identification key specified in NeoLoad.
+- locale: (optional) the locale used to parse the numerical value. Default are English then French.
+</description>
+    <custom-action-parameter name="value" type="TEXT" value="${statValue}"/>
+    <custom-action-parameter name="path" type="TEXT" value="${statPath}"/>
+</custom-action>

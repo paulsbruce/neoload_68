@@ -1,0 +1,29 @@
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="" path="/api/v1.3/containers/docker/"
+    postCharset="" postType="1" recordedResponseCode="200"
+    recordedResponseTime="227" responseSize="90967" serverUid="cAdvisor"
+    slaProfileEnabled="false" uid="6c4f288a-9f7e-4a9a-b564-8a29bc1de1ec" useKeepAlive="false">
+    <responsePageFileDescription>team/vus/c@advisor/%resources%/recorded-responses/res_cust_c67eeff3-28f1-456b-9439-5a411261d64d.0</responsePageFileDescription>
+    <requestContentFileDescription>team/vus/c@advisor/%resources%/recorded-requests/req_cust_6c4f288a-9f7e-4a9a-b564-8a29bc1de1ec.txt</requestContentFileDescription>
+    <variable-extractor assertionOnNoMatch="true"
+        defaultValue="&lt;NOT FOUND>" displayMode="0" endsWithSimple=""
+        extractFromVarNameAdv="" extractFromVarNameSimple=""
+        extractType="4" extractTypeAdv="0" extractTypeSimple="4"
+        jsonpath="$.subcontainers[*].name" matchNumber="-1"
+        matchNumberAdv="1" matchNumberSimple="-1" name="containerNames"
+        refererUid="6c4f288a-9f7e-4a9a-b564-8a29bc1de1ec" regExp="(.*)"
+        regExpAdv="" setDefaultValue="true" startsWithSimple=""
+        template="$1$" templateAdv="$1$"
+        uid="7508e17c-a954-47ea-9295-31936715cbe7" xpath="">
+        <variable-extractor-group extract="true" occurs="1" pattern="" type="4"/>
+    </variable-extractor>
+    <responseHeaders>HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 22 Feb 2019 20:13:27 GMT
+Content-Length: 90967</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

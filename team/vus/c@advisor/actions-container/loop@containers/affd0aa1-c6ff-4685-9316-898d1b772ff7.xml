@@ -1,0 +1,43 @@
+<http-action actionType="1" contentType="application/json"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="" path="/api/v1.3/containers${containerPath}"
+    postCharset="" postType="1" recordedResponseCode="200"
+    recordedResponseTime="53" responseSize="126368" serverUid="cAdvisor"
+    slaProfileEnabled="false" uid="affd0aa1-c6ff-4685-9316-898d1b772ff7" useKeepAlive="false">
+    <responsePageFileDescription>team/vus/c@advisor/%resources%/recorded-responses/res_cust_653e87f1-46c4-4f0a-b544-b2e53fa19d72.0.0.0.0.0</responsePageFileDescription>
+    <requestContentFileDescription>team/vus/c@advisor/%resources%/recorded-requests/req_cust_2e053ab0-4f53-4ce0-bad0-e8e8b4e4c664.txt</requestContentFileDescription>
+    <variable-extractor assertionOnNoMatch="true"
+        defaultValue="&lt;NOT FOUND>" displayMode="0" endsWithSimple=""
+        extractFromVarNameAdv="" extractFromVarNameSimple=""
+        extractType="4" extractTypeAdv="0" extractTypeSimple="4"
+        jsonpath="$.aliases[?(@ != '${containerId}')]" matchNumber="1"
+        matchNumberAdv="1" matchNumberSimple="1" name="containerName"
+        refererUid="affd0aa1-c6ff-4685-9316-898d1b772ff7" regExp="(.*)"
+        regExpAdv="" setDefaultValue="true" startsWithSimple=""
+        template="$1$" templateAdv="$1$"
+        uid="8d650f81-34fc-4d56-a152-ec522816ad8e" xpath="">
+        <variable-extractor-group extract="true" occurs="1" pattern="" type="4"/>
+    </variable-extractor>
+    <variable-extractor assertionOnNoMatch="true"
+        defaultValue="&lt;NOT FOUND>" displayMode="0" endsWithSimple=""
+        extractFromVarNameAdv="" extractFromVarNameSimple=""
+        extractType="4" extractTypeAdv="0" extractTypeSimple="4"
+        jsonpath="$.stats[-1:]" matchNumber="1" matchNumberAdv="1"
+        matchNumberSimple="1" name="topStatJSON"
+        refererUid="affd0aa1-c6ff-4685-9316-898d1b772ff7" regExp="(.*)"
+        regExpAdv="" setDefaultValue="true" startsWithSimple=""
+        template="$1$" templateAdv="$1$"
+        uid="6620d586-5e89-4772-b14c-dbeca970c935" xpath="">
+        <variable-extractor-group extract="true" occurs="1" pattern="" type="4"/>
+    </variable-extractor>
+    <parameter encodeName="true" encodeValue="true" name="max_events"
+        recordRawValue="" separator="=" value="1" valueMode="USE_VALUE"/>
+    <responseHeaders>HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Sun, 24 Feb 2019 13:04:20 GMT
+Content-Length: 126368</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
