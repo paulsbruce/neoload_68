@@ -1,0 +1,3 @@
+<monitored-host host-name="nlw-jmx" mehost-name="localhost" uid="nlw-jmx">
+    <embedded-action>40c1038f-b0bc-4b95-bc52-2d5cc9d99f64</embedded-action>
+</monitored-host>
