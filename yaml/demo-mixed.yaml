@@ -1,7 +1,7 @@
 name: NeoLoadAsCode
-includes:
-- yaml/user_paths/api_savedsearch.yaml
-- yaml/scenarios/dynAPISanityCheck.yaml
+#includes:
+#- yaml/user_paths/api_savedsearch.yaml
+#- yaml/scenarios/dynAPISanityCheck.yaml
 
 variables:
 - constant:
@@ -28,15 +28,15 @@ servers:
   scheme: https
   port: 443
 
-sla_profiles:
-- name: sla_dynamic_api_calls
-  thresholds:
-  - avg-request-resp-time warn >= 500ms fail >= 1s per test
-  - perc-transaction-resp-time (p95) warn >= 200ms fail >= 750ms per test
-  - error-rate warn >= 5% per interval
-- name: sla_static_resources
-  thresholds:
-  - avg-resp-time warn >= 500ms fail >= 1000ms per interval
+# sla_profiles:
+# - name: sla_dynamic_api_calls
+#   thresholds:
+#   - avg-request-resp-time warn >= 500ms fail >= 1s per test
+#   - perc-transaction-resp-time (p95) warn >= 200ms fail >= 750ms per test
+#   - error-rate warn >= 5% per interval
+# - name: sla_static_resources
+#   thresholds:
+#   - avg-resp-time warn >= 500ms fail >= 1000ms per interval
 
 user_paths:
 - name: geo_search
@@ -50,7 +50,7 @@ user_paths:
             url: /search?format=json&q=${cities.City}
             server: external_maps
             method: GET
-            sla_profile: sla_dynamic_api_calls
+            #sla_profile: sla_dynamic_api_calls
 
   # additional ;user paths from includes
 
