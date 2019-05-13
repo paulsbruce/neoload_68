@@ -1,67 +1,89 @@
-name: MyProject
+name: NeoLoadAsCode
+includes:
+- yaml/user_paths/api_savedsearch.yaml
+- yaml/scenarios/dynAPISanityCheck.yaml
+
 variables:
 - constant:
-    name: preprod_host
-    value: preprod-neoload-rest.saas.neotys.com
+    name: app_server_hostname # useful for overriding by CLI per environment
+    value: ushahidi # default
 - file:
-    name: preprod_tokens_file
-    path: data/list_of_tokens.csv
-    is_first_line_column_names: true
+    name: cities
+    column_names: ["City"]
+    is_first_line_column_names: false
+    start_from_line: 1
+    delimiter: ","
+    path: custom-resources/cities.csv
     change_policy: each_iteration
-- constant:
-    name: run_test_project_id
-    value: 5c122ac9d565bd000166100c
-- constant:
-    name: run_test_scenario_name
-    value: WANImpact Local
+    scope: global
+    order: any
+    out_of_value: cycle
+
 servers:
-- name: preprod_server
-  host: ${preprod_host}
+- name: app_server
+  host: ${app_server_hostname}
+  scheme: http
+- name: external_maps
+  host: nominatim.openstreetmap.org
   scheme: https
+  port: 443
+
+sla_profiles:
+- name: sla_dynamic_api_calls
+  thresholds:
+  - avg-request-resp-time warn >= 500ms fail >= 1s per test
+  - perc-transaction-resp-time (p95) warn >= 200ms fail >= 750ms per test
+  - error-rate warn >= 5% per interval
+- name: sla_static_resources
+  thresholds:
+  - avg-resp-time warn >= 500ms fail >= 1000ms per interval
+
 user_paths:
-- name: preprod_api
+- name: geo_search
   actions:
     steps:
-    - request:
-        url: /v1/tests?limit=50&offset=0
-        server: preprod_server
-        method: GET
-        headers:
-        - accountToken: ${preprod_tokens_file.token}
-    - delay: 5s
-    - request:
-        url: /v1/projects/${run_test_project_id}/run?name=test_launched_from_as_code&scenarioName=__encodeURL(${run_test_scenario_name})
-        server: preprod_server
-        method: POST
-        headers:
-        - accept: application/json
-        - accountToken: ${preprod_tokens_file.token}
-        extractors:
-        - name: running_test_id
-          jsonpath: .testId
-    - delay: 30s
-    - request:
-        url: /v1/tests/${running_test_id}
-        server: preprod_server
-        method: GET
-        headers:
-        - accountToken: ${preprod_tokens_file.token}
-    - delay: 1m 30s
-    - request:
-        url: /v1/tests/${running_test_id}
-        server: preprod_server
-        method: DELETE
-        headers:
-        - accountToken: ${preprod_tokens_file.token}
+    - transaction:
+        name: Geo Search Call
+        steps:
+        - delay: 1s
+        - request:
+            url: /search?format=json&q=${cities.City}
+            server: external_maps
+            method: GET
+            sla_profile: sla_dynamic_api_calls
+
+  # additional ;user paths from includes
+
 populations:
-- name: MyPopulation
+- name: API
   user_paths:
-  - name: preprod_api
+  - name: geo_search
+    distribution: 50%
+  - name: api_savedsearch
+    distribution: 50%
+- name: API_just_ushahidi
+  user_paths:
+  - name: api_savedsearch
     distribution: 100%
+
 scenarios:
-- name: MyScenario
+- name: MixedScenarioWithMonitoring
   populations:
-  - name: MyPopulation
+  - name: API_just_ushahidi
+    rampup_load:
+      duration: 5m
+      min_users: 1
+      max_users: 5
+      increment_users: 1
+      increment_every: 10s
+  - name: popPost
+    rampup_load:
+      duration: 5m
+      min_users: 1
+      max_users: 15
+      increment_users: 1
+      increment_every: 15s
+  - name: dynatracePop
     constant_load:
+      duration: 5m
       users: 1
-      duration: 1 iteration
