@@ -1,124 +1,250 @@
 pipeline {
-  agent {
-    node {
-      label 'docker-neoload-68'
-    }
-  }
+  agent none
   environment {
-    WORKSPACE = pwd()
-    TEST_DURATION = '10m'
-    EUX_THREADS = 10
+    ENABLE_API_SANITY = true
+    SANITY_TEST_DURATION_MINS = 10
     MAX_VUS_CHECKOUT = 50
+    EUX_THREADS = 2
+    ENABLE_FULL_WEB = true
+    E2E_TEST_DURATION_MINS = 20
   }
   stages {
-    stage('Set up infrastructure') {
+    stage('Grab Infra Repo') {
       agent { label 'master' }
       steps {
-        git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git')
-        step([$class: 'DockerComposeBuilder', dockerComposeFile: 'pipeline/compose-lgs.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
+        git(branch: "$NL_VERSION", url: 'https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/infrastructure', credentialsId: 'CodeCommit')
       }
     }
-    stage('Pull latest version of Project from Git') {
+    stage('Prep Env Config') {
+      agent { label 'master' }
       steps {
-          git(branch: 'develop', url: 'https://github.com/paulsbruce/neoload_68.git')//, credentialsId: 'github-paulsbruce')
+        script {
+          nlwToken = ""
+          try { nlwToken = "$NLW_TOKEN" } catch(Exception e) { }
+          if(!nlwToken?.trim())
+            nlwToken = 'a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6' // defaults to Thomas
+          env.NLW_TOKEN = nlwToken
+          env.APM_DASHBOARD = "https://vwv51099.live.dynatrace.com/#dashboard;id=b832b009-8a4d-45fa-8488-33214bf07443;gtf=l_30_MINUTES"
+        }
       }
     }
     stage('Define Dynamic Scenario') {
+      agent { label 'master' }
       steps {
-        // create dynamic infrastructure pointers: docker-lgN is presumed already spun up by NLDeploy job
-        writeFile file: "${env.WORKSPACE}/pipeline/lgs.txt", text: """
-        docker-lg1@Docker\
-        docker-lg2@Docker\
-        """.trim()
-
-        // create a dynamic sanity scenario
-        writeFile file: "${env.WORKSPACE}/yaml/eux-and-apm.yaml", text: """
+        script {
+          if(env.ENABLE_API_SANITY.toBoolean()) { // create a dynamic API sanity scenario
+            writeFile file: "yaml/api-only.yaml", text: """
 scenarios:
-- name: dynMixedScenarioEUXwAPM
+- name: dynAPISanityCheck
   populations:
   - name: API_just_ushahidi
     rampup_load:
-      duration: ${env.TEST_DURATION}
+      duration: ${env.SANITY_TEST_DURATION_MINS}m
       min_users: 1
-      max_users: 5
+      max_users: 15
       increment_users: 1
       increment_every: 10s
+  - name: dynatracePop
+    constant_load:
+      duration: ${env.SANITY_TEST_DURATION_MINS}m
+      users: 1
+  - name: popCAdvisor
+    constant_load:
+      duration: ${env.SANITY_TEST_DURATION_MINS}m
+      users: 1
+          """
+            stash includes: 'yaml/api-only.yaml', name: 'yaml-api'
+          }
+
+          if(env.ENABLE_FULL_WEB.toBoolean()) { // create a dynamic full scenario
+            writeFile file: "yaml/eux-and-apm.yaml", text: """
+scenarios:
+- name: dynMixedScenarioEUXwAPM
+  populations:
   - name: popPost
     rampup_load:
-      duration: ${env.TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION_MINS}m
       min_users: 1
       max_users: 15
       increment_users: 1
       increment_every: 15s
-#  - name: dynatracePop
-#    constant_load:
-#      duration: ${env.TEST_DURATION}
-#      users: 1
+  - name: dynatracePop
+    constant_load:
+      duration: ${env.E2E_TEST_DURATION_MINS}m
+      users: 1
   - name: popSelenium
     rampup_load:
-      duration: ${env.TEST_DURATION}
+      duration: ${env.E2E_TEST_DURATION_MINS}m
       min_users: 1
       max_users: ${env.EUX_THREADS}
       increment_users: 1
       increment_every: 20s
-      """
-      }
-    }
-
-    stage('Main pipeline') {
-      parallel {
-        stage('While Test Running')
-        {
-          steps { // make it easy to get to APM view of things (delay ~3min)
-            sh """
-              echo
-              echo --- Dynatrace Dashboard ---
-              echo "https://vwv51099.live.dynatrace.com/#dashboard;id=b832b009-8a4d-45fa-8488-33214bf07443;gtf=l_30_MINUTES"
-              echo ---
-              """
+          """
+            stash includes: 'yaml/eux-and-apm.yaml', name: 'yaml-e2e'
           }
         }
-        stage('NeoLoad Test') {
-            steps {
-                script { // plugin for scripted pipeline, fit to declarative syntax
-                    try { // archive results regardless of overall success/fail (could be due to SLAs)
-                      neoloadRun project: "${env.WORKSPACE}/demo.nlp",
-                          scenario: "dynMixedScenarioEUXwAPM",
-                          testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
-                          testDescription: "Based on demo-mixed.yaml",
-                          reportXml: "${env.WORKSPACE}/neoload-report/neoload-report.xml",
-                          reportHtml: "${env.WORKSPACE}/neoload-report/neoload-report.html",
-                          reportJunit: "${env.WORKSPACE}/neoload-report/junit-sla-results.xml",
-                          trendGraphs: ['AvgResponseTime', 'ErrorRate'],
-                          autoArchive: 'false', // by default, the plugin runs archiveArtifacts "neoload-report/**"; junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
-                          sharedLicense: [
-                              server: 'NeoLoad Demo License',
-                              duration: 1,
-                              vuCount: env.MAX_VUS_CHECKOUT
-                          ],
-                          commandLineOption: "-nlweb -variables "+ // variables below must be executed all as one line
-                                             "ControllerAPIHostAndPort=10.0.0.10:7400,"+
-                                             "TargetHostBaseUrl=http://10.0.0.10,"+
-                                             "SeleniumHubHostAndPort=10.0.0.15:4444,"+
-                                             "JRE_JAVA=/usr/local/neoload/jre/bin/java"+
-                                             " -project ${env.WORKSPACE}/yaml/demo-mixed.yaml"+ // static file from repo
-                                             " -project ${env.WORKSPACE}/yaml/eux-and-apm.yaml"+ // dynamic file from above
-                                             //"" // TODO: remove this and uncomment below when infra is at v6.8
-                                             " --override-lg popPost=${env.WORKSPACE}/pipeline/lgs.txt"+ // dynamic from above
-                                             " -L API_just_ushahidi=${env.WORKSPACE}/pipeline/lgs.txt" // dynamic from above
-                    } catch(Exception e) {
-                      sh "sleep 60"
-                      // archive the dynamic stuff we did
-                      archiveArtifacts "${env.WORKSPACE}/pipeline/lgs.txt"
-                      archiveArtifacts "${env.WORKSPACE}/yaml/eux-and-apm.yaml"
-                      // archive the usual suspects
-                      archiveArtifacts "neoload-report/**"
-                      junit allowEmptyResults: true, testResults: 'neoload-report/junit*.xml'
-                      // pass along the goodness
-                      throw e
+      }
+    }
+    stage('Start NeoLoad infrastructure') { // load generators
+      agent { label 'master' }
+      steps {
+        sh 'docker-compose -f neoload/lg/docker-compose.yml up -d'
+        sh "mkdir -p $WORKSPACE/logs"
+        stash includes: 'neoload/lg/lg.yaml', name: 'yaml-LG'
+        stash includes: 'neoload/lg/local-lg.txt', name: 'local-LG'
+        stash includes: 'neoload/lg/docker-lg.txt', name: 'docker-LG'
+      }
+    }
+    stage('Load Tests') {
+      agent {
+
+        dockerfile { // load controller
+          args '--user root -v /tmp:/tmp --network cpv -p 7400:7400 -v /var/lib/jenkins/workspace/NL-test/logs:/root/.neotys/neoload/v6.8/logs:rw,z'
+          dir 'neoload/controller'
+        }
+      }
+      stages {
+        stage('Git Project') { // a custom project with Selenium integrated
+          steps {
+            dir('neoload_68') {
+              git(branch: 'cadvisor', url: 'https://github.com/paulsbruce/neoload_68.git')
+            }
+          }
+        }
+        stage('Sanity Check') {
+          steps {
+            script {
+              if(env.ENABLE_API_SANITY.toBoolean()) {
+                unstash 'docker-LG'
+                unstash 'yaml-api'
+
+                  neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
+                    project: "$WORKSPACE/neoload_68/demo.nlp",
+                    scenario: "dynAPISanityCheck",
+                    testName: "API Sanity Check (build ${BUILD_NUMBER})",
+                    testDescription: "A short, small API load test",
+                    autoArchive: 'true', // (default=true) if sanity fails, retain these results
+                    sharedLicense: [
+                        server: 'NeoLoad Demo License',
+                        duration: 1,
+                        vuCount: env.MAX_VUS_CHECKOUT
+                    ],
+                    commandLineOption: "-nlweb -nlwebToken ${env.NLW_TOKEN} -variables"+
+                                       " app_server_hostname=10.0.0.10"+ // dynamic target stack
+                                       " -project $WORKSPACE/neoload_68/yaml/demo-mixed.yaml"+ // static file from repo
+                                       " -project $WORKSPACE/yaml/api-only.yaml"+ // dynamic file from above
+                                       " -L API_just_ushahidi=$WORKSPACE/neoload/lg/docker-lg.txt"+ // dynamic from above
+                                       " -L dynatracePop=$WORKSPACE/neoload/lg/local-lg.txt"+ // dynamic from above
+                                       " -L popCAdvisor=$WORKSPACE/neoload/lg/local-lg.txt"+ // dynamic from above
+                                       ""
+              } else {
+                echo "Sanity check skipped by configuration"
+              }
+            }
+          }
+          post {
+            failure {
+              archiveArtifacts '/root/.neotys/neoload/v6.8/logs/**'
+            }
+          }
+        }
+        stage('Full E2E') {
+          parallel {
+            stage('Load with APM and EUX') {
+                steps {
+                    script { // plugin for scripted pipeline, fit to declarative syntax
+                      if(env.ENABLE_FULL_WEB.toBoolean()) {
+                        unstash 'local-LG'
+                        unstash 'docker-LG'
+                        unstash 'yaml-e2e'
+                        try { // archive results regardless of overall success/fail (could be due to SLAs)
+
+                          neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
+                              project: "${env.WORKSPACE}/neoload_68/demo.nlp",
+                              scenario: "dynMixedScenarioEUXwAPM",
+                              testName: "Load Test w/ APM (build ${BUILD_NUMBER})",
+                              testDescription: "Based on demo-mixed.yaml",
+                              trendGraphs: ['AvgResponseTime', 'ErrorRate'],
+                              sharedLicense: [
+                                  server: 'NeoLoad Demo License',
+                                  duration: 1,
+                                  vuCount: env.MAX_VUS_CHECKOUT
+                              ],
+                              commandLineOption: "-nlweb -nlwebToken ${env.NLW_TOKEN} -variables"+ // variables below must be executed all as one line
+                                                 " app_server_hostname=10.0.0.10"+ // dynamic target stack
+                                                 ",ControllerAPIHostAndPort=10.0.0.10:7400"+
+                                                 ",TargetHostBaseUrl=http://10.0.0.10"+
+                                                 ",SeleniumHubHostAndPort=10.0.0.15:4444"+
+                                                 ",JRE_JAVA=/home/neoload/neoload/jre/bin/java"+
+                                                 " -project $WORKSPACE/neoload_68/yaml/demo-mixed.yaml"+ // static file from repo
+                                                 " -project $WORKSPACE/yaml/eux-and-apm.yaml"+ // dynamic file from above
+                                                 " --override-lg popPost=$WORKSPACE/neoload/lg/docker-lg.txt"+ // dynamic from above
+                                                 " -L popPost=$WORKSPACE/neoload/lg/docker-lg.txt"+ // dynamic from above
+                                                 " -L dynatracePop=$WORKSPACE/neoload/lg/local-lg.txt"+ // dynamic from above
+                                                 " -L popSelenium=$WORKSPACE/neoload/lg/local-lg.txt"+ // dynamic from above
+                                                 ""
+
+                        } catch(Exception e) {
+                          //sh "sleep 30s" // wait for reports to sync from node to master (Jenkins workaround)
+                          // archive the dynamic stuff we did
+                          archiveArtifacts "$WORKSPACE/yaml/eux-and-apm.yaml"
+                          // archive the usual suspects
+                          archiveArtifacts "logs/**"
+                          archiveArtifacts "neoload-report/**"
+                          junit allowEmptyResults: true, testResults: "neoload-report/junit*.xml"
+                          // pass along the goodness
+                          throw e
+                        }
+                      } else {
+                        echo "E2E test skipped by configuration"
+                      }
                     }
                 }
             }
+            stage('While Test Running') {
+              steps {
+                script {
+                  if(env.ENABLE_FULL_WEB.toBoolean()) {
+                    // make it easy to get to APM view of things (delay ~3min)
+                    sh """
+                    echo
+                    echo --- APM Dashboard ---
+                    echo "$env.APM_DASHBOARD"
+                    echo ---
+                    """
+                  }
+                }
+                /*
+                script { // example of using controller API to check/stop test
+                  try { // catch timeout (i.e. if we explicitly want to ensure pipeline duration max)
+                    def beyond_timeout = 2//env.E2E_TEST_DURATION_MINS.toInteger() - 5; // fake this to proof handling
+                    echo "beyond_timeout: "+beyond_timeout
+                    sh "sleep 40s"
+                    timeout(time: beyond_timeout, unit:'MINUTES') {
+                      sh "sleep 20s"
+                      sh "RESPONSE=\"...TEST_RUNNING...\"; while [ grep -q TEST_RUNNING <<<\"\$RESPONSE\" ]; do echo -n '.'; sleep 10s; RESPONSE=\$(wget --post-data='{\"d\":{}}' --header='Content-Type: application/json' -s http://10.0.0.10:7400/Runtime/v1/Service.svc/GetStatus); done"
+                    } // timeout
+                  } catch(Exception e) {
+                    echo 'Timeout!!!'
+                    echo e.toString()
+                    try {
+                      sh "curl -d '{\"d\":{\"ForceStop\":true}}' -H 'Content-Type: application/json' -s -X POST http://10.0.0.10:7400/Runtime/v1/Service.svc/StopTest"
+                    } catch(Exception e1) {
+                      echo 'Timeout critical fail!!!'
+                      echo e1.toString()
+                    }
+                    throw e
+                  }
+                }
+                */
+              }
+            }
+          }
+        }
+      }
+      post {
+        failure {
+          archiveArtifacts '/root/.neotys/neoload/v6.8/logs/**'
         }
       }
     }
@@ -131,7 +257,7 @@ scenarios:
   post {
       always {
         node('master') {
-          step([$class: 'DockerComposeBuilder', dockerComposeFile: 'pipeline/compose-lgs.yml', option: [$class: 'StopAllServices'], useCustomDockerComposeFile: true])
+          sh 'docker-compose -f neoload/lg/docker-compose.yml down'
         }
       }
   }

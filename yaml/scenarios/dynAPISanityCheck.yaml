@@ -1,0 +1,22 @@
+scenarios:
+- name: dynAPISanityCheck
+  populations:
+  - name: API_just_ushahidi
+    rampup_load:
+      duration: 5m
+      min_users: 1
+      max_users: 15
+      increment_users: 1
+      increment_every: 10s
+  - name: dynatracePop
+    constant_load:
+      duration: 5m
+      users: 1
+  - name: popCAdvisor
+    constant_load:
+      duration: 5m
+      users: 1
+  - name: popCloudWatch
+    constant_load:
+      duration: 5m
+      users: 1

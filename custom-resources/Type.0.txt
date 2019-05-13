@@ -1,0 +1,9 @@
+﻿Heat wave
+Heavy rain
+Storm
+Snow storm
+Flood
+Huricane
+Wild Fire
+Strong wind
+Other

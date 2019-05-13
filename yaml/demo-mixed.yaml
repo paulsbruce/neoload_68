@@ -1,9 +1,12 @@
 name: NeoLoadAsCode
+includes:
+- yaml/user_paths/api_savedsearch.yaml
+- yaml/scenarios/dynAPISanityCheck.yaml
 
 variables:
 - constant:
-    name: app_server_hostname
-    value: ushahidi
+    name: app_server_hostname # useful for overriding by CLI per environment
+    value: ushahidi # default
 - file:
     name: cities
     column_names: ["City"]
@@ -25,71 +28,31 @@ servers:
   scheme: https
   port: 443
 
+sla_profiles:
+- name: sla_dynamic_api_calls
+  thresholds:
+  - avg-request-resp-time warn >= 500ms fail >= 1s per test
+  - perc-transaction-resp-time (p95) warn >= 200ms fail >= 750ms per test
+  - error-rate warn >= 5% per interval
+- name: sla_static_resources
+  thresholds:
+  - avg-resp-time warn >= 500ms fail >= 1000ms per interval
+
 user_paths:
 - name: geo_search
   actions:
     steps:
-    - delay: 1s
-    - request:
-        url: /search?format=json&q=${cities.City}
-        server: external_maps
-        method: GET
+    - transaction:
+        name: Geo Search Call
+        steps:
+        - delay: 1s
+        - request:
+            url: /search?format=json&q=${cities.City}
+            server: external_maps
+            method: GET
+            sla_profile: sla_dynamic_api_calls
 
-- name: api_savedsearch
-  init:
-    steps:
-    - transaction:
-        name: Obtain OAuth Token
-        description: Grab the OAuth client secret from the dynamic JS in our app
-        steps:
-        - request:
-            url: /js/bundle.js
-            server: app_server
-            method: GET
-            extractors:
-            - name: oauth_client_secret
-              regexp: OAUTH_CLIENT_SECRET:"(.*?)"
-        - request:
-            url: /platform/oauth/token
-            server: app_server
-            method: POST
-            headers:
-            - accept: application/json
-            - Content-Type: application/json
-            body: '{"grant_type":"client_credentials","client_id":"ushahidiui","client_secret":"${oauth_client_secret}","scope":"posts media forms api tags savedsearches sets users stats layers config messages notifications contacts roles permissions csv"}'
-            extractors:
-            - name: oauth_bearer
-              jsonpath: $.access_token
-              regexp: (.*)
-              match_number: 1
-              extract_once: true
-  actions:
-    steps:
-    - delay: 1s
-    - request:
-        url: /js/bundle.js
-        server: app_server
-        method: GET
-        headers:
-        - Authorization: Bearer ${oauth_bearer}
-    - transaction:
-        name: Call Searches service
-        steps:
-        - request:
-            url: /platform/api/v3/savedsearches
-            server: app_server
-            method: GET
-            headers:
-            - Authorization: Bearer ${oauth_bearer}
-    - transaction:
-        name: Call GeoJSON service
-        steps:
-        - request:
-            url: /platform/api/v3/posts/geojson?form%5B%5D=2&form%5B%5D=4&order=desc&orderby=post_date&status%5B%5D=published&status%5B%5D=draft
-            server: app_server
-            method: GET
-            headers:
-            - Authorization: Bearer ${oauth_bearer}
+  # additional ;user paths from includes
 
 populations:
 - name: API
