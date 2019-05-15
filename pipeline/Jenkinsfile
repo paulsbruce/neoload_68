@@ -99,7 +99,7 @@ scenarios:
       agent {
 
         dockerfile { // load controller
-          args '--user root -v /tmp:/tmp --network cpv -p 7400:7400 -v /var/lib/jenkins/workspace/NL-test/logs:/root/.neotys/neoload/v6.8/logs:rw,z'
+          args "--user root -v /tmp:/tmp --network cpv -p 7400:7400 -v /var/lib/jenkins/workspace/NL-test/logs:/root/.neotys/neoload/v$NL_VERSION/logs:rw,z"
           dir 'neoload/controller'
         }
       }
@@ -144,7 +144,7 @@ scenarios:
           }
           post {
             failure {
-              archiveArtifacts '/root/.neotys/neoload/v6.8/logs/**'
+              archiveArtifacts "/root/.neotys/neoload/v$NL_VERSION/logs/**"
             }
           }
         }
@@ -244,7 +244,7 @@ scenarios:
       }
       post {
         failure {
-          archiveArtifacts '/root/.neotys/neoload/v6.8/logs/**'
+          archiveArtifacts "/root/.neotys/neoload/v$NL_VERSION/logs/**"
         }
       }
     }
