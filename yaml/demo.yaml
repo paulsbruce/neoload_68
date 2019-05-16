@@ -55,7 +55,7 @@ user_paths:
             url: /search?format=json&q=${cities.City}
             server: external_maps
             method: GET
-            sla_profile: sla_dynamic_api_calls
+            sla_profile: sla_external_api_calls
 
   # additional ;user paths from includes
 
