@@ -48,7 +48,7 @@ user_paths:
         sla_profile: sla_internal_api_calls
         steps:
         - request:
-            url: /platform/api/v3/post?order=desc&orderby=post_date
+            url: /platform/api/v3/posts?order=desc&orderby=post_date
             server: app_server
             method: GET
             headers:
