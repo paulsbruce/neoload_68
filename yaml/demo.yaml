@@ -42,6 +42,9 @@ sla_profiles:
 - name: sla_static_resources
   thresholds:
   - avg-resp-time warn >= 500ms fail >= 1000ms per interval
+- name: sla_internal_api_calls_big_response
+  - perc-transaction-resp-time (p95) warn >= 20s fail >= 30s per test
+
 
 user_paths:
 - name: geo_search
