@@ -18,7 +18,7 @@ user_paths:
             url: /platform/oauth/token
             server: app_server
             method: POST
-            sla_profile: sla_dynamic_api_calls
+            sla_profile: sla_internal_api_calls
             headers:
             - accept: application/json
             - Content-Type: application/json
@@ -43,9 +43,20 @@ user_paths:
             headers:
             - Authorization: Bearer ${oauth_bearer}
     - transaction:
-        name: Get dynamic/gated resource
-        description: Request a static resource that requires the OAuth token
-        sla_profile: sla_dynamic_api_calls
+        name: Get internal/gated resource
+        description: Request dynamic resources that do not depend on 3rd parties
+        sla_profile: sla_internal_api_calls
+        steps:
+        - request:
+            url: /platform/api/v3/post?order=desc&orderby=post_date
+            server: app_server
+            method: GET
+            headers:
+            - Authorization: Bearer ${oauth_bearer}
+    - transaction:
+        name: Get external/gated resource
+        description: Request dynamic resources depending on 3rd parties
+        sla_profile: sla_external_api_calls
         steps:
         - request:
             url: /platform/api/v3/posts/geojson?form%5B%5D=2&form%5B%5D=4&order=desc&orderby=post_date&status%5B%5D=published&status%5B%5D=draft
@@ -53,3 +64,7 @@ user_paths:
             method: GET
             headers:
             - Authorization: Bearer ${oauth_bearer}
+        - request:
+            url: /search?format=json&q=${cities.City}
+            server: external_maps
+            method: GET
